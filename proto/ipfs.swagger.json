@@ -1,0 +1,118 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "proto/ipfs.proto",
+    "version": "version not set"
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/v3/ipfs/keys": {
+      "get": {
+        "summary": "Keys returns the IPFS keys associated with an authenticated request.",
+        "operationId": "Keys",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/ipfsKeysResp"
+            }
+          }
+        },
+        "tags": [
+          "TemporalIPFS"
+        ]
+      }
+    },
+    "/v3/ipfs/keys/new": {
+      "post": {
+        "summary": "NewKey generates a new IPFS key associated with an authenticated request.",
+        "operationId": "NewKey",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/ipfsEmpty"
+            }
+          }
+        },
+        "tags": [
+          "TemporalIPFS"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "KeyED25519": {
+      "type": "object",
+      "properties": {
+        "size": {
+          "$ref": "#/definitions/KeyED25519Size"
+        }
+      }
+    },
+    "KeyED25519Size": {
+      "type": "string",
+      "enum": [
+        "S_256"
+      ],
+      "default": "S_256"
+    },
+    "KeyRSA": {
+      "type": "object",
+      "properties": {
+        "size": {
+          "$ref": "#/definitions/KeyRSASize"
+        }
+      }
+    },
+    "KeyRSASize": {
+      "type": "string",
+      "enum": [
+        "S_2048",
+        "S_3072",
+        "S_4096"
+      ],
+      "default": "S_2048"
+    },
+    "ipfsEmpty": {
+      "type": "object"
+    },
+    "ipfsKey": {
+      "type": "object",
+      "properties": {
+        "rsa": {
+          "$ref": "#/definitions/KeyRSA"
+        },
+        "ed25519": {
+          "$ref": "#/definitions/KeyED25519"
+        },
+        "name": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        }
+      }
+    },
+    "ipfsKeysResp": {
+      "type": "object",
+      "properties": {
+        "keys": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ipfsKey"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "proto/core.proto",
+    "version": "version not set"
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/v3/core/statistics": {
+      "get": {
+        "operationId": "Statistics",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/coreServiceStatistics"
+            }
+          }
+        },
+        "tags": [
+          "TemporalCore"
+        ]
+      }
+    },
+    "/v3/core/status": {
+      "get": {
+        "operationId": "Status",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/coreServiceStatus"
+            }
+          }
+        },
+        "tags": [
+          "TemporalCore"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "coreServiceStatistics": {
+      "type": "object",
+      "properties": {
+        "metrics": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
+    "coreServiceStatus": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

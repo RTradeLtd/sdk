@@ -1,0 +1,230 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "proto/auth.proto",
+    "version": "version not set"
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/v3/auth/account": {
+      "get": {
+        "summary": "Account returns the account associated with an authenticated request.",
+        "operationId": "Account",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/authUser"
+            }
+          }
+        },
+        "tags": [
+          "TemporalAuth"
+        ]
+      }
+    },
+    "/v3/auth/login": {
+      "post": {
+        "summary": "Login accepts credentials and returns a token for use with further requests.",
+        "operationId": "Login",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/authToken"
+            }
+          }
+        },
+        "tags": [
+          "TemporalAuth"
+        ]
+      }
+    },
+    "/v3/auth/recover": {
+      "post": {
+        "summary": "Recover facilitates account recovery.",
+        "operationId": "Recover",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/authUser"
+            }
+          }
+        },
+        "tags": [
+          "TemporalAuth"
+        ]
+      }
+    },
+    "/v3/auth/refresh": {
+      "post": {
+        "summary": "Refresh provides a refreshed token associated with an authenticated request.",
+        "operationId": "Refresh",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/authToken"
+            }
+          }
+        },
+        "tags": [
+          "TemporalAuth"
+        ]
+      }
+    },
+    "/v3/auth/register": {
+      "post": {
+        "summary": "Register facilitates user creation.",
+        "operationId": "Register",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/authUser"
+            }
+          }
+        },
+        "tags": [
+          "TemporalAuth"
+        ]
+      }
+    },
+    "/v3/auth/update": {
+      "post": {
+        "summary": "Update facilitates modification of the account associated with an\nauthenticated request.",
+        "operationId": "Update",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/authUser"
+            }
+          }
+        },
+        "tags": [
+          "TemporalAuth"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "UpdateReqPassword": {
+      "type": "object",
+      "properties": {
+        "old_password": {
+          "type": "string"
+        },
+        "new_password": {
+          "type": "string"
+        }
+      }
+    },
+    "authCredentials": {
+      "type": "object",
+      "properties": {
+        "username": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      }
+    },
+    "authRecoverReqType": {
+      "type": "string",
+      "enum": [
+        "USERNAME",
+        "PASSWORD"
+      ],
+      "default": "USERNAME"
+    },
+    "authTier": {
+      "type": "string",
+      "enum": [
+        "FREE",
+        "LIGHT",
+        "PARTNER"
+      ],
+      "default": "FREE"
+    },
+    "authToken": {
+      "type": "object",
+      "properties": {
+        "expire": {
+          "type": "string",
+          "format": "int64"
+        },
+        "token": {
+          "type": "string"
+        }
+      }
+    },
+    "authUpdateReqTier": {
+      "type": "object",
+      "properties": {
+        "new_tier": {
+          "$ref": "#/definitions/authUpdateReqTier"
+        }
+      }
+    },
+    "authUser": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "user_name": {
+          "type": "string"
+        },
+        "email_address": {
+          "type": "string"
+        },
+        "verified": {
+          "type": "boolean",
+          "format": "boolean",
+          "title": "account properties"
+        },
+        "credits": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "ipfs_keys": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "ipfs_networks": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "tier": {
+          "$ref": "#/definitions/authTier"
+        },
+        "api_access": {
+          "type": "boolean",
+          "format": "boolean",
+          "title": "account access"
+        },
+        "admin_access": {
+          "type": "boolean",
+          "format": "boolean"
+        }
+      }
+    }
+  }
+}
