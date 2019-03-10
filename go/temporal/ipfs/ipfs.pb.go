@@ -47,7 +47,7 @@ func (x Key_RSA_Size) String() string {
 	return proto.EnumName(Key_RSA_Size_name, int32(x))
 }
 func (Key_RSA_Size) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_ipfs_c558c8c16952eae2, []int{2, 0, 0}
+	return fileDescriptor_ipfs_c7b3cb3503d80b0d, []int{2, 0, 0}
 }
 
 type Key_ED25519_Size int32
@@ -67,7 +67,7 @@ func (x Key_ED25519_Size) String() string {
 	return proto.EnumName(Key_ED25519_Size_name, int32(x))
 }
 func (Key_ED25519_Size) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_ipfs_c558c8c16952eae2, []int{2, 1, 0}
+	return fileDescriptor_ipfs_c7b3cb3503d80b0d, []int{2, 1, 0}
 }
 
 type Empty struct {
@@ -80,7 +80,7 @@ func (m *Empty) Reset()         { *m = Empty{} }
 func (m *Empty) String() string { return proto.CompactTextString(m) }
 func (*Empty) ProtoMessage()    {}
 func (*Empty) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ipfs_c558c8c16952eae2, []int{0}
+	return fileDescriptor_ipfs_c7b3cb3503d80b0d, []int{0}
 }
 func (m *Empty) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Empty.Unmarshal(m, b)
@@ -111,7 +111,7 @@ func (m *KeysResp) Reset()         { *m = KeysResp{} }
 func (m *KeysResp) String() string { return proto.CompactTextString(m) }
 func (*KeysResp) ProtoMessage()    {}
 func (*KeysResp) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ipfs_c558c8c16952eae2, []int{1}
+	return fileDescriptor_ipfs_c7b3cb3503d80b0d, []int{1}
 }
 func (m *KeysResp) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_KeysResp.Unmarshal(m, b)
@@ -154,7 +154,7 @@ func (m *Key) Reset()         { *m = Key{} }
 func (m *Key) String() string { return proto.CompactTextString(m) }
 func (*Key) ProtoMessage()    {}
 func (*Key) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ipfs_c558c8c16952eae2, []int{2}
+	return fileDescriptor_ipfs_c7b3cb3503d80b0d, []int{2}
 }
 func (m *Key) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Key.Unmarshal(m, b)
@@ -310,7 +310,7 @@ func (m *Key_RSA) Reset()         { *m = Key_RSA{} }
 func (m *Key_RSA) String() string { return proto.CompactTextString(m) }
 func (*Key_RSA) ProtoMessage()    {}
 func (*Key_RSA) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ipfs_c558c8c16952eae2, []int{2, 0}
+	return fileDescriptor_ipfs_c7b3cb3503d80b0d, []int{2, 0}
 }
 func (m *Key_RSA) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Key_RSA.Unmarshal(m, b)
@@ -348,7 +348,7 @@ func (m *Key_ED25519) Reset()         { *m = Key_ED25519{} }
 func (m *Key_ED25519) String() string { return proto.CompactTextString(m) }
 func (*Key_ED25519) ProtoMessage()    {}
 func (*Key_ED25519) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ipfs_c558c8c16952eae2, []int{2, 1}
+	return fileDescriptor_ipfs_c7b3cb3503d80b0d, []int{2, 1}
 }
 func (m *Key_ED25519) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Key_ED25519.Unmarshal(m, b)

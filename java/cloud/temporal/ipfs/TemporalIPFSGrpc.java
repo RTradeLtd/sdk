@@ -1,0 +1,394 @@
+package cloud.temporal.ipfs;
+
+import static io.grpc.MethodDescriptor.generateFullMethodName;
+import static io.grpc.stub.ClientCalls.asyncBidiStreamingCall;
+import static io.grpc.stub.ClientCalls.asyncClientStreamingCall;
+import static io.grpc.stub.ClientCalls.asyncServerStreamingCall;
+import static io.grpc.stub.ClientCalls.asyncUnaryCall;
+import static io.grpc.stub.ClientCalls.blockingServerStreamingCall;
+import static io.grpc.stub.ClientCalls.blockingUnaryCall;
+import static io.grpc.stub.ClientCalls.futureUnaryCall;
+import static io.grpc.stub.ServerCalls.asyncBidiStreamingCall;
+import static io.grpc.stub.ServerCalls.asyncClientStreamingCall;
+import static io.grpc.stub.ServerCalls.asyncServerStreamingCall;
+import static io.grpc.stub.ServerCalls.asyncUnaryCall;
+import static io.grpc.stub.ServerCalls.asyncUnimplementedStreamingCall;
+import static io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall;
+
+/**
+ * <pre>
+ * TemporalIPFS implements Temporal's IPFS services
+ * </pre>
+ */
+@javax.annotation.Generated(
+    value = "by gRPC proto compiler (version 1.19.0)",
+    comments = "Source: proto/ipfs.proto")
+public final class TemporalIPFSGrpc {
+
+  private TemporalIPFSGrpc() {}
+
+  public static final String SERVICE_NAME = "ipfs.TemporalIPFS";
+
+  // Static method descriptors that strictly reflect the proto.
+  private static volatile io.grpc.MethodDescriptor<cloud.temporal.ipfs.Empty,
+      cloud.temporal.ipfs.KeysResp> getKeysMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "Keys",
+      requestType = cloud.temporal.ipfs.Empty.class,
+      responseType = cloud.temporal.ipfs.KeysResp.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<cloud.temporal.ipfs.Empty,
+      cloud.temporal.ipfs.KeysResp> getKeysMethod() {
+    io.grpc.MethodDescriptor<cloud.temporal.ipfs.Empty, cloud.temporal.ipfs.KeysResp> getKeysMethod;
+    if ((getKeysMethod = TemporalIPFSGrpc.getKeysMethod) == null) {
+      synchronized (TemporalIPFSGrpc.class) {
+        if ((getKeysMethod = TemporalIPFSGrpc.getKeysMethod) == null) {
+          TemporalIPFSGrpc.getKeysMethod = getKeysMethod = 
+              io.grpc.MethodDescriptor.<cloud.temporal.ipfs.Empty, cloud.temporal.ipfs.KeysResp>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(
+                  "ipfs.TemporalIPFS", "Keys"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  cloud.temporal.ipfs.Empty.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  cloud.temporal.ipfs.KeysResp.getDefaultInstance()))
+                  .setSchemaDescriptor(new TemporalIPFSMethodDescriptorSupplier("Keys"))
+                  .build();
+          }
+        }
+     }
+     return getKeysMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<cloud.temporal.ipfs.Key,
+      cloud.temporal.ipfs.Empty> getNewKeyMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "NewKey",
+      requestType = cloud.temporal.ipfs.Key.class,
+      responseType = cloud.temporal.ipfs.Empty.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<cloud.temporal.ipfs.Key,
+      cloud.temporal.ipfs.Empty> getNewKeyMethod() {
+    io.grpc.MethodDescriptor<cloud.temporal.ipfs.Key, cloud.temporal.ipfs.Empty> getNewKeyMethod;
+    if ((getNewKeyMethod = TemporalIPFSGrpc.getNewKeyMethod) == null) {
+      synchronized (TemporalIPFSGrpc.class) {
+        if ((getNewKeyMethod = TemporalIPFSGrpc.getNewKeyMethod) == null) {
+          TemporalIPFSGrpc.getNewKeyMethod = getNewKeyMethod = 
+              io.grpc.MethodDescriptor.<cloud.temporal.ipfs.Key, cloud.temporal.ipfs.Empty>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(
+                  "ipfs.TemporalIPFS", "NewKey"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  cloud.temporal.ipfs.Key.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  cloud.temporal.ipfs.Empty.getDefaultInstance()))
+                  .setSchemaDescriptor(new TemporalIPFSMethodDescriptorSupplier("NewKey"))
+                  .build();
+          }
+        }
+     }
+     return getNewKeyMethod;
+  }
+
+  /**
+   * Creates a new async stub that supports all call types for the service
+   */
+  public static TemporalIPFSStub newStub(io.grpc.Channel channel) {
+    return new TemporalIPFSStub(channel);
+  }
+
+  /**
+   * Creates a new blocking-style stub that supports unary and streaming output calls on the service
+   */
+  public static TemporalIPFSBlockingStub newBlockingStub(
+      io.grpc.Channel channel) {
+    return new TemporalIPFSBlockingStub(channel);
+  }
+
+  /**
+   * Creates a new ListenableFuture-style stub that supports unary calls on the service
+   */
+  public static TemporalIPFSFutureStub newFutureStub(
+      io.grpc.Channel channel) {
+    return new TemporalIPFSFutureStub(channel);
+  }
+
+  /**
+   * <pre>
+   * TemporalIPFS implements Temporal's IPFS services
+   * </pre>
+   */
+  public static abstract class TemporalIPFSImplBase implements io.grpc.BindableService {
+
+    /**
+     * <pre>
+     * Keys returns the IPFS keys associated with an authenticated request.
+     * </pre>
+     */
+    public void keys(cloud.temporal.ipfs.Empty request,
+        io.grpc.stub.StreamObserver<cloud.temporal.ipfs.KeysResp> responseObserver) {
+      asyncUnimplementedUnaryCall(getKeysMethod(), responseObserver);
+    }
+
+    /**
+     * <pre>
+     * NewKey generates a new IPFS key associated with an authenticated request.
+     * </pre>
+     */
+    public void newKey(cloud.temporal.ipfs.Key request,
+        io.grpc.stub.StreamObserver<cloud.temporal.ipfs.Empty> responseObserver) {
+      asyncUnimplementedUnaryCall(getNewKeyMethod(), responseObserver);
+    }
+
+    @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
+      return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
+          .addMethod(
+            getKeysMethod(),
+            asyncUnaryCall(
+              new MethodHandlers<
+                cloud.temporal.ipfs.Empty,
+                cloud.temporal.ipfs.KeysResp>(
+                  this, METHODID_KEYS)))
+          .addMethod(
+            getNewKeyMethod(),
+            asyncUnaryCall(
+              new MethodHandlers<
+                cloud.temporal.ipfs.Key,
+                cloud.temporal.ipfs.Empty>(
+                  this, METHODID_NEW_KEY)))
+          .build();
+    }
+  }
+
+  /**
+   * <pre>
+   * TemporalIPFS implements Temporal's IPFS services
+   * </pre>
+   */
+  public static final class TemporalIPFSStub extends io.grpc.stub.AbstractStub<TemporalIPFSStub> {
+    private TemporalIPFSStub(io.grpc.Channel channel) {
+      super(channel);
+    }
+
+    private TemporalIPFSStub(io.grpc.Channel channel,
+        io.grpc.CallOptions callOptions) {
+      super(channel, callOptions);
+    }
+
+    @java.lang.Override
+    protected TemporalIPFSStub build(io.grpc.Channel channel,
+        io.grpc.CallOptions callOptions) {
+      return new TemporalIPFSStub(channel, callOptions);
+    }
+
+    /**
+     * <pre>
+     * Keys returns the IPFS keys associated with an authenticated request.
+     * </pre>
+     */
+    public void keys(cloud.temporal.ipfs.Empty request,
+        io.grpc.stub.StreamObserver<cloud.temporal.ipfs.KeysResp> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(getKeysMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     * <pre>
+     * NewKey generates a new IPFS key associated with an authenticated request.
+     * </pre>
+     */
+    public void newKey(cloud.temporal.ipfs.Key request,
+        io.grpc.stub.StreamObserver<cloud.temporal.ipfs.Empty> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(getNewKeyMethod(), getCallOptions()), request, responseObserver);
+    }
+  }
+
+  /**
+   * <pre>
+   * TemporalIPFS implements Temporal's IPFS services
+   * </pre>
+   */
+  public static final class TemporalIPFSBlockingStub extends io.grpc.stub.AbstractStub<TemporalIPFSBlockingStub> {
+    private TemporalIPFSBlockingStub(io.grpc.Channel channel) {
+      super(channel);
+    }
+
+    private TemporalIPFSBlockingStub(io.grpc.Channel channel,
+        io.grpc.CallOptions callOptions) {
+      super(channel, callOptions);
+    }
+
+    @java.lang.Override
+    protected TemporalIPFSBlockingStub build(io.grpc.Channel channel,
+        io.grpc.CallOptions callOptions) {
+      return new TemporalIPFSBlockingStub(channel, callOptions);
+    }
+
+    /**
+     * <pre>
+     * Keys returns the IPFS keys associated with an authenticated request.
+     * </pre>
+     */
+    public cloud.temporal.ipfs.KeysResp keys(cloud.temporal.ipfs.Empty request) {
+      return blockingUnaryCall(
+          getChannel(), getKeysMethod(), getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
+     * NewKey generates a new IPFS key associated with an authenticated request.
+     * </pre>
+     */
+    public cloud.temporal.ipfs.Empty newKey(cloud.temporal.ipfs.Key request) {
+      return blockingUnaryCall(
+          getChannel(), getNewKeyMethod(), getCallOptions(), request);
+    }
+  }
+
+  /**
+   * <pre>
+   * TemporalIPFS implements Temporal's IPFS services
+   * </pre>
+   */
+  public static final class TemporalIPFSFutureStub extends io.grpc.stub.AbstractStub<TemporalIPFSFutureStub> {
+    private TemporalIPFSFutureStub(io.grpc.Channel channel) {
+      super(channel);
+    }
+
+    private TemporalIPFSFutureStub(io.grpc.Channel channel,
+        io.grpc.CallOptions callOptions) {
+      super(channel, callOptions);
+    }
+
+    @java.lang.Override
+    protected TemporalIPFSFutureStub build(io.grpc.Channel channel,
+        io.grpc.CallOptions callOptions) {
+      return new TemporalIPFSFutureStub(channel, callOptions);
+    }
+
+    /**
+     * <pre>
+     * Keys returns the IPFS keys associated with an authenticated request.
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<cloud.temporal.ipfs.KeysResp> keys(
+        cloud.temporal.ipfs.Empty request) {
+      return futureUnaryCall(
+          getChannel().newCall(getKeysMethod(), getCallOptions()), request);
+    }
+
+    /**
+     * <pre>
+     * NewKey generates a new IPFS key associated with an authenticated request.
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<cloud.temporal.ipfs.Empty> newKey(
+        cloud.temporal.ipfs.Key request) {
+      return futureUnaryCall(
+          getChannel().newCall(getNewKeyMethod(), getCallOptions()), request);
+    }
+  }
+
+  private static final int METHODID_KEYS = 0;
+  private static final int METHODID_NEW_KEY = 1;
+
+  private static final class MethodHandlers<Req, Resp> implements
+      io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
+      io.grpc.stub.ServerCalls.ServerStreamingMethod<Req, Resp>,
+      io.grpc.stub.ServerCalls.ClientStreamingMethod<Req, Resp>,
+      io.grpc.stub.ServerCalls.BidiStreamingMethod<Req, Resp> {
+    private final TemporalIPFSImplBase serviceImpl;
+    private final int methodId;
+
+    MethodHandlers(TemporalIPFSImplBase serviceImpl, int methodId) {
+      this.serviceImpl = serviceImpl;
+      this.methodId = methodId;
+    }
+
+    @java.lang.Override
+    @java.lang.SuppressWarnings("unchecked")
+    public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
+      switch (methodId) {
+        case METHODID_KEYS:
+          serviceImpl.keys((cloud.temporal.ipfs.Empty) request,
+              (io.grpc.stub.StreamObserver<cloud.temporal.ipfs.KeysResp>) responseObserver);
+          break;
+        case METHODID_NEW_KEY:
+          serviceImpl.newKey((cloud.temporal.ipfs.Key) request,
+              (io.grpc.stub.StreamObserver<cloud.temporal.ipfs.Empty>) responseObserver);
+          break;
+        default:
+          throw new AssertionError();
+      }
+    }
+
+    @java.lang.Override
+    @java.lang.SuppressWarnings("unchecked")
+    public io.grpc.stub.StreamObserver<Req> invoke(
+        io.grpc.stub.StreamObserver<Resp> responseObserver) {
+      switch (methodId) {
+        default:
+          throw new AssertionError();
+      }
+    }
+  }
+
+  private static abstract class TemporalIPFSBaseDescriptorSupplier
+      implements io.grpc.protobuf.ProtoFileDescriptorSupplier, io.grpc.protobuf.ProtoServiceDescriptorSupplier {
+    TemporalIPFSBaseDescriptorSupplier() {}
+
+    @java.lang.Override
+    public com.google.protobuf.Descriptors.FileDescriptor getFileDescriptor() {
+      return cloud.temporal.ipfs.Ipfs.getDescriptor();
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Descriptors.ServiceDescriptor getServiceDescriptor() {
+      return getFileDescriptor().findServiceByName("TemporalIPFS");
+    }
+  }
+
+  private static final class TemporalIPFSFileDescriptorSupplier
+      extends TemporalIPFSBaseDescriptorSupplier {
+    TemporalIPFSFileDescriptorSupplier() {}
+  }
+
+  private static final class TemporalIPFSMethodDescriptorSupplier
+      extends TemporalIPFSBaseDescriptorSupplier
+      implements io.grpc.protobuf.ProtoMethodDescriptorSupplier {
+    private final String methodName;
+
+    TemporalIPFSMethodDescriptorSupplier(String methodName) {
+      this.methodName = methodName;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Descriptors.MethodDescriptor getMethodDescriptor() {
+      return getServiceDescriptor().findMethodByName(methodName);
+    }
+  }
+
+  private static volatile io.grpc.ServiceDescriptor serviceDescriptor;
+
+  public static io.grpc.ServiceDescriptor getServiceDescriptor() {
+    io.grpc.ServiceDescriptor result = serviceDescriptor;
+    if (result == null) {
+      synchronized (TemporalIPFSGrpc.class) {
+        result = serviceDescriptor;
+        if (result == null) {
+          serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
+              .setSchemaDescriptor(new TemporalIPFSFileDescriptorSupplier())
+              .addMethod(getKeysMethod())
+              .addMethod(getNewKeyMethod())
+              .build();
+        }
+      }
+    }
+    return result;
+  }
+}

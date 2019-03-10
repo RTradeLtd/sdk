@@ -16,6 +16,7 @@ proto:
 .PHONY: gen-pkg
 gen-pkg:
 	scripts/gen-go-pkg.sh ${PKG}
+	scripts/gen-java-pkg.sh ${PKG}
 
 .PHONY: swagger
 swagger:
