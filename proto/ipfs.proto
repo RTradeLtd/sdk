@@ -1,7 +1,7 @@
 syntax = "proto3";
 package ipfs;
 
-option go_package = "github.com/RTradeLtd/temporal-sdk/go/temporal/ipfs";
+option go_package = "github.com/RTradeLtd/sdk/go/temporal/ipfs";
 
 import "google/api/annotations.proto";
 
