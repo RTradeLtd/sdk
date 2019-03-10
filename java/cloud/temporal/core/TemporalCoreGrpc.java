@@ -31,30 +31,30 @@ public final class TemporalCoreGrpc {
   public static final String SERVICE_NAME = "core.TemporalCore";
 
   // Static method descriptors that strictly reflect the proto.
-  private static volatile io.grpc.MethodDescriptor<cloud.temporal.core.Empty,
-      cloud.temporal.core.ServiceStatus> getStatusMethod;
+  private static volatile io.grpc.MethodDescriptor<cloud.temporal.core.Core.Empty,
+      cloud.temporal.core.Core.ServiceStatus> getStatusMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "Status",
-      requestType = cloud.temporal.core.Empty.class,
-      responseType = cloud.temporal.core.ServiceStatus.class,
+      requestType = cloud.temporal.core.Core.Empty.class,
+      responseType = cloud.temporal.core.Core.ServiceStatus.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<cloud.temporal.core.Empty,
-      cloud.temporal.core.ServiceStatus> getStatusMethod() {
-    io.grpc.MethodDescriptor<cloud.temporal.core.Empty, cloud.temporal.core.ServiceStatus> getStatusMethod;
+  public static io.grpc.MethodDescriptor<cloud.temporal.core.Core.Empty,
+      cloud.temporal.core.Core.ServiceStatus> getStatusMethod() {
+    io.grpc.MethodDescriptor<cloud.temporal.core.Core.Empty, cloud.temporal.core.Core.ServiceStatus> getStatusMethod;
     if ((getStatusMethod = TemporalCoreGrpc.getStatusMethod) == null) {
       synchronized (TemporalCoreGrpc.class) {
         if ((getStatusMethod = TemporalCoreGrpc.getStatusMethod) == null) {
           TemporalCoreGrpc.getStatusMethod = getStatusMethod = 
-              io.grpc.MethodDescriptor.<cloud.temporal.core.Empty, cloud.temporal.core.ServiceStatus>newBuilder()
+              io.grpc.MethodDescriptor.<cloud.temporal.core.Core.Empty, cloud.temporal.core.Core.ServiceStatus>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
                   "core.TemporalCore", "Status"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  cloud.temporal.core.Empty.getDefaultInstance()))
+                  cloud.temporal.core.Core.Empty.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  cloud.temporal.core.ServiceStatus.getDefaultInstance()))
+                  cloud.temporal.core.Core.ServiceStatus.getDefaultInstance()))
                   .setSchemaDescriptor(new TemporalCoreMethodDescriptorSupplier("Status"))
                   .build();
           }
@@ -63,30 +63,30 @@ public final class TemporalCoreGrpc {
      return getStatusMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<cloud.temporal.core.Empty,
-      cloud.temporal.core.ServiceStatistics> getStatisticsMethod;
+  private static volatile io.grpc.MethodDescriptor<cloud.temporal.core.Core.Empty,
+      cloud.temporal.core.Core.ServiceStatistics> getStatisticsMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "Statistics",
-      requestType = cloud.temporal.core.Empty.class,
-      responseType = cloud.temporal.core.ServiceStatistics.class,
+      requestType = cloud.temporal.core.Core.Empty.class,
+      responseType = cloud.temporal.core.Core.ServiceStatistics.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<cloud.temporal.core.Empty,
-      cloud.temporal.core.ServiceStatistics> getStatisticsMethod() {
-    io.grpc.MethodDescriptor<cloud.temporal.core.Empty, cloud.temporal.core.ServiceStatistics> getStatisticsMethod;
+  public static io.grpc.MethodDescriptor<cloud.temporal.core.Core.Empty,
+      cloud.temporal.core.Core.ServiceStatistics> getStatisticsMethod() {
+    io.grpc.MethodDescriptor<cloud.temporal.core.Core.Empty, cloud.temporal.core.Core.ServiceStatistics> getStatisticsMethod;
     if ((getStatisticsMethod = TemporalCoreGrpc.getStatisticsMethod) == null) {
       synchronized (TemporalCoreGrpc.class) {
         if ((getStatisticsMethod = TemporalCoreGrpc.getStatisticsMethod) == null) {
           TemporalCoreGrpc.getStatisticsMethod = getStatisticsMethod = 
-              io.grpc.MethodDescriptor.<cloud.temporal.core.Empty, cloud.temporal.core.ServiceStatistics>newBuilder()
+              io.grpc.MethodDescriptor.<cloud.temporal.core.Core.Empty, cloud.temporal.core.Core.ServiceStatistics>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
                   "core.TemporalCore", "Statistics"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  cloud.temporal.core.Empty.getDefaultInstance()))
+                  cloud.temporal.core.Core.Empty.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  cloud.temporal.core.ServiceStatistics.getDefaultInstance()))
+                  cloud.temporal.core.Core.ServiceStatistics.getDefaultInstance()))
                   .setSchemaDescriptor(new TemporalCoreMethodDescriptorSupplier("Statistics"))
                   .build();
           }
@@ -128,15 +128,15 @@ public final class TemporalCoreGrpc {
 
     /**
      */
-    public void status(cloud.temporal.core.Empty request,
-        io.grpc.stub.StreamObserver<cloud.temporal.core.ServiceStatus> responseObserver) {
+    public void status(cloud.temporal.core.Core.Empty request,
+        io.grpc.stub.StreamObserver<cloud.temporal.core.Core.ServiceStatus> responseObserver) {
       asyncUnimplementedUnaryCall(getStatusMethod(), responseObserver);
     }
 
     /**
      */
-    public void statistics(cloud.temporal.core.Empty request,
-        io.grpc.stub.StreamObserver<cloud.temporal.core.ServiceStatistics> responseObserver) {
+    public void statistics(cloud.temporal.core.Core.Empty request,
+        io.grpc.stub.StreamObserver<cloud.temporal.core.Core.ServiceStatistics> responseObserver) {
       asyncUnimplementedUnaryCall(getStatisticsMethod(), responseObserver);
     }
 
@@ -146,15 +146,15 @@ public final class TemporalCoreGrpc {
             getStatusMethod(),
             asyncUnaryCall(
               new MethodHandlers<
-                cloud.temporal.core.Empty,
-                cloud.temporal.core.ServiceStatus>(
+                cloud.temporal.core.Core.Empty,
+                cloud.temporal.core.Core.ServiceStatus>(
                   this, METHODID_STATUS)))
           .addMethod(
             getStatisticsMethod(),
             asyncUnaryCall(
               new MethodHandlers<
-                cloud.temporal.core.Empty,
-                cloud.temporal.core.ServiceStatistics>(
+                cloud.temporal.core.Core.Empty,
+                cloud.temporal.core.Core.ServiceStatistics>(
                   this, METHODID_STATISTICS)))
           .build();
     }
@@ -184,16 +184,16 @@ public final class TemporalCoreGrpc {
 
     /**
      */
-    public void status(cloud.temporal.core.Empty request,
-        io.grpc.stub.StreamObserver<cloud.temporal.core.ServiceStatus> responseObserver) {
+    public void status(cloud.temporal.core.Core.Empty request,
+        io.grpc.stub.StreamObserver<cloud.temporal.core.Core.ServiceStatus> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getStatusMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
      */
-    public void statistics(cloud.temporal.core.Empty request,
-        io.grpc.stub.StreamObserver<cloud.temporal.core.ServiceStatistics> responseObserver) {
+    public void statistics(cloud.temporal.core.Core.Empty request,
+        io.grpc.stub.StreamObserver<cloud.temporal.core.Core.ServiceStatistics> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getStatisticsMethod(), getCallOptions()), request, responseObserver);
     }
@@ -223,14 +223,14 @@ public final class TemporalCoreGrpc {
 
     /**
      */
-    public cloud.temporal.core.ServiceStatus status(cloud.temporal.core.Empty request) {
+    public cloud.temporal.core.Core.ServiceStatus status(cloud.temporal.core.Core.Empty request) {
       return blockingUnaryCall(
           getChannel(), getStatusMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public cloud.temporal.core.ServiceStatistics statistics(cloud.temporal.core.Empty request) {
+    public cloud.temporal.core.Core.ServiceStatistics statistics(cloud.temporal.core.Core.Empty request) {
       return blockingUnaryCall(
           getChannel(), getStatisticsMethod(), getCallOptions(), request);
     }
@@ -260,16 +260,16 @@ public final class TemporalCoreGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<cloud.temporal.core.ServiceStatus> status(
-        cloud.temporal.core.Empty request) {
+    public com.google.common.util.concurrent.ListenableFuture<cloud.temporal.core.Core.ServiceStatus> status(
+        cloud.temporal.core.Core.Empty request) {
       return futureUnaryCall(
           getChannel().newCall(getStatusMethod(), getCallOptions()), request);
     }
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<cloud.temporal.core.ServiceStatistics> statistics(
-        cloud.temporal.core.Empty request) {
+    public com.google.common.util.concurrent.ListenableFuture<cloud.temporal.core.Core.ServiceStatistics> statistics(
+        cloud.temporal.core.Core.Empty request) {
       return futureUnaryCall(
           getChannel().newCall(getStatisticsMethod(), getCallOptions()), request);
     }
@@ -296,12 +296,12 @@ public final class TemporalCoreGrpc {
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
         case METHODID_STATUS:
-          serviceImpl.status((cloud.temporal.core.Empty) request,
-              (io.grpc.stub.StreamObserver<cloud.temporal.core.ServiceStatus>) responseObserver);
+          serviceImpl.status((cloud.temporal.core.Core.Empty) request,
+              (io.grpc.stub.StreamObserver<cloud.temporal.core.Core.ServiceStatus>) responseObserver);
           break;
         case METHODID_STATISTICS:
-          serviceImpl.statistics((cloud.temporal.core.Empty) request,
-              (io.grpc.stub.StreamObserver<cloud.temporal.core.ServiceStatistics>) responseObserver);
+          serviceImpl.statistics((cloud.temporal.core.Core.Empty) request,
+              (io.grpc.stub.StreamObserver<cloud.temporal.core.Core.ServiceStatistics>) responseObserver);
           break;
         default:
           throw new AssertionError();

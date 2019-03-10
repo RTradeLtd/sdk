@@ -30,30 +30,30 @@ public final class TemporalStoreGrpc {
   public static final String SERVICE_NAME = "store.TemporalStore";
 
   // Static method descriptors that strictly reflect the proto.
-  private static volatile io.grpc.MethodDescriptor<cloud.temporal.store.Message,
-      cloud.temporal.store.Message> getStatusMethod;
+  private static volatile io.grpc.MethodDescriptor<cloud.temporal.store.Store.Message,
+      cloud.temporal.store.Store.Message> getStatusMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "Status",
-      requestType = cloud.temporal.store.Message.class,
-      responseType = cloud.temporal.store.Message.class,
+      requestType = cloud.temporal.store.Store.Message.class,
+      responseType = cloud.temporal.store.Store.Message.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<cloud.temporal.store.Message,
-      cloud.temporal.store.Message> getStatusMethod() {
-    io.grpc.MethodDescriptor<cloud.temporal.store.Message, cloud.temporal.store.Message> getStatusMethod;
+  public static io.grpc.MethodDescriptor<cloud.temporal.store.Store.Message,
+      cloud.temporal.store.Store.Message> getStatusMethod() {
+    io.grpc.MethodDescriptor<cloud.temporal.store.Store.Message, cloud.temporal.store.Store.Message> getStatusMethod;
     if ((getStatusMethod = TemporalStoreGrpc.getStatusMethod) == null) {
       synchronized (TemporalStoreGrpc.class) {
         if ((getStatusMethod = TemporalStoreGrpc.getStatusMethod) == null) {
           TemporalStoreGrpc.getStatusMethod = getStatusMethod = 
-              io.grpc.MethodDescriptor.<cloud.temporal.store.Message, cloud.temporal.store.Message>newBuilder()
+              io.grpc.MethodDescriptor.<cloud.temporal.store.Store.Message, cloud.temporal.store.Store.Message>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
                   "store.TemporalStore", "Status"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  cloud.temporal.store.Message.getDefaultInstance()))
+                  cloud.temporal.store.Store.Message.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  cloud.temporal.store.Message.getDefaultInstance()))
+                  cloud.temporal.store.Store.Message.getDefaultInstance()))
                   .setSchemaDescriptor(new TemporalStoreMethodDescriptorSupplier("Status"))
                   .build();
           }
@@ -94,8 +94,8 @@ public final class TemporalStoreGrpc {
 
     /**
      */
-    public void status(cloud.temporal.store.Message request,
-        io.grpc.stub.StreamObserver<cloud.temporal.store.Message> responseObserver) {
+    public void status(cloud.temporal.store.Store.Message request,
+        io.grpc.stub.StreamObserver<cloud.temporal.store.Store.Message> responseObserver) {
       asyncUnimplementedUnaryCall(getStatusMethod(), responseObserver);
     }
 
@@ -105,8 +105,8 @@ public final class TemporalStoreGrpc {
             getStatusMethod(),
             asyncUnaryCall(
               new MethodHandlers<
-                cloud.temporal.store.Message,
-                cloud.temporal.store.Message>(
+                cloud.temporal.store.Store.Message,
+                cloud.temporal.store.Store.Message>(
                   this, METHODID_STATUS)))
           .build();
     }
@@ -135,8 +135,8 @@ public final class TemporalStoreGrpc {
 
     /**
      */
-    public void status(cloud.temporal.store.Message request,
-        io.grpc.stub.StreamObserver<cloud.temporal.store.Message> responseObserver) {
+    public void status(cloud.temporal.store.Store.Message request,
+        io.grpc.stub.StreamObserver<cloud.temporal.store.Store.Message> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getStatusMethod(), getCallOptions()), request, responseObserver);
     }
@@ -165,7 +165,7 @@ public final class TemporalStoreGrpc {
 
     /**
      */
-    public cloud.temporal.store.Message status(cloud.temporal.store.Message request) {
+    public cloud.temporal.store.Store.Message status(cloud.temporal.store.Store.Message request) {
       return blockingUnaryCall(
           getChannel(), getStatusMethod(), getCallOptions(), request);
     }
@@ -194,8 +194,8 @@ public final class TemporalStoreGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<cloud.temporal.store.Message> status(
-        cloud.temporal.store.Message request) {
+    public com.google.common.util.concurrent.ListenableFuture<cloud.temporal.store.Store.Message> status(
+        cloud.temporal.store.Store.Message request) {
       return futureUnaryCall(
           getChannel().newCall(getStatusMethod(), getCallOptions()), request);
     }
@@ -221,8 +221,8 @@ public final class TemporalStoreGrpc {
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
         case METHODID_STATUS:
-          serviceImpl.status((cloud.temporal.store.Message) request,
-              (io.grpc.stub.StreamObserver<cloud.temporal.store.Message>) responseObserver);
+          serviceImpl.status((cloud.temporal.store.Store.Message) request,
+              (io.grpc.stub.StreamObserver<cloud.temporal.store.Store.Message>) responseObserver);
           break;
         default:
           throw new AssertionError();

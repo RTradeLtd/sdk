@@ -34,7 +34,7 @@ func (m *Empty) Reset()         { *m = Empty{} }
 func (m *Empty) String() string { return proto.CompactTextString(m) }
 func (*Empty) ProtoMessage()    {}
 func (*Empty) Descriptor() ([]byte, []int) {
-	return fileDescriptor_core_4fd55c2cccef4b91, []int{0}
+	return fileDescriptor_core_15a118ce40c05aa3, []int{0}
 }
 func (m *Empty) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Empty.Unmarshal(m, b)
@@ -66,7 +66,7 @@ func (m *ServiceStatus) Reset()         { *m = ServiceStatus{} }
 func (m *ServiceStatus) String() string { return proto.CompactTextString(m) }
 func (*ServiceStatus) ProtoMessage()    {}
 func (*ServiceStatus) Descriptor() ([]byte, []int) {
-	return fileDescriptor_core_4fd55c2cccef4b91, []int{1}
+	return fileDescriptor_core_15a118ce40c05aa3, []int{1}
 }
 func (m *ServiceStatus) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ServiceStatus.Unmarshal(m, b)
@@ -111,7 +111,7 @@ func (m *ServiceStatistics) Reset()         { *m = ServiceStatistics{} }
 func (m *ServiceStatistics) String() string { return proto.CompactTextString(m) }
 func (*ServiceStatistics) ProtoMessage()    {}
 func (*ServiceStatistics) Descriptor() ([]byte, []int) {
-	return fileDescriptor_core_4fd55c2cccef4b91, []int{2}
+	return fileDescriptor_core_15a118ce40c05aa3, []int{2}
 }
 func (m *ServiceStatistics) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ServiceStatistics.Unmarshal(m, b)

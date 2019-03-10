@@ -30,30 +30,30 @@ public final class TemporalIPFSGrpc {
   public static final String SERVICE_NAME = "ipfs.TemporalIPFS";
 
   // Static method descriptors that strictly reflect the proto.
-  private static volatile io.grpc.MethodDescriptor<cloud.temporal.ipfs.Empty,
-      cloud.temporal.ipfs.KeysResp> getKeysMethod;
+  private static volatile io.grpc.MethodDescriptor<cloud.temporal.ipfs.Ipfs.Empty,
+      cloud.temporal.ipfs.Ipfs.KeysResp> getKeysMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "Keys",
-      requestType = cloud.temporal.ipfs.Empty.class,
-      responseType = cloud.temporal.ipfs.KeysResp.class,
+      requestType = cloud.temporal.ipfs.Ipfs.Empty.class,
+      responseType = cloud.temporal.ipfs.Ipfs.KeysResp.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<cloud.temporal.ipfs.Empty,
-      cloud.temporal.ipfs.KeysResp> getKeysMethod() {
-    io.grpc.MethodDescriptor<cloud.temporal.ipfs.Empty, cloud.temporal.ipfs.KeysResp> getKeysMethod;
+  public static io.grpc.MethodDescriptor<cloud.temporal.ipfs.Ipfs.Empty,
+      cloud.temporal.ipfs.Ipfs.KeysResp> getKeysMethod() {
+    io.grpc.MethodDescriptor<cloud.temporal.ipfs.Ipfs.Empty, cloud.temporal.ipfs.Ipfs.KeysResp> getKeysMethod;
     if ((getKeysMethod = TemporalIPFSGrpc.getKeysMethod) == null) {
       synchronized (TemporalIPFSGrpc.class) {
         if ((getKeysMethod = TemporalIPFSGrpc.getKeysMethod) == null) {
           TemporalIPFSGrpc.getKeysMethod = getKeysMethod = 
-              io.grpc.MethodDescriptor.<cloud.temporal.ipfs.Empty, cloud.temporal.ipfs.KeysResp>newBuilder()
+              io.grpc.MethodDescriptor.<cloud.temporal.ipfs.Ipfs.Empty, cloud.temporal.ipfs.Ipfs.KeysResp>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
                   "ipfs.TemporalIPFS", "Keys"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  cloud.temporal.ipfs.Empty.getDefaultInstance()))
+                  cloud.temporal.ipfs.Ipfs.Empty.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  cloud.temporal.ipfs.KeysResp.getDefaultInstance()))
+                  cloud.temporal.ipfs.Ipfs.KeysResp.getDefaultInstance()))
                   .setSchemaDescriptor(new TemporalIPFSMethodDescriptorSupplier("Keys"))
                   .build();
           }
@@ -62,30 +62,30 @@ public final class TemporalIPFSGrpc {
      return getKeysMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<cloud.temporal.ipfs.Key,
-      cloud.temporal.ipfs.Empty> getNewKeyMethod;
+  private static volatile io.grpc.MethodDescriptor<cloud.temporal.ipfs.Ipfs.Key,
+      cloud.temporal.ipfs.Ipfs.Empty> getNewKeyMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "NewKey",
-      requestType = cloud.temporal.ipfs.Key.class,
-      responseType = cloud.temporal.ipfs.Empty.class,
+      requestType = cloud.temporal.ipfs.Ipfs.Key.class,
+      responseType = cloud.temporal.ipfs.Ipfs.Empty.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<cloud.temporal.ipfs.Key,
-      cloud.temporal.ipfs.Empty> getNewKeyMethod() {
-    io.grpc.MethodDescriptor<cloud.temporal.ipfs.Key, cloud.temporal.ipfs.Empty> getNewKeyMethod;
+  public static io.grpc.MethodDescriptor<cloud.temporal.ipfs.Ipfs.Key,
+      cloud.temporal.ipfs.Ipfs.Empty> getNewKeyMethod() {
+    io.grpc.MethodDescriptor<cloud.temporal.ipfs.Ipfs.Key, cloud.temporal.ipfs.Ipfs.Empty> getNewKeyMethod;
     if ((getNewKeyMethod = TemporalIPFSGrpc.getNewKeyMethod) == null) {
       synchronized (TemporalIPFSGrpc.class) {
         if ((getNewKeyMethod = TemporalIPFSGrpc.getNewKeyMethod) == null) {
           TemporalIPFSGrpc.getNewKeyMethod = getNewKeyMethod = 
-              io.grpc.MethodDescriptor.<cloud.temporal.ipfs.Key, cloud.temporal.ipfs.Empty>newBuilder()
+              io.grpc.MethodDescriptor.<cloud.temporal.ipfs.Ipfs.Key, cloud.temporal.ipfs.Ipfs.Empty>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
                   "ipfs.TemporalIPFS", "NewKey"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  cloud.temporal.ipfs.Key.getDefaultInstance()))
+                  cloud.temporal.ipfs.Ipfs.Key.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  cloud.temporal.ipfs.Empty.getDefaultInstance()))
+                  cloud.temporal.ipfs.Ipfs.Empty.getDefaultInstance()))
                   .setSchemaDescriptor(new TemporalIPFSMethodDescriptorSupplier("NewKey"))
                   .build();
           }
@@ -129,8 +129,8 @@ public final class TemporalIPFSGrpc {
      * Keys returns the IPFS keys associated with an authenticated request.
      * </pre>
      */
-    public void keys(cloud.temporal.ipfs.Empty request,
-        io.grpc.stub.StreamObserver<cloud.temporal.ipfs.KeysResp> responseObserver) {
+    public void keys(cloud.temporal.ipfs.Ipfs.Empty request,
+        io.grpc.stub.StreamObserver<cloud.temporal.ipfs.Ipfs.KeysResp> responseObserver) {
       asyncUnimplementedUnaryCall(getKeysMethod(), responseObserver);
     }
 
@@ -139,8 +139,8 @@ public final class TemporalIPFSGrpc {
      * NewKey generates a new IPFS key associated with an authenticated request.
      * </pre>
      */
-    public void newKey(cloud.temporal.ipfs.Key request,
-        io.grpc.stub.StreamObserver<cloud.temporal.ipfs.Empty> responseObserver) {
+    public void newKey(cloud.temporal.ipfs.Ipfs.Key request,
+        io.grpc.stub.StreamObserver<cloud.temporal.ipfs.Ipfs.Empty> responseObserver) {
       asyncUnimplementedUnaryCall(getNewKeyMethod(), responseObserver);
     }
 
@@ -150,15 +150,15 @@ public final class TemporalIPFSGrpc {
             getKeysMethod(),
             asyncUnaryCall(
               new MethodHandlers<
-                cloud.temporal.ipfs.Empty,
-                cloud.temporal.ipfs.KeysResp>(
+                cloud.temporal.ipfs.Ipfs.Empty,
+                cloud.temporal.ipfs.Ipfs.KeysResp>(
                   this, METHODID_KEYS)))
           .addMethod(
             getNewKeyMethod(),
             asyncUnaryCall(
               new MethodHandlers<
-                cloud.temporal.ipfs.Key,
-                cloud.temporal.ipfs.Empty>(
+                cloud.temporal.ipfs.Ipfs.Key,
+                cloud.temporal.ipfs.Ipfs.Empty>(
                   this, METHODID_NEW_KEY)))
           .build();
     }
@@ -190,8 +190,8 @@ public final class TemporalIPFSGrpc {
      * Keys returns the IPFS keys associated with an authenticated request.
      * </pre>
      */
-    public void keys(cloud.temporal.ipfs.Empty request,
-        io.grpc.stub.StreamObserver<cloud.temporal.ipfs.KeysResp> responseObserver) {
+    public void keys(cloud.temporal.ipfs.Ipfs.Empty request,
+        io.grpc.stub.StreamObserver<cloud.temporal.ipfs.Ipfs.KeysResp> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getKeysMethod(), getCallOptions()), request, responseObserver);
     }
@@ -201,8 +201,8 @@ public final class TemporalIPFSGrpc {
      * NewKey generates a new IPFS key associated with an authenticated request.
      * </pre>
      */
-    public void newKey(cloud.temporal.ipfs.Key request,
-        io.grpc.stub.StreamObserver<cloud.temporal.ipfs.Empty> responseObserver) {
+    public void newKey(cloud.temporal.ipfs.Ipfs.Key request,
+        io.grpc.stub.StreamObserver<cloud.temporal.ipfs.Ipfs.Empty> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getNewKeyMethod(), getCallOptions()), request, responseObserver);
     }
@@ -234,7 +234,7 @@ public final class TemporalIPFSGrpc {
      * Keys returns the IPFS keys associated with an authenticated request.
      * </pre>
      */
-    public cloud.temporal.ipfs.KeysResp keys(cloud.temporal.ipfs.Empty request) {
+    public cloud.temporal.ipfs.Ipfs.KeysResp keys(cloud.temporal.ipfs.Ipfs.Empty request) {
       return blockingUnaryCall(
           getChannel(), getKeysMethod(), getCallOptions(), request);
     }
@@ -244,7 +244,7 @@ public final class TemporalIPFSGrpc {
      * NewKey generates a new IPFS key associated with an authenticated request.
      * </pre>
      */
-    public cloud.temporal.ipfs.Empty newKey(cloud.temporal.ipfs.Key request) {
+    public cloud.temporal.ipfs.Ipfs.Empty newKey(cloud.temporal.ipfs.Ipfs.Key request) {
       return blockingUnaryCall(
           getChannel(), getNewKeyMethod(), getCallOptions(), request);
     }
@@ -276,8 +276,8 @@ public final class TemporalIPFSGrpc {
      * Keys returns the IPFS keys associated with an authenticated request.
      * </pre>
      */
-    public com.google.common.util.concurrent.ListenableFuture<cloud.temporal.ipfs.KeysResp> keys(
-        cloud.temporal.ipfs.Empty request) {
+    public com.google.common.util.concurrent.ListenableFuture<cloud.temporal.ipfs.Ipfs.KeysResp> keys(
+        cloud.temporal.ipfs.Ipfs.Empty request) {
       return futureUnaryCall(
           getChannel().newCall(getKeysMethod(), getCallOptions()), request);
     }
@@ -287,8 +287,8 @@ public final class TemporalIPFSGrpc {
      * NewKey generates a new IPFS key associated with an authenticated request.
      * </pre>
      */
-    public com.google.common.util.concurrent.ListenableFuture<cloud.temporal.ipfs.Empty> newKey(
-        cloud.temporal.ipfs.Key request) {
+    public com.google.common.util.concurrent.ListenableFuture<cloud.temporal.ipfs.Ipfs.Empty> newKey(
+        cloud.temporal.ipfs.Ipfs.Key request) {
       return futureUnaryCall(
           getChannel().newCall(getNewKeyMethod(), getCallOptions()), request);
     }
@@ -315,12 +315,12 @@ public final class TemporalIPFSGrpc {
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
         case METHODID_KEYS:
-          serviceImpl.keys((cloud.temporal.ipfs.Empty) request,
-              (io.grpc.stub.StreamObserver<cloud.temporal.ipfs.KeysResp>) responseObserver);
+          serviceImpl.keys((cloud.temporal.ipfs.Ipfs.Empty) request,
+              (io.grpc.stub.StreamObserver<cloud.temporal.ipfs.Ipfs.KeysResp>) responseObserver);
           break;
         case METHODID_NEW_KEY:
-          serviceImpl.newKey((cloud.temporal.ipfs.Key) request,
-              (io.grpc.stub.StreamObserver<cloud.temporal.ipfs.Empty>) responseObserver);
+          serviceImpl.newKey((cloud.temporal.ipfs.Ipfs.Key) request,
+              (io.grpc.stub.StreamObserver<cloud.temporal.ipfs.Ipfs.Empty>) responseObserver);
           break;
         default:
           throw new AssertionError();
