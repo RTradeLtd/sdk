@@ -1,7 +1,6 @@
 syntax = "proto3";
 package ipfs;
 
-option go_package = "github.com/RTradeLtd/sdk/go/temporal/ipfs";
 option java_package = "cloud.temporal.ipfs";
 
 import "google/api/annotations.proto";

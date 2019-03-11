@@ -37,3 +37,8 @@ docs-gateway: swagger
 .PHONY: docs-pkg
 docs-gateway-pkg:
 	redoc-cli bundle proto/${PKG}.swagger.json -o docs/gateway/${PKG}/index.html
+
+OUT=server
+.PHONY: proto-go-server
+proto-go-server:
+	$(foreach var,$(PKGS),scripts/gen-go-pkg.sh $(var) false $(OUT)/$(var);)
