@@ -7,5 +7,5 @@ protoc -I. \
   -I"$GOPATH"/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis \
   --go_out=plugins=grpc:"$GOPATH"/src \
   proto/"$PKG".proto
-# strip out server stubs - TODO: reimplement, this strips out some important stuff
-# sed -i '' '/is the server API for/,$d' ./go/temporal/"$PKG"/"$PKG".pb.go
+# strip out server stubs
+sed -i '' '/is the server API for/,/func init() { proto.RegisterFile/{//p;d;}' ./go/temporal/"$PKG"/"$PKG".pb.go

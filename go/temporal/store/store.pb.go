@@ -99,45 +99,6 @@ func (c *temporalStoreClient) Status(ctx context.Context, in *Message, opts ...g
 }
 
 // TemporalStoreServer is the server API for TemporalStore service.
-type TemporalStoreServer interface {
-	Status(context.Context, *Message) (*Message, error)
-}
-
-func RegisterTemporalStoreServer(s *grpc.Server, srv TemporalStoreServer) {
-	s.RegisterService(&_TemporalStore_serviceDesc, srv)
-}
-
-func _TemporalStore_Status_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(Message)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(TemporalStoreServer).Status(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/store.TemporalStore/Status",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(TemporalStoreServer).Status(ctx, req.(*Message))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-var _TemporalStore_serviceDesc = grpc.ServiceDesc{
-	ServiceName: "store.TemporalStore",
-	HandlerType: (*TemporalStoreServer)(nil),
-	Methods: []grpc.MethodDesc{
-		{
-			MethodName: "Status",
-			Handler:    _TemporalStore_Status_Handler,
-		},
-	},
-	Streams:  []grpc.StreamDesc{},
-	Metadata: "proto/store.proto",
-}
-
 func init() { proto.RegisterFile("proto/store.proto", fileDescriptor_store_61ed32709236ea4d) }
 
 var fileDescriptor_store_61ed32709236ea4d = []byte{
