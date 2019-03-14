@@ -41,4 +41,4 @@ docs-gateway-pkg:
 OUT=server
 .PHONY: proto-go-server
 proto-go-server:
-	$(foreach var,$(PKGS),scripts/gen-go-pkg.sh $(var) false $(OUT)/$(var);)
+	$(foreach var,$(PKGS),scripts/gen-go-pkg.sh $(var) true $(OUT)/$(var);)
