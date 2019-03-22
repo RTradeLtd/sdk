@@ -133,6 +133,56 @@ proto.store.TemporalStorePromiseClient.prototype.status =
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.store.DownloadReq,
+ *   !proto.store.Blob>}
+ */
+const methodInfo_TemporalStore_Download = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.store.Blob,
+  /** @param {!proto.store.DownloadReq} request */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.store.Blob.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.store.DownloadReq} request The request proto
+ * @param {!Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!grpc.web.ClientReadableStream<!proto.store.Blob>}
+ *     The XHR Node Readable Stream
+ */
+proto.store.TemporalStoreClient.prototype.download =
+    function(request, metadata) {
+  return this.client_.serverStreaming(this.hostname_ +
+      '/store.TemporalStore/Download',
+      request,
+      metadata,
+      methodInfo_TemporalStore_Download);
+};
+
+
+/**
+ * @param {!proto.store.DownloadReq} request The request proto
+ * @param {!Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!grpc.web.ClientReadableStream<!proto.store.Blob>}
+ *     The XHR Node Readable Stream
+ */
+proto.store.TemporalStorePromiseClient.prototype.download =
+    function(request, metadata) {
+  return this.delegateClient_.client_.serverStreaming(this.delegateClient_.hostname_ +
+      '/store.TemporalStore/Download',
+      request,
+      metadata,
+      methodInfo_TemporalStore_Download);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
  *   !proto.store.Object,
  *   !proto.store.Message>}
  */
@@ -245,108 +295,52 @@ proto.store.TemporalStorePromiseClient.prototype.stat =
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.store.Empty,
- *   !proto.store.KeysResp>}
+ *   !proto.store.ListObjectsReq,
+ *   !proto.store.ObjectList>}
  */
-const methodInfo_TemporalStore_Keys = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.store.KeysResp,
-  /** @param {!proto.store.Empty} request */
+const methodInfo_TemporalStore_ListObjects = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.store.ObjectList,
+  /** @param {!proto.store.ListObjectsReq} request */
   function(request) {
     return request.serializeBinary();
   },
-  proto.store.KeysResp.deserializeBinary
+  proto.store.ObjectList.deserializeBinary
 );
 
 
 /**
- * @param {!proto.store.Empty} request The
+ * @param {!proto.store.ListObjectsReq} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.store.KeysResp)}
+ * @param {function(?grpc.web.Error, ?proto.store.ObjectList)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.store.KeysResp>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.store.ObjectList>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.store.TemporalStoreClient.prototype.keys =
+proto.store.TemporalStoreClient.prototype.listObjects =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/store.TemporalStore/Keys',
+      '/store.TemporalStore/ListObjects',
       request,
       metadata,
-      methodInfo_TemporalStore_Keys,
+      methodInfo_TemporalStore_ListObjects,
       callback);
 };
 
 
 /**
- * @param {!proto.store.Empty} request The
+ * @param {!proto.store.ListObjectsReq} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.store.KeysResp>}
+ * @return {!Promise<!proto.store.ObjectList>}
  *     The XHR Node Readable Stream
  */
-proto.store.TemporalStorePromiseClient.prototype.keys =
+proto.store.TemporalStorePromiseClient.prototype.listObjects =
     function(request, metadata) {
   return new Promise((resolve, reject) => {
-    this.delegateClient_.keys(
-      request, metadata, (error, response) => {
-        error ? reject(error) : resolve(response);
-      });
-  });
-};
-
-
-/**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.store.Key,
- *   !proto.store.Empty>}
- */
-const methodInfo_TemporalStore_NewKey = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.store.Empty,
-  /** @param {!proto.store.Key} request */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.store.Empty.deserializeBinary
-);
-
-
-/**
- * @param {!proto.store.Key} request The
- *     request proto
- * @param {!Object<string, string>} metadata User defined
- *     call metadata
- * @param {function(?grpc.web.Error, ?proto.store.Empty)}
- *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.store.Empty>|undefined}
- *     The XHR Node Readable Stream
- */
-proto.store.TemporalStoreClient.prototype.newKey =
-    function(request, metadata, callback) {
-  return this.client_.rpcCall(this.hostname_ +
-      '/store.TemporalStore/NewKey',
-      request,
-      metadata,
-      methodInfo_TemporalStore_NewKey,
-      callback);
-};
-
-
-/**
- * @param {!proto.store.Key} request The
- *     request proto
- * @param {!Object<string, string>} metadata User defined
- *     call metadata
- * @return {!Promise<!proto.store.Empty>}
- *     The XHR Node Readable Stream
- */
-proto.store.TemporalStorePromiseClient.prototype.newKey =
-    function(request, metadata) {
-  return new Promise((resolve, reject) => {
-    this.delegateClient_.newKey(
+    this.delegateClient_.listObjects(
       request, metadata, (error, response) => {
         error ? reject(error) : resolve(response);
       });
@@ -457,6 +451,118 @@ proto.store.TemporalStorePromiseClient.prototype.subscribe =
       request,
       metadata,
       methodInfo_TemporalStore_Subscribe);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.store.Empty,
+ *   !proto.store.KeyList>}
+ */
+const methodInfo_TemporalStore_Keys = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.store.KeyList,
+  /** @param {!proto.store.Empty} request */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.store.KeyList.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.store.Empty} request The
+ *     request proto
+ * @param {!Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.Error, ?proto.store.KeyList)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.store.KeyList>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.store.TemporalStoreClient.prototype.keys =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/store.TemporalStore/Keys',
+      request,
+      metadata,
+      methodInfo_TemporalStore_Keys,
+      callback);
+};
+
+
+/**
+ * @param {!proto.store.Empty} request The
+ *     request proto
+ * @param {!Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.store.KeyList>}
+ *     The XHR Node Readable Stream
+ */
+proto.store.TemporalStorePromiseClient.prototype.keys =
+    function(request, metadata) {
+  return new Promise((resolve, reject) => {
+    this.delegateClient_.keys(
+      request, metadata, (error, response) => {
+        error ? reject(error) : resolve(response);
+      });
+  });
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.store.Key,
+ *   !proto.store.Empty>}
+ */
+const methodInfo_TemporalStore_NewKey = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.store.Empty,
+  /** @param {!proto.store.Key} request */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.store.Empty.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.store.Key} request The
+ *     request proto
+ * @param {!Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.Error, ?proto.store.Empty)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.store.Empty>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.store.TemporalStoreClient.prototype.newKey =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/store.TemporalStore/NewKey',
+      request,
+      metadata,
+      methodInfo_TemporalStore_NewKey,
+      callback);
+};
+
+
+/**
+ * @param {!proto.store.Key} request The
+ *     request proto
+ * @param {!Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.store.Empty>}
+ *     The XHR Node Readable Stream
+ */
+proto.store.TemporalStorePromiseClient.prototype.newKey =
+    function(request, metadata) {
+  return new Promise((resolve, reject) => {
+    this.delegateClient_.newKey(
+      request, metadata, (error, response) => {
+        error ? reject(error) : resolve(response);
+      });
+  });
 };
 
 

@@ -11,37 +11,51 @@ service TemporalStore {
     option (google.api.http) = { get: "/v3/store/status" };
   };
 
+  /* OBJECT APIs */
+
   // Upload accepts files and directories
-  rpc Upload(stream Blob) returns (Object) {
-    option (google.api.http) = { post: "/v3/store/upload" };
+  rpc Upload(stream UploadReq) returns (Object) {
+    option (google.api.http) = { post: "/v3/store/objects/upload" };
+  };
+
+  rpc Download(DownloadReq) returns (stream Blob) {
+    option (google.api.http) = { post: "/v3/store/objects/download" };
   };
 
   // Pin handles new pins and pin extensions
   rpc Pin(Object) returns (Message) {
-    option (google.api.http) = { get: "/v3/store/pin" };
+    option (google.api.http) = { post: "/v3/store/objects/pin" };
   };
 
   // Stat retrieves details about an object
   rpc Stat(Object) returns (ObjectStats) {
-    option (google.api.http) = { get: "/v3/store/stat" };
+    option (google.api.http) = { get: "/v3/store/objects/stat" };
   };
 
+  rpc ListObjects(ListObjectsReq) returns (ObjectList) {
+    option (google.api.http) = { post: "/v3/store/objects/list" };
+  };
+
+  /* IPFS PUBSUB */
+
+  rpc Publish(Event) returns (Empty) {
+    option (google.api.http) = { post: "/v3/store/pubsub/publish" };
+  };
+
+  rpc Subscribe(Topic) returns (stream Event) {
+    option (google.api.http) = { get: "/v3/store/pubsub/subscribe" };
+  };
+
+  /* IPFS KEYS */
+
   // Keys returns the IPFS keys associated with an authenticated request.
-  rpc Keys(Empty) returns (KeysResp) {
-    option (google.api.http) = { get: "/v3/ipfs/keys" };
+  rpc Keys(Empty) returns (KeyList) {
+    option (google.api.http) = { get: "/v3/store/keys" };
   };
 
   // NewKey generates a new IPFS key associated with an authenticated request.
   rpc NewKey(Key) returns (Empty) {
-    option (google.api.http) = { post: "/v3/ipfs/keys/new" };
-  };
-
-  rpc Publish(Event) returns (Empty) {
-    option (google.api.http) = { post: "/v3/ipfs/pubsub/publish" };
-  };
-
-  rpc Subscribe(Topic) returns (stream Event) {
-    option (google.api.http) = { get: "/v3/ipfs/pubsub/subscribe" };
+    option (google.api.http) = { post: "/v3/store/keys/new" };
   };
 }
 
@@ -53,42 +67,80 @@ message Message {
   string message = 1;
 }
 
-message ObjectStats {
-  string hash           = 1;
-  int32 block_size      = 2;
-  int32 cumulative_size = 3;
-  int32 data_size       = 4;
-  int32 links_size      = 5;
-  int32 link_count      = 6;
+message UploadReq {
+  Blob blob = 1;
+  ObjectOptions options = 2;
 }
 
-message KeysResp { 
-  repeated Key keys = 1;
+message DownloadReq {
+  Object object = 1;
+  ObjectOptions options = 2;
 }
+
+message ListObjectsReq {
+  repeated string networks = 1;
+  repeated string hashes   = 2;
+  bool encrypted_only      = 3;
+}
+
+message ObjectOptions {
+  string passphrase = 1;
+  string network    = 2;
+}
+
+message KeyList { repeated Key keys = 1; }
+
+message ObjectList { repeated ObjectInfo objects = 2; }
 
 /* MODELS */
-
-message Object {
-  string hash = 1;
-}
 
 message Blob {
   bytes content   = 1;
   int64 hold_time = 2;
+}
 
-  message Options {
-    string passphrase = 1;
+message Object {
+  string hash = 1;
+  int64 hold_time = 2;
+}
+
+message ObjectStats {
+  int32 block_size      = 1;
+  int32 cumulative_size = 2;
+  int32 data_size       = 3;
+  int32 links_size      = 4;
+  int32 link_count      = 5;
+}
+
+message ObjectInfo {
+  Object object     = 1;
+  ObjectStats stats = 2;
+
+  message Details {
+    int64 created_at = 1;
+    int64 deleted_at = 2;
+    int64 updated_at = 3;
+    bool encrypted   = 4;
+    int32 hold_time  = 5;
+    string type      = 6;
   }
-  Options options = 3;
+  Details details = 3;
+
+  message Permissions {
+    string uploader = 1;
+    repeated string users = 2;
+  }
+  Permissions perms = 4;
 }
 
 message Event {
-  string topic = 1;
+  Topic topic = 1;
   string message = 2;
 }
 
 message Topic {
-  string topic = 1;
+  string topic   = 1;
+  string network = 2;
 }
 
 message Key {
