@@ -77,27 +77,27 @@ proto.store.TemporalStorePromiseClient =
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.store.Message,
- *   !proto.store.Message>}
+ *   !proto.store.Empty,
+ *   !proto.store.Empty>}
  */
 const methodInfo_TemporalStore_Status = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.store.Message,
-  /** @param {!proto.store.Message} request */
+  proto.store.Empty,
+  /** @param {!proto.store.Empty} request */
   function(request) {
     return request.serializeBinary();
   },
-  proto.store.Message.deserializeBinary
+  proto.store.Empty.deserializeBinary
 );
 
 
 /**
- * @param {!proto.store.Message} request The
+ * @param {!proto.store.Empty} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.store.Message)}
+ * @param {function(?grpc.web.Error, ?proto.store.Empty)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.store.Message>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.store.Empty>|undefined}
  *     The XHR Node Readable Stream
  */
 proto.store.TemporalStoreClient.prototype.status =
@@ -112,11 +112,11 @@ proto.store.TemporalStoreClient.prototype.status =
 
 
 /**
- * @param {!proto.store.Message} request The
+ * @param {!proto.store.Empty} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.store.Message>}
+ * @return {!Promise<!proto.store.Empty>}
  *     The XHR Node Readable Stream
  */
 proto.store.TemporalStorePromiseClient.prototype.status =
@@ -184,15 +184,15 @@ proto.store.TemporalStorePromiseClient.prototype.download =
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
  *   !proto.store.Object,
- *   !proto.store.Message>}
+ *   !proto.store.Empty>}
  */
 const methodInfo_TemporalStore_Pin = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.store.Message,
+  proto.store.Empty,
   /** @param {!proto.store.Object} request */
   function(request) {
     return request.serializeBinary();
   },
-  proto.store.Message.deserializeBinary
+  proto.store.Empty.deserializeBinary
 );
 
 
@@ -201,9 +201,9 @@ const methodInfo_TemporalStore_Pin = new grpc.web.AbstractClientBase.MethodInfo(
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.store.Message)}
+ * @param {function(?grpc.web.Error, ?proto.store.Empty)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.store.Message>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.store.Empty>|undefined}
  *     The XHR Node Readable Stream
  */
 proto.store.TemporalStoreClient.prototype.pin =
@@ -222,7 +222,7 @@ proto.store.TemporalStoreClient.prototype.pin =
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.store.Message>}
+ * @return {!Promise<!proto.store.Empty>}
  *     The XHR Node Readable Stream
  */
 proto.store.TemporalStorePromiseClient.prototype.pin =

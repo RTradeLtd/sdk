@@ -7,7 +7,7 @@ import "google/api/annotations.proto";
 
 // TemporalStore implements Temporal's storage APIs
 service TemporalStore {
-  rpc Status(Message) returns (Message) {
+  rpc Status(Empty) returns (Empty) {
     option (google.api.http) = { get: "/v3/store/status" };
   };
 
@@ -23,7 +23,7 @@ service TemporalStore {
   };
 
   // Pin handles new pins and pin extensions
-  rpc Pin(Object) returns (Message) {
+  rpc Pin(Object) returns (Empty) {
     option (google.api.http) = { post: "/v3/store/objects/pin" };
   };
 
@@ -62,10 +62,6 @@ service TemporalStore {
 /* MESSAGES */
 
 message Empty { }
-
-message Message {
-  string message = 1;
-}
 
 message UploadReq {
   Blob blob = 1;

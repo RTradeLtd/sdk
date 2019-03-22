@@ -1,0 +1,41 @@
+syntax = "proto3";
+package ipfs;
+
+option java_package = "cloud.temporal.ipfs";
+
+import "google/api/annotations.proto";
+
+// TemporalIPFS implements Temporal's IPFS management APIs, most notably private
+// networks.
+service TemporalIPFS {
+  rpc Status(Empty) returns (Empty) {
+    option (google.api.http) = { get: "/v3/ipfs/status" };
+  };
+
+  rpc CreateNetwork(Empty) returns (Empty) {
+    option (google.api.http) = { post: "/v3/ipfs/networks/create" };
+  };
+
+  rpc StartNetwork(Empty) returns (Empty) {
+    option (google.api.http) = { post: "/v3/ipfs/networks/start" };
+  };
+
+  rpc StopNetwork(Empty) returns (Empty) {
+    option (google.api.http) = { post: "/v3/ipfs/networks/stop" };
+  };
+
+  rpc RemoveNetwork(Empty) returns (Empty) {
+    option (google.api.http) = { post: "/v3/ipfs/networks/stop" };
+  };
+
+  rpc StatNetwork(Empty) returns (Empty) {
+    option (google.api.http) = { get: "/v3/ipfs/networks/stat" };
+  };
+
+  rpc ListNetworks(Empty) returns (Empty) {
+    option (google.api.http) = { post: "/v3/ipfs/networks/list" };
+  };
+}
+
+message Empty { }
+
