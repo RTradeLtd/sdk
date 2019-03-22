@@ -18,9 +18,9 @@ protoc -Iproto \
 # strip out server stubs, unless prompted to otherwise
 if test -z "$SERVER" 
 then
-  sed -i '' '/is the server API for/,/func init() { proto.RegisterFile/{//p;d;}' ./go/temporal/"$PKG"/"$PKG".pb.go
+  exit 0
 else
-  echo "preserving server stubs and generating server gateways for '$PKG'..."
+  echo "generating server gateways for '$PKG'..."
 	protoc -Iproto \
     -I"$GOPATH"/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis \
 		--grpc-gateway_out=logtostderr=true:"$OUT" \

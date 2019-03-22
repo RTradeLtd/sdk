@@ -211,3 +211,64 @@ func (c *temporalCoreClient) Statistics(ctx context.Context, in *Empty, opts ...
 }
 
 // TemporalCoreServer is the server API for TemporalCore service.
+type TemporalCoreServer interface {
+	Status(context.Context, *Empty) (*ServiceStatus, error)
+	Statistics(context.Context, *Empty) (*ServiceStatistics, error)
+}
+
+func RegisterTemporalCoreServer(s *grpc.Server, srv TemporalCoreServer) {
+	s.RegisterService(&_TemporalCore_serviceDesc, srv)
+}
+
+func _TemporalCore_Status_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Empty)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TemporalCoreServer).Status(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/core.TemporalCore/Status",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TemporalCoreServer).Status(ctx, req.(*Empty))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _TemporalCore_Statistics_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Empty)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TemporalCoreServer).Statistics(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/core.TemporalCore/Statistics",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TemporalCoreServer).Statistics(ctx, req.(*Empty))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+var _TemporalCore_serviceDesc = grpc.ServiceDesc{
+	ServiceName: "core.TemporalCore",
+	HandlerType: (*TemporalCoreServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "Status",
+			Handler:    _TemporalCore_Status_Handler,
+		},
+		{
+			MethodName: "Statistics",
+			Handler:    _TemporalCore_Statistics_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "core.proto",
+}

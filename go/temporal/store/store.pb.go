@@ -883,3 +883,221 @@ func (x *temporalStoreSubscribeClient) Recv() (*Event, error) {
 }
 
 // TemporalStoreServer is the server API for TemporalStore service.
+type TemporalStoreServer interface {
+	Status(context.Context, *Message) (*Message, error)
+	// Upload accepts files and directories
+	Upload(TemporalStore_UploadServer) error
+	// Pin handles new pins and pin extensions
+	Pin(context.Context, *Object) (*Message, error)
+	// Stat retrieves details about an object
+	Stat(context.Context, *Object) (*ObjectStats, error)
+	// Keys returns the IPFS keys associated with an authenticated request.
+	Keys(context.Context, *Empty) (*KeysResp, error)
+	// NewKey generates a new IPFS key associated with an authenticated request.
+	NewKey(context.Context, *Key) (*Empty, error)
+	Publish(context.Context, *Event) (*Empty, error)
+	Subscribe(*Topic, TemporalStore_SubscribeServer) error
+}
+
+func RegisterTemporalStoreServer(s *grpc.Server, srv TemporalStoreServer) {
+	s.RegisterService(&_TemporalStore_serviceDesc, srv)
+}
+
+func _TemporalStore_Status_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Message)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TemporalStoreServer).Status(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/store.TemporalStore/Status",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TemporalStoreServer).Status(ctx, req.(*Message))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _TemporalStore_Upload_Handler(srv interface{}, stream grpc.ServerStream) error {
+	return srv.(TemporalStoreServer).Upload(&temporalStoreUploadServer{stream})
+}
+
+type TemporalStore_UploadServer interface {
+	SendAndClose(*Object) error
+	Recv() (*Blob, error)
+	grpc.ServerStream
+}
+
+type temporalStoreUploadServer struct {
+	grpc.ServerStream
+}
+
+func (x *temporalStoreUploadServer) SendAndClose(m *Object) error {
+	return x.ServerStream.SendMsg(m)
+}
+
+func (x *temporalStoreUploadServer) Recv() (*Blob, error) {
+	m := new(Blob)
+	if err := x.ServerStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
+func _TemporalStore_Pin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Object)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TemporalStoreServer).Pin(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/store.TemporalStore/Pin",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TemporalStoreServer).Pin(ctx, req.(*Object))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _TemporalStore_Stat_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Object)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TemporalStoreServer).Stat(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/store.TemporalStore/Stat",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TemporalStoreServer).Stat(ctx, req.(*Object))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _TemporalStore_Keys_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Empty)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TemporalStoreServer).Keys(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/store.TemporalStore/Keys",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TemporalStoreServer).Keys(ctx, req.(*Empty))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _TemporalStore_NewKey_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Key)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TemporalStoreServer).NewKey(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/store.TemporalStore/NewKey",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TemporalStoreServer).NewKey(ctx, req.(*Key))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _TemporalStore_Publish_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Event)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TemporalStoreServer).Publish(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/store.TemporalStore/Publish",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TemporalStoreServer).Publish(ctx, req.(*Event))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _TemporalStore_Subscribe_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(Topic)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(TemporalStoreServer).Subscribe(m, &temporalStoreSubscribeServer{stream})
+}
+
+type TemporalStore_SubscribeServer interface {
+	Send(*Event) error
+	grpc.ServerStream
+}
+
+type temporalStoreSubscribeServer struct {
+	grpc.ServerStream
+}
+
+func (x *temporalStoreSubscribeServer) Send(m *Event) error {
+	return x.ServerStream.SendMsg(m)
+}
+
+var _TemporalStore_serviceDesc = grpc.ServiceDesc{
+	ServiceName: "store.TemporalStore",
+	HandlerType: (*TemporalStoreServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "Status",
+			Handler:    _TemporalStore_Status_Handler,
+		},
+		{
+			MethodName: "Pin",
+			Handler:    _TemporalStore_Pin_Handler,
+		},
+		{
+			MethodName: "Stat",
+			Handler:    _TemporalStore_Stat_Handler,
+		},
+		{
+			MethodName: "Keys",
+			Handler:    _TemporalStore_Keys_Handler,
+		},
+		{
+			MethodName: "NewKey",
+			Handler:    _TemporalStore_NewKey_Handler,
+		},
+		{
+			MethodName: "Publish",
+			Handler:    _TemporalStore_Publish_Handler,
+		},
+	},
+	Streams: []grpc.StreamDesc{
+		{
+			StreamName:    "Upload",
+			Handler:       _TemporalStore_Upload_Handler,
+			ClientStreams: true,
+		},
+		{
+			StreamName:    "Subscribe",
+			Handler:       _TemporalStore_Subscribe_Handler,
+			ServerStreams: true,
+		},
+	},
+	Metadata: "store.proto",
+}
