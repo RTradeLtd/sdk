@@ -158,6 +158,134 @@ public final class TemporalStoreGrpc {
      return getStatMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<cloud.temporal.store.Store.Empty,
+      cloud.temporal.store.Store.KeysResp> getKeysMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "Keys",
+      requestType = cloud.temporal.store.Store.Empty.class,
+      responseType = cloud.temporal.store.Store.KeysResp.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<cloud.temporal.store.Store.Empty,
+      cloud.temporal.store.Store.KeysResp> getKeysMethod() {
+    io.grpc.MethodDescriptor<cloud.temporal.store.Store.Empty, cloud.temporal.store.Store.KeysResp> getKeysMethod;
+    if ((getKeysMethod = TemporalStoreGrpc.getKeysMethod) == null) {
+      synchronized (TemporalStoreGrpc.class) {
+        if ((getKeysMethod = TemporalStoreGrpc.getKeysMethod) == null) {
+          TemporalStoreGrpc.getKeysMethod = getKeysMethod = 
+              io.grpc.MethodDescriptor.<cloud.temporal.store.Store.Empty, cloud.temporal.store.Store.KeysResp>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(
+                  "store.TemporalStore", "Keys"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  cloud.temporal.store.Store.Empty.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  cloud.temporal.store.Store.KeysResp.getDefaultInstance()))
+                  .setSchemaDescriptor(new TemporalStoreMethodDescriptorSupplier("Keys"))
+                  .build();
+          }
+        }
+     }
+     return getKeysMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<cloud.temporal.store.Store.Key,
+      cloud.temporal.store.Store.Empty> getNewKeyMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "NewKey",
+      requestType = cloud.temporal.store.Store.Key.class,
+      responseType = cloud.temporal.store.Store.Empty.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<cloud.temporal.store.Store.Key,
+      cloud.temporal.store.Store.Empty> getNewKeyMethod() {
+    io.grpc.MethodDescriptor<cloud.temporal.store.Store.Key, cloud.temporal.store.Store.Empty> getNewKeyMethod;
+    if ((getNewKeyMethod = TemporalStoreGrpc.getNewKeyMethod) == null) {
+      synchronized (TemporalStoreGrpc.class) {
+        if ((getNewKeyMethod = TemporalStoreGrpc.getNewKeyMethod) == null) {
+          TemporalStoreGrpc.getNewKeyMethod = getNewKeyMethod = 
+              io.grpc.MethodDescriptor.<cloud.temporal.store.Store.Key, cloud.temporal.store.Store.Empty>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(
+                  "store.TemporalStore", "NewKey"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  cloud.temporal.store.Store.Key.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  cloud.temporal.store.Store.Empty.getDefaultInstance()))
+                  .setSchemaDescriptor(new TemporalStoreMethodDescriptorSupplier("NewKey"))
+                  .build();
+          }
+        }
+     }
+     return getNewKeyMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<cloud.temporal.store.Store.Event,
+      cloud.temporal.store.Store.Empty> getPublishMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "Publish",
+      requestType = cloud.temporal.store.Store.Event.class,
+      responseType = cloud.temporal.store.Store.Empty.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<cloud.temporal.store.Store.Event,
+      cloud.temporal.store.Store.Empty> getPublishMethod() {
+    io.grpc.MethodDescriptor<cloud.temporal.store.Store.Event, cloud.temporal.store.Store.Empty> getPublishMethod;
+    if ((getPublishMethod = TemporalStoreGrpc.getPublishMethod) == null) {
+      synchronized (TemporalStoreGrpc.class) {
+        if ((getPublishMethod = TemporalStoreGrpc.getPublishMethod) == null) {
+          TemporalStoreGrpc.getPublishMethod = getPublishMethod = 
+              io.grpc.MethodDescriptor.<cloud.temporal.store.Store.Event, cloud.temporal.store.Store.Empty>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(
+                  "store.TemporalStore", "Publish"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  cloud.temporal.store.Store.Event.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  cloud.temporal.store.Store.Empty.getDefaultInstance()))
+                  .setSchemaDescriptor(new TemporalStoreMethodDescriptorSupplier("Publish"))
+                  .build();
+          }
+        }
+     }
+     return getPublishMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<cloud.temporal.store.Store.Topic,
+      cloud.temporal.store.Store.Event> getSubscribeMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "Subscribe",
+      requestType = cloud.temporal.store.Store.Topic.class,
+      responseType = cloud.temporal.store.Store.Event.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
+  public static io.grpc.MethodDescriptor<cloud.temporal.store.Store.Topic,
+      cloud.temporal.store.Store.Event> getSubscribeMethod() {
+    io.grpc.MethodDescriptor<cloud.temporal.store.Store.Topic, cloud.temporal.store.Store.Event> getSubscribeMethod;
+    if ((getSubscribeMethod = TemporalStoreGrpc.getSubscribeMethod) == null) {
+      synchronized (TemporalStoreGrpc.class) {
+        if ((getSubscribeMethod = TemporalStoreGrpc.getSubscribeMethod) == null) {
+          TemporalStoreGrpc.getSubscribeMethod = getSubscribeMethod = 
+              io.grpc.MethodDescriptor.<cloud.temporal.store.Store.Topic, cloud.temporal.store.Store.Event>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
+              .setFullMethodName(generateFullMethodName(
+                  "store.TemporalStore", "Subscribe"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  cloud.temporal.store.Store.Topic.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  cloud.temporal.store.Store.Event.getDefaultInstance()))
+                  .setSchemaDescriptor(new TemporalStoreMethodDescriptorSupplier("Subscribe"))
+                  .build();
+          }
+        }
+     }
+     return getSubscribeMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -225,6 +353,40 @@ public final class TemporalStoreGrpc {
       asyncUnimplementedUnaryCall(getStatMethod(), responseObserver);
     }
 
+    /**
+     * <pre>
+     * Keys returns the IPFS keys associated with an authenticated request.
+     * </pre>
+     */
+    public void keys(cloud.temporal.store.Store.Empty request,
+        io.grpc.stub.StreamObserver<cloud.temporal.store.Store.KeysResp> responseObserver) {
+      asyncUnimplementedUnaryCall(getKeysMethod(), responseObserver);
+    }
+
+    /**
+     * <pre>
+     * NewKey generates a new IPFS key associated with an authenticated request.
+     * </pre>
+     */
+    public void newKey(cloud.temporal.store.Store.Key request,
+        io.grpc.stub.StreamObserver<cloud.temporal.store.Store.Empty> responseObserver) {
+      asyncUnimplementedUnaryCall(getNewKeyMethod(), responseObserver);
+    }
+
+    /**
+     */
+    public void publish(cloud.temporal.store.Store.Event request,
+        io.grpc.stub.StreamObserver<cloud.temporal.store.Store.Empty> responseObserver) {
+      asyncUnimplementedUnaryCall(getPublishMethod(), responseObserver);
+    }
+
+    /**
+     */
+    public void subscribe(cloud.temporal.store.Store.Topic request,
+        io.grpc.stub.StreamObserver<cloud.temporal.store.Store.Event> responseObserver) {
+      asyncUnimplementedUnaryCall(getSubscribeMethod(), responseObserver);
+    }
+
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -255,6 +417,34 @@ public final class TemporalStoreGrpc {
                 cloud.temporal.store.Store.Object,
                 cloud.temporal.store.Store.ObjectStats>(
                   this, METHODID_STAT)))
+          .addMethod(
+            getKeysMethod(),
+            asyncUnaryCall(
+              new MethodHandlers<
+                cloud.temporal.store.Store.Empty,
+                cloud.temporal.store.Store.KeysResp>(
+                  this, METHODID_KEYS)))
+          .addMethod(
+            getNewKeyMethod(),
+            asyncUnaryCall(
+              new MethodHandlers<
+                cloud.temporal.store.Store.Key,
+                cloud.temporal.store.Store.Empty>(
+                  this, METHODID_NEW_KEY)))
+          .addMethod(
+            getPublishMethod(),
+            asyncUnaryCall(
+              new MethodHandlers<
+                cloud.temporal.store.Store.Event,
+                cloud.temporal.store.Store.Empty>(
+                  this, METHODID_PUBLISH)))
+          .addMethod(
+            getSubscribeMethod(),
+            asyncServerStreamingCall(
+              new MethodHandlers<
+                cloud.temporal.store.Store.Topic,
+                cloud.temporal.store.Store.Event>(
+                  this, METHODID_SUBSCRIBE)))
           .build();
     }
   }
@@ -320,6 +510,44 @@ public final class TemporalStoreGrpc {
       asyncUnaryCall(
           getChannel().newCall(getStatMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     * <pre>
+     * Keys returns the IPFS keys associated with an authenticated request.
+     * </pre>
+     */
+    public void keys(cloud.temporal.store.Store.Empty request,
+        io.grpc.stub.StreamObserver<cloud.temporal.store.Store.KeysResp> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(getKeysMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     * <pre>
+     * NewKey generates a new IPFS key associated with an authenticated request.
+     * </pre>
+     */
+    public void newKey(cloud.temporal.store.Store.Key request,
+        io.grpc.stub.StreamObserver<cloud.temporal.store.Store.Empty> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(getNewKeyMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void publish(cloud.temporal.store.Store.Event request,
+        io.grpc.stub.StreamObserver<cloud.temporal.store.Store.Empty> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(getPublishMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void subscribe(cloud.temporal.store.Store.Topic request,
+        io.grpc.stub.StreamObserver<cloud.temporal.store.Store.Event> responseObserver) {
+      asyncServerStreamingCall(
+          getChannel().newCall(getSubscribeMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -368,6 +596,41 @@ public final class TemporalStoreGrpc {
     public cloud.temporal.store.Store.ObjectStats stat(cloud.temporal.store.Store.Object request) {
       return blockingUnaryCall(
           getChannel(), getStatMethod(), getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
+     * Keys returns the IPFS keys associated with an authenticated request.
+     * </pre>
+     */
+    public cloud.temporal.store.Store.KeysResp keys(cloud.temporal.store.Store.Empty request) {
+      return blockingUnaryCall(
+          getChannel(), getKeysMethod(), getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
+     * NewKey generates a new IPFS key associated with an authenticated request.
+     * </pre>
+     */
+    public cloud.temporal.store.Store.Empty newKey(cloud.temporal.store.Store.Key request) {
+      return blockingUnaryCall(
+          getChannel(), getNewKeyMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public cloud.temporal.store.Store.Empty publish(cloud.temporal.store.Store.Event request) {
+      return blockingUnaryCall(
+          getChannel(), getPublishMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public java.util.Iterator<cloud.temporal.store.Store.Event> subscribe(
+        cloud.temporal.store.Store.Topic request) {
+      return blockingServerStreamingCall(
+          getChannel(), getSubscribeMethod(), getCallOptions(), request);
     }
   }
 
@@ -421,12 +684,46 @@ public final class TemporalStoreGrpc {
       return futureUnaryCall(
           getChannel().newCall(getStatMethod(), getCallOptions()), request);
     }
+
+    /**
+     * <pre>
+     * Keys returns the IPFS keys associated with an authenticated request.
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<cloud.temporal.store.Store.KeysResp> keys(
+        cloud.temporal.store.Store.Empty request) {
+      return futureUnaryCall(
+          getChannel().newCall(getKeysMethod(), getCallOptions()), request);
+    }
+
+    /**
+     * <pre>
+     * NewKey generates a new IPFS key associated with an authenticated request.
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<cloud.temporal.store.Store.Empty> newKey(
+        cloud.temporal.store.Store.Key request) {
+      return futureUnaryCall(
+          getChannel().newCall(getNewKeyMethod(), getCallOptions()), request);
+    }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<cloud.temporal.store.Store.Empty> publish(
+        cloud.temporal.store.Store.Event request) {
+      return futureUnaryCall(
+          getChannel().newCall(getPublishMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_STATUS = 0;
   private static final int METHODID_PIN = 1;
   private static final int METHODID_STAT = 2;
-  private static final int METHODID_UPLOAD = 3;
+  private static final int METHODID_KEYS = 3;
+  private static final int METHODID_NEW_KEY = 4;
+  private static final int METHODID_PUBLISH = 5;
+  private static final int METHODID_SUBSCRIBE = 6;
+  private static final int METHODID_UPLOAD = 7;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -456,6 +753,22 @@ public final class TemporalStoreGrpc {
         case METHODID_STAT:
           serviceImpl.stat((cloud.temporal.store.Store.Object) request,
               (io.grpc.stub.StreamObserver<cloud.temporal.store.Store.ObjectStats>) responseObserver);
+          break;
+        case METHODID_KEYS:
+          serviceImpl.keys((cloud.temporal.store.Store.Empty) request,
+              (io.grpc.stub.StreamObserver<cloud.temporal.store.Store.KeysResp>) responseObserver);
+          break;
+        case METHODID_NEW_KEY:
+          serviceImpl.newKey((cloud.temporal.store.Store.Key) request,
+              (io.grpc.stub.StreamObserver<cloud.temporal.store.Store.Empty>) responseObserver);
+          break;
+        case METHODID_PUBLISH:
+          serviceImpl.publish((cloud.temporal.store.Store.Event) request,
+              (io.grpc.stub.StreamObserver<cloud.temporal.store.Store.Empty>) responseObserver);
+          break;
+        case METHODID_SUBSCRIBE:
+          serviceImpl.subscribe((cloud.temporal.store.Store.Topic) request,
+              (io.grpc.stub.StreamObserver<cloud.temporal.store.Store.Event>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -525,6 +838,10 @@ public final class TemporalStoreGrpc {
               .addMethod(getUploadMethod())
               .addMethod(getPinMethod())
               .addMethod(getStatMethod())
+              .addMethod(getKeysMethod())
+              .addMethod(getNewKeyMethod())
+              .addMethod(getPublishMethod())
+              .addMethod(getSubscribeMethod())
               .build();
         }
       }

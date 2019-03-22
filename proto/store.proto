@@ -24,8 +24,30 @@ service TemporalStore {
   // Stat retrieves details about an object
   rpc Stat(Object) returns (ObjectStats) {
     option (google.api.http) = { get: "/v3/store/stat" };
-  }
+  };
+
+  // Keys returns the IPFS keys associated with an authenticated request.
+  rpc Keys(Empty) returns (KeysResp) {
+    option (google.api.http) = { get: "/v3/ipfs/keys" };
+  };
+
+  // NewKey generates a new IPFS key associated with an authenticated request.
+  rpc NewKey(Key) returns (Empty) {
+    option (google.api.http) = { post: "/v3/ipfs/keys/new" };
+  };
+
+  rpc Publish(Event) returns (Empty) {
+    option (google.api.http) = { post: "/v3/ipfs/pubsub/publish" };
+  };
+
+  rpc Subscribe(Topic) returns (stream Event) {
+    option (google.api.http) = { get: "/v3/ipfs/pubsub/subscribe" };
+  };
 }
+
+/* MESSAGES */
+
+message Empty { }
 
 message Message {
   string message = 1;
@@ -38,6 +60,10 @@ message ObjectStats {
   int32 data_size       = 4;
   int32 links_size      = 5;
   int32 link_count      = 6;
+}
+
+message KeysResp { 
+  repeated Key keys = 1;
 }
 
 /* MODELS */
@@ -54,4 +80,37 @@ message Blob {
     string passphrase = 1;
   }
   Options options = 3;
+}
+
+message Event {
+  string topic = 1;
+  string message = 2;
+}
+
+message Topic {
+  string topic = 1;
+}
+
+message Key {
+  message RSA {
+    enum Size {
+      S_2048 = 0;
+      S_3072 = 1;
+      S_4096 = 2;
+    }
+    Size size = 1;
+  }
+  message ED25519 {
+    enum Size {
+      S_256 = 0;
+    }
+    Size size = 1;
+  }
+
+  oneof type {
+    RSA rsa         = 1;
+    ED25519 ed25519 = 2;
+  }
+  string name = 3;
+  string id   = 4;
 }

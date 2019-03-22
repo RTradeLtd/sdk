@@ -2,7 +2,6 @@ package temporal
 
 import (
 	"github.com/RTradeLtd/sdk/go/temporal/auth"
-	"github.com/RTradeLtd/sdk/go/temporal/ipfs"
 	"github.com/RTradeLtd/sdk/go/temporal/store"
 	"google.golang.org/grpc"
 )
@@ -23,8 +22,4 @@ func NewAuthClient(conn *grpc.ClientConn) auth.TemporalAuthClient {
 
 func NewStoreClient(conn *grpc.ClientConn) store.TemporalStoreClient {
 	return store.NewTemporalStoreClient(conn)
-}
-
-func NewIPFSClient(conn *grpc.ClientConn) ipfs.TemporalIPFSClient {
-	return ipfs.NewTemporalIPFSClient(conn)
 }

@@ -242,5 +242,223 @@ proto.store.TemporalStorePromiseClient.prototype.stat =
 };
 
 
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.store.Empty,
+ *   !proto.store.KeysResp>}
+ */
+const methodInfo_TemporalStore_Keys = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.store.KeysResp,
+  /** @param {!proto.store.Empty} request */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.store.KeysResp.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.store.Empty} request The
+ *     request proto
+ * @param {!Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.Error, ?proto.store.KeysResp)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.store.KeysResp>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.store.TemporalStoreClient.prototype.keys =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/store.TemporalStore/Keys',
+      request,
+      metadata,
+      methodInfo_TemporalStore_Keys,
+      callback);
+};
+
+
+/**
+ * @param {!proto.store.Empty} request The
+ *     request proto
+ * @param {!Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.store.KeysResp>}
+ *     The XHR Node Readable Stream
+ */
+proto.store.TemporalStorePromiseClient.prototype.keys =
+    function(request, metadata) {
+  return new Promise((resolve, reject) => {
+    this.delegateClient_.keys(
+      request, metadata, (error, response) => {
+        error ? reject(error) : resolve(response);
+      });
+  });
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.store.Key,
+ *   !proto.store.Empty>}
+ */
+const methodInfo_TemporalStore_NewKey = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.store.Empty,
+  /** @param {!proto.store.Key} request */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.store.Empty.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.store.Key} request The
+ *     request proto
+ * @param {!Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.Error, ?proto.store.Empty)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.store.Empty>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.store.TemporalStoreClient.prototype.newKey =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/store.TemporalStore/NewKey',
+      request,
+      metadata,
+      methodInfo_TemporalStore_NewKey,
+      callback);
+};
+
+
+/**
+ * @param {!proto.store.Key} request The
+ *     request proto
+ * @param {!Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.store.Empty>}
+ *     The XHR Node Readable Stream
+ */
+proto.store.TemporalStorePromiseClient.prototype.newKey =
+    function(request, metadata) {
+  return new Promise((resolve, reject) => {
+    this.delegateClient_.newKey(
+      request, metadata, (error, response) => {
+        error ? reject(error) : resolve(response);
+      });
+  });
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.store.Event,
+ *   !proto.store.Empty>}
+ */
+const methodInfo_TemporalStore_Publish = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.store.Empty,
+  /** @param {!proto.store.Event} request */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.store.Empty.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.store.Event} request The
+ *     request proto
+ * @param {!Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.Error, ?proto.store.Empty)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.store.Empty>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.store.TemporalStoreClient.prototype.publish =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/store.TemporalStore/Publish',
+      request,
+      metadata,
+      methodInfo_TemporalStore_Publish,
+      callback);
+};
+
+
+/**
+ * @param {!proto.store.Event} request The
+ *     request proto
+ * @param {!Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.store.Empty>}
+ *     The XHR Node Readable Stream
+ */
+proto.store.TemporalStorePromiseClient.prototype.publish =
+    function(request, metadata) {
+  return new Promise((resolve, reject) => {
+    this.delegateClient_.publish(
+      request, metadata, (error, response) => {
+        error ? reject(error) : resolve(response);
+      });
+  });
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.store.Topic,
+ *   !proto.store.Event>}
+ */
+const methodInfo_TemporalStore_Subscribe = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.store.Event,
+  /** @param {!proto.store.Topic} request */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.store.Event.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.store.Topic} request The request proto
+ * @param {!Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!grpc.web.ClientReadableStream<!proto.store.Event>}
+ *     The XHR Node Readable Stream
+ */
+proto.store.TemporalStoreClient.prototype.subscribe =
+    function(request, metadata) {
+  return this.client_.serverStreaming(this.hostname_ +
+      '/store.TemporalStore/Subscribe',
+      request,
+      metadata,
+      methodInfo_TemporalStore_Subscribe);
+};
+
+
+/**
+ * @param {!proto.store.Topic} request The request proto
+ * @param {!Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!grpc.web.ClientReadableStream<!proto.store.Event>}
+ *     The XHR Node Readable Stream
+ */
+proto.store.TemporalStorePromiseClient.prototype.subscribe =
+    function(request, metadata) {
+  return this.delegateClient_.client_.serverStreaming(this.delegateClient_.hostname_ +
+      '/store.TemporalStore/Subscribe',
+      request,
+      metadata,
+      methodInfo_TemporalStore_Subscribe);
+};
+
+
 module.exports = proto.store;
 

@@ -1,4 +1,4 @@
-PKGS=core auth store ipfs
+PKGS=core auth store
 
 all: deps
 
