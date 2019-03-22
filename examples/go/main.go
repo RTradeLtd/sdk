@@ -10,24 +10,23 @@ import (
 )
 
 func main() {
-	// TODO
-	a, err := temporal.NewUnauthenticatedAuthClient(temporal.ConnOpts{})
-	if err != nil {
-		log.Fatal(err)
-	}
-	_, conn, err := a.Login(context.Background(), &auth.Credentials{
+	// Authenticate against the TemporalV3 API. A bare connection can also be
+	// created using temporal.Connect(). When authenticated, the connection will
+	// handle token refreshes for you.
+	conn, err := temporal.Authenticate(context.Background(), &auth.Credentials{
 		Username: "",
 		Password: "",
-	})
+	}, temporal.ConnOpts{})
 	if err != nil {
 		log.Fatal(err)
 	}
-	c := temporal.NewIPFSClient(conn)
-	_, err = c.NewKey(context.Background(), &ipfs.Key{
+
+	ipfsClient := temporal.NewIPFSClient(conn)
+	if _, err = ipfsClient.NewKey(context.Background(), &ipfs.Key{
 		Name: "mykey",
-	})
-	if err != nil {
+	}); err != nil {
 		log.Fatal(err)
 	}
+
 	println("key successfully created!")
 }
