@@ -6,7 +6,7 @@ import (
 
 	"github.com/RTradeLtd/sdk/go/temporal"
 	"github.com/RTradeLtd/sdk/go/temporal/auth"
-	"github.com/RTradeLtd/sdk/go/temporal/ipfs"
+	"github.com/RTradeLtd/sdk/go/temporal/store"
 )
 
 func main() {
@@ -21,8 +21,8 @@ func main() {
 		log.Fatal(err)
 	}
 
-	ipfsClient := temporal.NewIPFSClient(conn)
-	if _, err = ipfsClient.NewKey(context.Background(), &ipfs.Key{
+	var temporalStore = temporal.NewStoreClient(conn)
+	if _, err = temporalStore.NewKey(context.Background(), &store.Key{
 		Name: "mykey",
 	}); err != nil {
 		log.Fatal(err)
