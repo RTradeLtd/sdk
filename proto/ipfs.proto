@@ -12,30 +12,56 @@ service TemporalIPFS {
     option (google.api.http) = { get: "/v3/ipfs/status" };
   };
 
-  rpc CreateNetwork(Empty) returns (Empty) {
+  rpc CreateNetwork(CreateNetworkReq) returns (NetworkDetails) {
     option (google.api.http) = { post: "/v3/ipfs/networks/create" };
   };
 
-  rpc StartNetwork(Empty) returns (Empty) {
+  rpc StartNetwork(Network) returns (Empty) {
     option (google.api.http) = { post: "/v3/ipfs/networks/start" };
   };
 
-  rpc StopNetwork(Empty) returns (Empty) {
+  rpc StopNetwork(Network) returns (Empty) {
     option (google.api.http) = { post: "/v3/ipfs/networks/stop" };
   };
 
-  rpc RemoveNetwork(Empty) returns (Empty) {
+  rpc RemoveNetwork(Network) returns (Empty) {
     option (google.api.http) = { post: "/v3/ipfs/networks/stop" };
   };
 
-  rpc StatNetwork(Empty) returns (Empty) {
+  rpc NetworkInfo(Network) returns (NetworkDetails) {
     option (google.api.http) = { get: "/v3/ipfs/networks/stat" };
   };
 
-  rpc ListNetworks(Empty) returns (Empty) {
+  rpc ListNetworks(Empty) returns (NetworkList) {
     option (google.api.http) = { post: "/v3/ipfs/networks/list" };
   };
 }
 
 message Empty { }
 
+message CreateNetworkReq {
+  Network network                 = 1;
+  string swarm_key                = 2;
+  repeated string bootstrap_peers = 3;
+  repeated string users           = 4;
+}
+
+message Network {
+  string name = 1;
+}
+
+message NetworkList { repeated Network networks = 1; }
+
+/* MODELS */
+
+message NetworkDetails {
+  int32 id         = 1;
+  int64 created_at = 2;
+  int64 deleted_at = 3;
+  int64 activated  = 4;
+
+  string name           = 5;
+  string swarm_key      = 6;
+  repeated string users = 7;
+  repeated string peers = 8;
+}

@@ -133,27 +133,27 @@ proto.ipfs.TemporalIPFSPromiseClient.prototype.status =
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.ipfs.Empty,
- *   !proto.ipfs.Empty>}
+ *   !proto.ipfs.CreateNetworkReq,
+ *   !proto.ipfs.NetworkDetails>}
  */
 const methodInfo_TemporalIPFS_CreateNetwork = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.ipfs.Empty,
-  /** @param {!proto.ipfs.Empty} request */
+  proto.ipfs.NetworkDetails,
+  /** @param {!proto.ipfs.CreateNetworkReq} request */
   function(request) {
     return request.serializeBinary();
   },
-  proto.ipfs.Empty.deserializeBinary
+  proto.ipfs.NetworkDetails.deserializeBinary
 );
 
 
 /**
- * @param {!proto.ipfs.Empty} request The
+ * @param {!proto.ipfs.CreateNetworkReq} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.ipfs.Empty)}
+ * @param {function(?grpc.web.Error, ?proto.ipfs.NetworkDetails)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.ipfs.Empty>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.ipfs.NetworkDetails>|undefined}
  *     The XHR Node Readable Stream
  */
 proto.ipfs.TemporalIPFSClient.prototype.createNetwork =
@@ -168,11 +168,11 @@ proto.ipfs.TemporalIPFSClient.prototype.createNetwork =
 
 
 /**
- * @param {!proto.ipfs.Empty} request The
+ * @param {!proto.ipfs.CreateNetworkReq} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.ipfs.Empty>}
+ * @return {!Promise<!proto.ipfs.NetworkDetails>}
  *     The XHR Node Readable Stream
  */
 proto.ipfs.TemporalIPFSPromiseClient.prototype.createNetwork =
@@ -189,12 +189,12 @@ proto.ipfs.TemporalIPFSPromiseClient.prototype.createNetwork =
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.ipfs.Empty,
+ *   !proto.ipfs.Network,
  *   !proto.ipfs.Empty>}
  */
 const methodInfo_TemporalIPFS_StartNetwork = new grpc.web.AbstractClientBase.MethodInfo(
   proto.ipfs.Empty,
-  /** @param {!proto.ipfs.Empty} request */
+  /** @param {!proto.ipfs.Network} request */
   function(request) {
     return request.serializeBinary();
   },
@@ -203,7 +203,7 @@ const methodInfo_TemporalIPFS_StartNetwork = new grpc.web.AbstractClientBase.Met
 
 
 /**
- * @param {!proto.ipfs.Empty} request The
+ * @param {!proto.ipfs.Network} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
@@ -224,7 +224,7 @@ proto.ipfs.TemporalIPFSClient.prototype.startNetwork =
 
 
 /**
- * @param {!proto.ipfs.Empty} request The
+ * @param {!proto.ipfs.Network} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
@@ -245,12 +245,12 @@ proto.ipfs.TemporalIPFSPromiseClient.prototype.startNetwork =
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.ipfs.Empty,
+ *   !proto.ipfs.Network,
  *   !proto.ipfs.Empty>}
  */
 const methodInfo_TemporalIPFS_StopNetwork = new grpc.web.AbstractClientBase.MethodInfo(
   proto.ipfs.Empty,
-  /** @param {!proto.ipfs.Empty} request */
+  /** @param {!proto.ipfs.Network} request */
   function(request) {
     return request.serializeBinary();
   },
@@ -259,7 +259,7 @@ const methodInfo_TemporalIPFS_StopNetwork = new grpc.web.AbstractClientBase.Meth
 
 
 /**
- * @param {!proto.ipfs.Empty} request The
+ * @param {!proto.ipfs.Network} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
@@ -280,7 +280,7 @@ proto.ipfs.TemporalIPFSClient.prototype.stopNetwork =
 
 
 /**
- * @param {!proto.ipfs.Empty} request The
+ * @param {!proto.ipfs.Network} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
@@ -301,12 +301,12 @@ proto.ipfs.TemporalIPFSPromiseClient.prototype.stopNetwork =
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.ipfs.Empty,
+ *   !proto.ipfs.Network,
  *   !proto.ipfs.Empty>}
  */
 const methodInfo_TemporalIPFS_RemoveNetwork = new grpc.web.AbstractClientBase.MethodInfo(
   proto.ipfs.Empty,
-  /** @param {!proto.ipfs.Empty} request */
+  /** @param {!proto.ipfs.Network} request */
   function(request) {
     return request.serializeBinary();
   },
@@ -315,7 +315,7 @@ const methodInfo_TemporalIPFS_RemoveNetwork = new grpc.web.AbstractClientBase.Me
 
 
 /**
- * @param {!proto.ipfs.Empty} request The
+ * @param {!proto.ipfs.Network} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
@@ -336,7 +336,7 @@ proto.ipfs.TemporalIPFSClient.prototype.removeNetwork =
 
 
 /**
- * @param {!proto.ipfs.Empty} request The
+ * @param {!proto.ipfs.Network} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
@@ -357,52 +357,52 @@ proto.ipfs.TemporalIPFSPromiseClient.prototype.removeNetwork =
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.ipfs.Empty,
- *   !proto.ipfs.Empty>}
+ *   !proto.ipfs.Network,
+ *   !proto.ipfs.NetworkDetails>}
  */
-const methodInfo_TemporalIPFS_StatNetwork = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.ipfs.Empty,
-  /** @param {!proto.ipfs.Empty} request */
+const methodInfo_TemporalIPFS_NetworkInfo = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.ipfs.NetworkDetails,
+  /** @param {!proto.ipfs.Network} request */
   function(request) {
     return request.serializeBinary();
   },
-  proto.ipfs.Empty.deserializeBinary
+  proto.ipfs.NetworkDetails.deserializeBinary
 );
 
 
 /**
- * @param {!proto.ipfs.Empty} request The
+ * @param {!proto.ipfs.Network} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.ipfs.Empty)}
+ * @param {function(?grpc.web.Error, ?proto.ipfs.NetworkDetails)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.ipfs.Empty>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.ipfs.NetworkDetails>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.ipfs.TemporalIPFSClient.prototype.statNetwork =
+proto.ipfs.TemporalIPFSClient.prototype.networkInfo =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/ipfs.TemporalIPFS/StatNetwork',
+      '/ipfs.TemporalIPFS/NetworkInfo',
       request,
       metadata,
-      methodInfo_TemporalIPFS_StatNetwork,
+      methodInfo_TemporalIPFS_NetworkInfo,
       callback);
 };
 
 
 /**
- * @param {!proto.ipfs.Empty} request The
+ * @param {!proto.ipfs.Network} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.ipfs.Empty>}
+ * @return {!Promise<!proto.ipfs.NetworkDetails>}
  *     The XHR Node Readable Stream
  */
-proto.ipfs.TemporalIPFSPromiseClient.prototype.statNetwork =
+proto.ipfs.TemporalIPFSPromiseClient.prototype.networkInfo =
     function(request, metadata) {
   return new Promise((resolve, reject) => {
-    this.delegateClient_.statNetwork(
+    this.delegateClient_.networkInfo(
       request, metadata, (error, response) => {
         error ? reject(error) : resolve(response);
       });
@@ -414,15 +414,15 @@ proto.ipfs.TemporalIPFSPromiseClient.prototype.statNetwork =
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
  *   !proto.ipfs.Empty,
- *   !proto.ipfs.Empty>}
+ *   !proto.ipfs.NetworkList>}
  */
 const methodInfo_TemporalIPFS_ListNetworks = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.ipfs.Empty,
+  proto.ipfs.NetworkList,
   /** @param {!proto.ipfs.Empty} request */
   function(request) {
     return request.serializeBinary();
   },
-  proto.ipfs.Empty.deserializeBinary
+  proto.ipfs.NetworkList.deserializeBinary
 );
 
 
@@ -431,9 +431,9 @@ const methodInfo_TemporalIPFS_ListNetworks = new grpc.web.AbstractClientBase.Met
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.ipfs.Empty)}
+ * @param {function(?grpc.web.Error, ?proto.ipfs.NetworkList)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.ipfs.Empty>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.ipfs.NetworkList>|undefined}
  *     The XHR Node Readable Stream
  */
 proto.ipfs.TemporalIPFSClient.prototype.listNetworks =
@@ -452,7 +452,7 @@ proto.ipfs.TemporalIPFSClient.prototype.listNetworks =
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.ipfs.Empty>}
+ * @return {!Promise<!proto.ipfs.NetworkList>}
  *     The XHR Node Readable Stream
  */
 proto.ipfs.TemporalIPFSPromiseClient.prototype.listNetworks =

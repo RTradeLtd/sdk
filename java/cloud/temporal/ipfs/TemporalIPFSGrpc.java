@@ -63,30 +63,30 @@ public final class TemporalIPFSGrpc {
      return getStatusMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<cloud.temporal.ipfs.Ipfs.Empty,
-      cloud.temporal.ipfs.Ipfs.Empty> getCreateNetworkMethod;
+  private static volatile io.grpc.MethodDescriptor<cloud.temporal.ipfs.Ipfs.CreateNetworkReq,
+      cloud.temporal.ipfs.Ipfs.NetworkDetails> getCreateNetworkMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "CreateNetwork",
-      requestType = cloud.temporal.ipfs.Ipfs.Empty.class,
-      responseType = cloud.temporal.ipfs.Ipfs.Empty.class,
+      requestType = cloud.temporal.ipfs.Ipfs.CreateNetworkReq.class,
+      responseType = cloud.temporal.ipfs.Ipfs.NetworkDetails.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<cloud.temporal.ipfs.Ipfs.Empty,
-      cloud.temporal.ipfs.Ipfs.Empty> getCreateNetworkMethod() {
-    io.grpc.MethodDescriptor<cloud.temporal.ipfs.Ipfs.Empty, cloud.temporal.ipfs.Ipfs.Empty> getCreateNetworkMethod;
+  public static io.grpc.MethodDescriptor<cloud.temporal.ipfs.Ipfs.CreateNetworkReq,
+      cloud.temporal.ipfs.Ipfs.NetworkDetails> getCreateNetworkMethod() {
+    io.grpc.MethodDescriptor<cloud.temporal.ipfs.Ipfs.CreateNetworkReq, cloud.temporal.ipfs.Ipfs.NetworkDetails> getCreateNetworkMethod;
     if ((getCreateNetworkMethod = TemporalIPFSGrpc.getCreateNetworkMethod) == null) {
       synchronized (TemporalIPFSGrpc.class) {
         if ((getCreateNetworkMethod = TemporalIPFSGrpc.getCreateNetworkMethod) == null) {
           TemporalIPFSGrpc.getCreateNetworkMethod = getCreateNetworkMethod = 
-              io.grpc.MethodDescriptor.<cloud.temporal.ipfs.Ipfs.Empty, cloud.temporal.ipfs.Ipfs.Empty>newBuilder()
+              io.grpc.MethodDescriptor.<cloud.temporal.ipfs.Ipfs.CreateNetworkReq, cloud.temporal.ipfs.Ipfs.NetworkDetails>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
                   "ipfs.TemporalIPFS", "CreateNetwork"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  cloud.temporal.ipfs.Ipfs.Empty.getDefaultInstance()))
+                  cloud.temporal.ipfs.Ipfs.CreateNetworkReq.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  cloud.temporal.ipfs.Ipfs.Empty.getDefaultInstance()))
+                  cloud.temporal.ipfs.Ipfs.NetworkDetails.getDefaultInstance()))
                   .setSchemaDescriptor(new TemporalIPFSMethodDescriptorSupplier("CreateNetwork"))
                   .build();
           }
@@ -95,28 +95,28 @@ public final class TemporalIPFSGrpc {
      return getCreateNetworkMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<cloud.temporal.ipfs.Ipfs.Empty,
+  private static volatile io.grpc.MethodDescriptor<cloud.temporal.ipfs.Ipfs.Network,
       cloud.temporal.ipfs.Ipfs.Empty> getStartNetworkMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "StartNetwork",
-      requestType = cloud.temporal.ipfs.Ipfs.Empty.class,
+      requestType = cloud.temporal.ipfs.Ipfs.Network.class,
       responseType = cloud.temporal.ipfs.Ipfs.Empty.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<cloud.temporal.ipfs.Ipfs.Empty,
+  public static io.grpc.MethodDescriptor<cloud.temporal.ipfs.Ipfs.Network,
       cloud.temporal.ipfs.Ipfs.Empty> getStartNetworkMethod() {
-    io.grpc.MethodDescriptor<cloud.temporal.ipfs.Ipfs.Empty, cloud.temporal.ipfs.Ipfs.Empty> getStartNetworkMethod;
+    io.grpc.MethodDescriptor<cloud.temporal.ipfs.Ipfs.Network, cloud.temporal.ipfs.Ipfs.Empty> getStartNetworkMethod;
     if ((getStartNetworkMethod = TemporalIPFSGrpc.getStartNetworkMethod) == null) {
       synchronized (TemporalIPFSGrpc.class) {
         if ((getStartNetworkMethod = TemporalIPFSGrpc.getStartNetworkMethod) == null) {
           TemporalIPFSGrpc.getStartNetworkMethod = getStartNetworkMethod = 
-              io.grpc.MethodDescriptor.<cloud.temporal.ipfs.Ipfs.Empty, cloud.temporal.ipfs.Ipfs.Empty>newBuilder()
+              io.grpc.MethodDescriptor.<cloud.temporal.ipfs.Ipfs.Network, cloud.temporal.ipfs.Ipfs.Empty>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
                   "ipfs.TemporalIPFS", "StartNetwork"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  cloud.temporal.ipfs.Ipfs.Empty.getDefaultInstance()))
+                  cloud.temporal.ipfs.Ipfs.Network.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   cloud.temporal.ipfs.Ipfs.Empty.getDefaultInstance()))
                   .setSchemaDescriptor(new TemporalIPFSMethodDescriptorSupplier("StartNetwork"))
@@ -127,28 +127,28 @@ public final class TemporalIPFSGrpc {
      return getStartNetworkMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<cloud.temporal.ipfs.Ipfs.Empty,
+  private static volatile io.grpc.MethodDescriptor<cloud.temporal.ipfs.Ipfs.Network,
       cloud.temporal.ipfs.Ipfs.Empty> getStopNetworkMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "StopNetwork",
-      requestType = cloud.temporal.ipfs.Ipfs.Empty.class,
+      requestType = cloud.temporal.ipfs.Ipfs.Network.class,
       responseType = cloud.temporal.ipfs.Ipfs.Empty.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<cloud.temporal.ipfs.Ipfs.Empty,
+  public static io.grpc.MethodDescriptor<cloud.temporal.ipfs.Ipfs.Network,
       cloud.temporal.ipfs.Ipfs.Empty> getStopNetworkMethod() {
-    io.grpc.MethodDescriptor<cloud.temporal.ipfs.Ipfs.Empty, cloud.temporal.ipfs.Ipfs.Empty> getStopNetworkMethod;
+    io.grpc.MethodDescriptor<cloud.temporal.ipfs.Ipfs.Network, cloud.temporal.ipfs.Ipfs.Empty> getStopNetworkMethod;
     if ((getStopNetworkMethod = TemporalIPFSGrpc.getStopNetworkMethod) == null) {
       synchronized (TemporalIPFSGrpc.class) {
         if ((getStopNetworkMethod = TemporalIPFSGrpc.getStopNetworkMethod) == null) {
           TemporalIPFSGrpc.getStopNetworkMethod = getStopNetworkMethod = 
-              io.grpc.MethodDescriptor.<cloud.temporal.ipfs.Ipfs.Empty, cloud.temporal.ipfs.Ipfs.Empty>newBuilder()
+              io.grpc.MethodDescriptor.<cloud.temporal.ipfs.Ipfs.Network, cloud.temporal.ipfs.Ipfs.Empty>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
                   "ipfs.TemporalIPFS", "StopNetwork"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  cloud.temporal.ipfs.Ipfs.Empty.getDefaultInstance()))
+                  cloud.temporal.ipfs.Ipfs.Network.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   cloud.temporal.ipfs.Ipfs.Empty.getDefaultInstance()))
                   .setSchemaDescriptor(new TemporalIPFSMethodDescriptorSupplier("StopNetwork"))
@@ -159,28 +159,28 @@ public final class TemporalIPFSGrpc {
      return getStopNetworkMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<cloud.temporal.ipfs.Ipfs.Empty,
+  private static volatile io.grpc.MethodDescriptor<cloud.temporal.ipfs.Ipfs.Network,
       cloud.temporal.ipfs.Ipfs.Empty> getRemoveNetworkMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "RemoveNetwork",
-      requestType = cloud.temporal.ipfs.Ipfs.Empty.class,
+      requestType = cloud.temporal.ipfs.Ipfs.Network.class,
       responseType = cloud.temporal.ipfs.Ipfs.Empty.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<cloud.temporal.ipfs.Ipfs.Empty,
+  public static io.grpc.MethodDescriptor<cloud.temporal.ipfs.Ipfs.Network,
       cloud.temporal.ipfs.Ipfs.Empty> getRemoveNetworkMethod() {
-    io.grpc.MethodDescriptor<cloud.temporal.ipfs.Ipfs.Empty, cloud.temporal.ipfs.Ipfs.Empty> getRemoveNetworkMethod;
+    io.grpc.MethodDescriptor<cloud.temporal.ipfs.Ipfs.Network, cloud.temporal.ipfs.Ipfs.Empty> getRemoveNetworkMethod;
     if ((getRemoveNetworkMethod = TemporalIPFSGrpc.getRemoveNetworkMethod) == null) {
       synchronized (TemporalIPFSGrpc.class) {
         if ((getRemoveNetworkMethod = TemporalIPFSGrpc.getRemoveNetworkMethod) == null) {
           TemporalIPFSGrpc.getRemoveNetworkMethod = getRemoveNetworkMethod = 
-              io.grpc.MethodDescriptor.<cloud.temporal.ipfs.Ipfs.Empty, cloud.temporal.ipfs.Ipfs.Empty>newBuilder()
+              io.grpc.MethodDescriptor.<cloud.temporal.ipfs.Ipfs.Network, cloud.temporal.ipfs.Ipfs.Empty>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
                   "ipfs.TemporalIPFS", "RemoveNetwork"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  cloud.temporal.ipfs.Ipfs.Empty.getDefaultInstance()))
+                  cloud.temporal.ipfs.Ipfs.Network.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   cloud.temporal.ipfs.Ipfs.Empty.getDefaultInstance()))
                   .setSchemaDescriptor(new TemporalIPFSMethodDescriptorSupplier("RemoveNetwork"))
@@ -191,54 +191,54 @@ public final class TemporalIPFSGrpc {
      return getRemoveNetworkMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<cloud.temporal.ipfs.Ipfs.Empty,
-      cloud.temporal.ipfs.Ipfs.Empty> getStatNetworkMethod;
+  private static volatile io.grpc.MethodDescriptor<cloud.temporal.ipfs.Ipfs.Network,
+      cloud.temporal.ipfs.Ipfs.NetworkDetails> getNetworkInfoMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "StatNetwork",
-      requestType = cloud.temporal.ipfs.Ipfs.Empty.class,
-      responseType = cloud.temporal.ipfs.Ipfs.Empty.class,
+      fullMethodName = SERVICE_NAME + '/' + "NetworkInfo",
+      requestType = cloud.temporal.ipfs.Ipfs.Network.class,
+      responseType = cloud.temporal.ipfs.Ipfs.NetworkDetails.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<cloud.temporal.ipfs.Ipfs.Empty,
-      cloud.temporal.ipfs.Ipfs.Empty> getStatNetworkMethod() {
-    io.grpc.MethodDescriptor<cloud.temporal.ipfs.Ipfs.Empty, cloud.temporal.ipfs.Ipfs.Empty> getStatNetworkMethod;
-    if ((getStatNetworkMethod = TemporalIPFSGrpc.getStatNetworkMethod) == null) {
+  public static io.grpc.MethodDescriptor<cloud.temporal.ipfs.Ipfs.Network,
+      cloud.temporal.ipfs.Ipfs.NetworkDetails> getNetworkInfoMethod() {
+    io.grpc.MethodDescriptor<cloud.temporal.ipfs.Ipfs.Network, cloud.temporal.ipfs.Ipfs.NetworkDetails> getNetworkInfoMethod;
+    if ((getNetworkInfoMethod = TemporalIPFSGrpc.getNetworkInfoMethod) == null) {
       synchronized (TemporalIPFSGrpc.class) {
-        if ((getStatNetworkMethod = TemporalIPFSGrpc.getStatNetworkMethod) == null) {
-          TemporalIPFSGrpc.getStatNetworkMethod = getStatNetworkMethod = 
-              io.grpc.MethodDescriptor.<cloud.temporal.ipfs.Ipfs.Empty, cloud.temporal.ipfs.Ipfs.Empty>newBuilder()
+        if ((getNetworkInfoMethod = TemporalIPFSGrpc.getNetworkInfoMethod) == null) {
+          TemporalIPFSGrpc.getNetworkInfoMethod = getNetworkInfoMethod = 
+              io.grpc.MethodDescriptor.<cloud.temporal.ipfs.Ipfs.Network, cloud.temporal.ipfs.Ipfs.NetworkDetails>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
-                  "ipfs.TemporalIPFS", "StatNetwork"))
+                  "ipfs.TemporalIPFS", "NetworkInfo"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  cloud.temporal.ipfs.Ipfs.Empty.getDefaultInstance()))
+                  cloud.temporal.ipfs.Ipfs.Network.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  cloud.temporal.ipfs.Ipfs.Empty.getDefaultInstance()))
-                  .setSchemaDescriptor(new TemporalIPFSMethodDescriptorSupplier("StatNetwork"))
+                  cloud.temporal.ipfs.Ipfs.NetworkDetails.getDefaultInstance()))
+                  .setSchemaDescriptor(new TemporalIPFSMethodDescriptorSupplier("NetworkInfo"))
                   .build();
           }
         }
      }
-     return getStatNetworkMethod;
+     return getNetworkInfoMethod;
   }
 
   private static volatile io.grpc.MethodDescriptor<cloud.temporal.ipfs.Ipfs.Empty,
-      cloud.temporal.ipfs.Ipfs.Empty> getListNetworksMethod;
+      cloud.temporal.ipfs.Ipfs.NetworkList> getListNetworksMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "ListNetworks",
       requestType = cloud.temporal.ipfs.Ipfs.Empty.class,
-      responseType = cloud.temporal.ipfs.Ipfs.Empty.class,
+      responseType = cloud.temporal.ipfs.Ipfs.NetworkList.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<cloud.temporal.ipfs.Ipfs.Empty,
-      cloud.temporal.ipfs.Ipfs.Empty> getListNetworksMethod() {
-    io.grpc.MethodDescriptor<cloud.temporal.ipfs.Ipfs.Empty, cloud.temporal.ipfs.Ipfs.Empty> getListNetworksMethod;
+      cloud.temporal.ipfs.Ipfs.NetworkList> getListNetworksMethod() {
+    io.grpc.MethodDescriptor<cloud.temporal.ipfs.Ipfs.Empty, cloud.temporal.ipfs.Ipfs.NetworkList> getListNetworksMethod;
     if ((getListNetworksMethod = TemporalIPFSGrpc.getListNetworksMethod) == null) {
       synchronized (TemporalIPFSGrpc.class) {
         if ((getListNetworksMethod = TemporalIPFSGrpc.getListNetworksMethod) == null) {
           TemporalIPFSGrpc.getListNetworksMethod = getListNetworksMethod = 
-              io.grpc.MethodDescriptor.<cloud.temporal.ipfs.Ipfs.Empty, cloud.temporal.ipfs.Ipfs.Empty>newBuilder()
+              io.grpc.MethodDescriptor.<cloud.temporal.ipfs.Ipfs.Empty, cloud.temporal.ipfs.Ipfs.NetworkList>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
                   "ipfs.TemporalIPFS", "ListNetworks"))
@@ -246,7 +246,7 @@ public final class TemporalIPFSGrpc {
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   cloud.temporal.ipfs.Ipfs.Empty.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  cloud.temporal.ipfs.Ipfs.Empty.getDefaultInstance()))
+                  cloud.temporal.ipfs.Ipfs.NetworkList.getDefaultInstance()))
                   .setSchemaDescriptor(new TemporalIPFSMethodDescriptorSupplier("ListNetworks"))
                   .build();
           }
@@ -295,43 +295,43 @@ public final class TemporalIPFSGrpc {
 
     /**
      */
-    public void createNetwork(cloud.temporal.ipfs.Ipfs.Empty request,
-        io.grpc.stub.StreamObserver<cloud.temporal.ipfs.Ipfs.Empty> responseObserver) {
+    public void createNetwork(cloud.temporal.ipfs.Ipfs.CreateNetworkReq request,
+        io.grpc.stub.StreamObserver<cloud.temporal.ipfs.Ipfs.NetworkDetails> responseObserver) {
       asyncUnimplementedUnaryCall(getCreateNetworkMethod(), responseObserver);
     }
 
     /**
      */
-    public void startNetwork(cloud.temporal.ipfs.Ipfs.Empty request,
+    public void startNetwork(cloud.temporal.ipfs.Ipfs.Network request,
         io.grpc.stub.StreamObserver<cloud.temporal.ipfs.Ipfs.Empty> responseObserver) {
       asyncUnimplementedUnaryCall(getStartNetworkMethod(), responseObserver);
     }
 
     /**
      */
-    public void stopNetwork(cloud.temporal.ipfs.Ipfs.Empty request,
+    public void stopNetwork(cloud.temporal.ipfs.Ipfs.Network request,
         io.grpc.stub.StreamObserver<cloud.temporal.ipfs.Ipfs.Empty> responseObserver) {
       asyncUnimplementedUnaryCall(getStopNetworkMethod(), responseObserver);
     }
 
     /**
      */
-    public void removeNetwork(cloud.temporal.ipfs.Ipfs.Empty request,
+    public void removeNetwork(cloud.temporal.ipfs.Ipfs.Network request,
         io.grpc.stub.StreamObserver<cloud.temporal.ipfs.Ipfs.Empty> responseObserver) {
       asyncUnimplementedUnaryCall(getRemoveNetworkMethod(), responseObserver);
     }
 
     /**
      */
-    public void statNetwork(cloud.temporal.ipfs.Ipfs.Empty request,
-        io.grpc.stub.StreamObserver<cloud.temporal.ipfs.Ipfs.Empty> responseObserver) {
-      asyncUnimplementedUnaryCall(getStatNetworkMethod(), responseObserver);
+    public void networkInfo(cloud.temporal.ipfs.Ipfs.Network request,
+        io.grpc.stub.StreamObserver<cloud.temporal.ipfs.Ipfs.NetworkDetails> responseObserver) {
+      asyncUnimplementedUnaryCall(getNetworkInfoMethod(), responseObserver);
     }
 
     /**
      */
     public void listNetworks(cloud.temporal.ipfs.Ipfs.Empty request,
-        io.grpc.stub.StreamObserver<cloud.temporal.ipfs.Ipfs.Empty> responseObserver) {
+        io.grpc.stub.StreamObserver<cloud.temporal.ipfs.Ipfs.NetworkList> responseObserver) {
       asyncUnimplementedUnaryCall(getListNetworksMethod(), responseObserver);
     }
 
@@ -348,43 +348,43 @@ public final class TemporalIPFSGrpc {
             getCreateNetworkMethod(),
             asyncUnaryCall(
               new MethodHandlers<
-                cloud.temporal.ipfs.Ipfs.Empty,
-                cloud.temporal.ipfs.Ipfs.Empty>(
+                cloud.temporal.ipfs.Ipfs.CreateNetworkReq,
+                cloud.temporal.ipfs.Ipfs.NetworkDetails>(
                   this, METHODID_CREATE_NETWORK)))
           .addMethod(
             getStartNetworkMethod(),
             asyncUnaryCall(
               new MethodHandlers<
-                cloud.temporal.ipfs.Ipfs.Empty,
+                cloud.temporal.ipfs.Ipfs.Network,
                 cloud.temporal.ipfs.Ipfs.Empty>(
                   this, METHODID_START_NETWORK)))
           .addMethod(
             getStopNetworkMethod(),
             asyncUnaryCall(
               new MethodHandlers<
-                cloud.temporal.ipfs.Ipfs.Empty,
+                cloud.temporal.ipfs.Ipfs.Network,
                 cloud.temporal.ipfs.Ipfs.Empty>(
                   this, METHODID_STOP_NETWORK)))
           .addMethod(
             getRemoveNetworkMethod(),
             asyncUnaryCall(
               new MethodHandlers<
-                cloud.temporal.ipfs.Ipfs.Empty,
+                cloud.temporal.ipfs.Ipfs.Network,
                 cloud.temporal.ipfs.Ipfs.Empty>(
                   this, METHODID_REMOVE_NETWORK)))
           .addMethod(
-            getStatNetworkMethod(),
+            getNetworkInfoMethod(),
             asyncUnaryCall(
               new MethodHandlers<
-                cloud.temporal.ipfs.Ipfs.Empty,
-                cloud.temporal.ipfs.Ipfs.Empty>(
-                  this, METHODID_STAT_NETWORK)))
+                cloud.temporal.ipfs.Ipfs.Network,
+                cloud.temporal.ipfs.Ipfs.NetworkDetails>(
+                  this, METHODID_NETWORK_INFO)))
           .addMethod(
             getListNetworksMethod(),
             asyncUnaryCall(
               new MethodHandlers<
                 cloud.temporal.ipfs.Ipfs.Empty,
-                cloud.temporal.ipfs.Ipfs.Empty>(
+                cloud.temporal.ipfs.Ipfs.NetworkList>(
                   this, METHODID_LIST_NETWORKS)))
           .build();
     }
@@ -422,15 +422,15 @@ public final class TemporalIPFSGrpc {
 
     /**
      */
-    public void createNetwork(cloud.temporal.ipfs.Ipfs.Empty request,
-        io.grpc.stub.StreamObserver<cloud.temporal.ipfs.Ipfs.Empty> responseObserver) {
+    public void createNetwork(cloud.temporal.ipfs.Ipfs.CreateNetworkReq request,
+        io.grpc.stub.StreamObserver<cloud.temporal.ipfs.Ipfs.NetworkDetails> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getCreateNetworkMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
      */
-    public void startNetwork(cloud.temporal.ipfs.Ipfs.Empty request,
+    public void startNetwork(cloud.temporal.ipfs.Ipfs.Network request,
         io.grpc.stub.StreamObserver<cloud.temporal.ipfs.Ipfs.Empty> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getStartNetworkMethod(), getCallOptions()), request, responseObserver);
@@ -438,7 +438,7 @@ public final class TemporalIPFSGrpc {
 
     /**
      */
-    public void stopNetwork(cloud.temporal.ipfs.Ipfs.Empty request,
+    public void stopNetwork(cloud.temporal.ipfs.Ipfs.Network request,
         io.grpc.stub.StreamObserver<cloud.temporal.ipfs.Ipfs.Empty> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getStopNetworkMethod(), getCallOptions()), request, responseObserver);
@@ -446,7 +446,7 @@ public final class TemporalIPFSGrpc {
 
     /**
      */
-    public void removeNetwork(cloud.temporal.ipfs.Ipfs.Empty request,
+    public void removeNetwork(cloud.temporal.ipfs.Ipfs.Network request,
         io.grpc.stub.StreamObserver<cloud.temporal.ipfs.Ipfs.Empty> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getRemoveNetworkMethod(), getCallOptions()), request, responseObserver);
@@ -454,16 +454,16 @@ public final class TemporalIPFSGrpc {
 
     /**
      */
-    public void statNetwork(cloud.temporal.ipfs.Ipfs.Empty request,
-        io.grpc.stub.StreamObserver<cloud.temporal.ipfs.Ipfs.Empty> responseObserver) {
+    public void networkInfo(cloud.temporal.ipfs.Ipfs.Network request,
+        io.grpc.stub.StreamObserver<cloud.temporal.ipfs.Ipfs.NetworkDetails> responseObserver) {
       asyncUnaryCall(
-          getChannel().newCall(getStatNetworkMethod(), getCallOptions()), request, responseObserver);
+          getChannel().newCall(getNetworkInfoMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
      */
     public void listNetworks(cloud.temporal.ipfs.Ipfs.Empty request,
-        io.grpc.stub.StreamObserver<cloud.temporal.ipfs.Ipfs.Empty> responseObserver) {
+        io.grpc.stub.StreamObserver<cloud.temporal.ipfs.Ipfs.NetworkList> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getListNetworksMethod(), getCallOptions()), request, responseObserver);
     }
@@ -500,42 +500,42 @@ public final class TemporalIPFSGrpc {
 
     /**
      */
-    public cloud.temporal.ipfs.Ipfs.Empty createNetwork(cloud.temporal.ipfs.Ipfs.Empty request) {
+    public cloud.temporal.ipfs.Ipfs.NetworkDetails createNetwork(cloud.temporal.ipfs.Ipfs.CreateNetworkReq request) {
       return blockingUnaryCall(
           getChannel(), getCreateNetworkMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public cloud.temporal.ipfs.Ipfs.Empty startNetwork(cloud.temporal.ipfs.Ipfs.Empty request) {
+    public cloud.temporal.ipfs.Ipfs.Empty startNetwork(cloud.temporal.ipfs.Ipfs.Network request) {
       return blockingUnaryCall(
           getChannel(), getStartNetworkMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public cloud.temporal.ipfs.Ipfs.Empty stopNetwork(cloud.temporal.ipfs.Ipfs.Empty request) {
+    public cloud.temporal.ipfs.Ipfs.Empty stopNetwork(cloud.temporal.ipfs.Ipfs.Network request) {
       return blockingUnaryCall(
           getChannel(), getStopNetworkMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public cloud.temporal.ipfs.Ipfs.Empty removeNetwork(cloud.temporal.ipfs.Ipfs.Empty request) {
+    public cloud.temporal.ipfs.Ipfs.Empty removeNetwork(cloud.temporal.ipfs.Ipfs.Network request) {
       return blockingUnaryCall(
           getChannel(), getRemoveNetworkMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public cloud.temporal.ipfs.Ipfs.Empty statNetwork(cloud.temporal.ipfs.Ipfs.Empty request) {
+    public cloud.temporal.ipfs.Ipfs.NetworkDetails networkInfo(cloud.temporal.ipfs.Ipfs.Network request) {
       return blockingUnaryCall(
-          getChannel(), getStatNetworkMethod(), getCallOptions(), request);
+          getChannel(), getNetworkInfoMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public cloud.temporal.ipfs.Ipfs.Empty listNetworks(cloud.temporal.ipfs.Ipfs.Empty request) {
+    public cloud.temporal.ipfs.Ipfs.NetworkList listNetworks(cloud.temporal.ipfs.Ipfs.Empty request) {
       return blockingUnaryCall(
           getChannel(), getListNetworksMethod(), getCallOptions(), request);
     }
@@ -573,8 +573,8 @@ public final class TemporalIPFSGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<cloud.temporal.ipfs.Ipfs.Empty> createNetwork(
-        cloud.temporal.ipfs.Ipfs.Empty request) {
+    public com.google.common.util.concurrent.ListenableFuture<cloud.temporal.ipfs.Ipfs.NetworkDetails> createNetwork(
+        cloud.temporal.ipfs.Ipfs.CreateNetworkReq request) {
       return futureUnaryCall(
           getChannel().newCall(getCreateNetworkMethod(), getCallOptions()), request);
     }
@@ -582,7 +582,7 @@ public final class TemporalIPFSGrpc {
     /**
      */
     public com.google.common.util.concurrent.ListenableFuture<cloud.temporal.ipfs.Ipfs.Empty> startNetwork(
-        cloud.temporal.ipfs.Ipfs.Empty request) {
+        cloud.temporal.ipfs.Ipfs.Network request) {
       return futureUnaryCall(
           getChannel().newCall(getStartNetworkMethod(), getCallOptions()), request);
     }
@@ -590,7 +590,7 @@ public final class TemporalIPFSGrpc {
     /**
      */
     public com.google.common.util.concurrent.ListenableFuture<cloud.temporal.ipfs.Ipfs.Empty> stopNetwork(
-        cloud.temporal.ipfs.Ipfs.Empty request) {
+        cloud.temporal.ipfs.Ipfs.Network request) {
       return futureUnaryCall(
           getChannel().newCall(getStopNetworkMethod(), getCallOptions()), request);
     }
@@ -598,22 +598,22 @@ public final class TemporalIPFSGrpc {
     /**
      */
     public com.google.common.util.concurrent.ListenableFuture<cloud.temporal.ipfs.Ipfs.Empty> removeNetwork(
-        cloud.temporal.ipfs.Ipfs.Empty request) {
+        cloud.temporal.ipfs.Ipfs.Network request) {
       return futureUnaryCall(
           getChannel().newCall(getRemoveNetworkMethod(), getCallOptions()), request);
     }
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<cloud.temporal.ipfs.Ipfs.Empty> statNetwork(
-        cloud.temporal.ipfs.Ipfs.Empty request) {
+    public com.google.common.util.concurrent.ListenableFuture<cloud.temporal.ipfs.Ipfs.NetworkDetails> networkInfo(
+        cloud.temporal.ipfs.Ipfs.Network request) {
       return futureUnaryCall(
-          getChannel().newCall(getStatNetworkMethod(), getCallOptions()), request);
+          getChannel().newCall(getNetworkInfoMethod(), getCallOptions()), request);
     }
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<cloud.temporal.ipfs.Ipfs.Empty> listNetworks(
+    public com.google.common.util.concurrent.ListenableFuture<cloud.temporal.ipfs.Ipfs.NetworkList> listNetworks(
         cloud.temporal.ipfs.Ipfs.Empty request) {
       return futureUnaryCall(
           getChannel().newCall(getListNetworksMethod(), getCallOptions()), request);
@@ -625,7 +625,7 @@ public final class TemporalIPFSGrpc {
   private static final int METHODID_START_NETWORK = 2;
   private static final int METHODID_STOP_NETWORK = 3;
   private static final int METHODID_REMOVE_NETWORK = 4;
-  private static final int METHODID_STAT_NETWORK = 5;
+  private static final int METHODID_NETWORK_INFO = 5;
   private static final int METHODID_LIST_NETWORKS = 6;
 
   private static final class MethodHandlers<Req, Resp> implements
@@ -650,28 +650,28 @@ public final class TemporalIPFSGrpc {
               (io.grpc.stub.StreamObserver<cloud.temporal.ipfs.Ipfs.Empty>) responseObserver);
           break;
         case METHODID_CREATE_NETWORK:
-          serviceImpl.createNetwork((cloud.temporal.ipfs.Ipfs.Empty) request,
-              (io.grpc.stub.StreamObserver<cloud.temporal.ipfs.Ipfs.Empty>) responseObserver);
+          serviceImpl.createNetwork((cloud.temporal.ipfs.Ipfs.CreateNetworkReq) request,
+              (io.grpc.stub.StreamObserver<cloud.temporal.ipfs.Ipfs.NetworkDetails>) responseObserver);
           break;
         case METHODID_START_NETWORK:
-          serviceImpl.startNetwork((cloud.temporal.ipfs.Ipfs.Empty) request,
+          serviceImpl.startNetwork((cloud.temporal.ipfs.Ipfs.Network) request,
               (io.grpc.stub.StreamObserver<cloud.temporal.ipfs.Ipfs.Empty>) responseObserver);
           break;
         case METHODID_STOP_NETWORK:
-          serviceImpl.stopNetwork((cloud.temporal.ipfs.Ipfs.Empty) request,
+          serviceImpl.stopNetwork((cloud.temporal.ipfs.Ipfs.Network) request,
               (io.grpc.stub.StreamObserver<cloud.temporal.ipfs.Ipfs.Empty>) responseObserver);
           break;
         case METHODID_REMOVE_NETWORK:
-          serviceImpl.removeNetwork((cloud.temporal.ipfs.Ipfs.Empty) request,
+          serviceImpl.removeNetwork((cloud.temporal.ipfs.Ipfs.Network) request,
               (io.grpc.stub.StreamObserver<cloud.temporal.ipfs.Ipfs.Empty>) responseObserver);
           break;
-        case METHODID_STAT_NETWORK:
-          serviceImpl.statNetwork((cloud.temporal.ipfs.Ipfs.Empty) request,
-              (io.grpc.stub.StreamObserver<cloud.temporal.ipfs.Ipfs.Empty>) responseObserver);
+        case METHODID_NETWORK_INFO:
+          serviceImpl.networkInfo((cloud.temporal.ipfs.Ipfs.Network) request,
+              (io.grpc.stub.StreamObserver<cloud.temporal.ipfs.Ipfs.NetworkDetails>) responseObserver);
           break;
         case METHODID_LIST_NETWORKS:
           serviceImpl.listNetworks((cloud.temporal.ipfs.Ipfs.Empty) request,
-              (io.grpc.stub.StreamObserver<cloud.temporal.ipfs.Ipfs.Empty>) responseObserver);
+              (io.grpc.stub.StreamObserver<cloud.temporal.ipfs.Ipfs.NetworkList>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -739,7 +739,7 @@ public final class TemporalIPFSGrpc {
               .addMethod(getStartNetworkMethod())
               .addMethod(getStopNetworkMethod())
               .addMethod(getRemoveNetworkMethod())
-              .addMethod(getStatNetworkMethod())
+              .addMethod(getNetworkInfoMethod())
               .addMethod(getListNetworksMethod())
               .build();
         }

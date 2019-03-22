@@ -15,20 +15,174 @@
     "application/json"
   ],
   "paths": {
-    "/v3/store/status": {
+    "/v3/store/keys": {
       "get": {
-        "operationId": "Status",
+        "summary": "Keys returns the IPFS keys associated with an authenticated request.",
+        "operationId": "Keys",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/storeMessage"
+              "$ref": "#/definitions/storeKeyList"
+            }
+          }
+        },
+        "tags": [
+          "TemporalStore"
+        ]
+      }
+    },
+    "/v3/store/keys/new": {
+      "post": {
+        "summary": "NewKey generates a new IPFS key associated with an authenticated request.",
+        "operationId": "NewKey",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/storeEmpty"
+            }
+          }
+        },
+        "tags": [
+          "TemporalStore"
+        ]
+      }
+    },
+    "/v3/store/objects/download": {
+      "post": {
+        "operationId": "Download",
+        "responses": {
+          "200": {
+            "description": "A successful response.(streaming responses)",
+            "schema": {
+              "$ref": "#/definitions/storeBlob"
+            }
+          }
+        },
+        "tags": [
+          "TemporalStore"
+        ]
+      }
+    },
+    "/v3/store/objects/list": {
+      "post": {
+        "operationId": "ListObjects",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/storeObjectList"
+            }
+          }
+        },
+        "tags": [
+          "TemporalStore"
+        ]
+      }
+    },
+    "/v3/store/objects/pin": {
+      "post": {
+        "summary": "Pin handles new pins and pin extensions",
+        "operationId": "Pin",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/storeEmpty"
+            }
+          }
+        },
+        "tags": [
+          "TemporalStore"
+        ]
+      }
+    },
+    "/v3/store/objects/stat": {
+      "get": {
+        "summary": "Stat retrieves details about an object",
+        "operationId": "Stat",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/storeObjectStats"
             }
           }
         },
         "parameters": [
           {
-            "name": "message",
+            "name": "hash",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "hold_time",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "TemporalStore"
+        ]
+      }
+    },
+    "/v3/store/objects/upload": {
+      "post": {
+        "summary": "Upload accepts files and directories",
+        "operationId": "Upload",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/storeObject"
+            }
+          }
+        },
+        "tags": [
+          "TemporalStore"
+        ]
+      }
+    },
+    "/v3/store/pubsub/publish": {
+      "post": {
+        "operationId": "Publish",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/storeEmpty"
+            }
+          }
+        },
+        "tags": [
+          "TemporalStore"
+        ]
+      }
+    },
+    "/v3/store/pubsub/subscribe": {
+      "get": {
+        "operationId": "Subscribe",
+        "responses": {
+          "200": {
+            "description": "A successful response.(streaming responses)",
+            "schema": {
+              "$ref": "#/definitions/storeEvent"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "topic",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "network",
             "in": "query",
             "required": false,
             "type": "string"
@@ -38,13 +192,237 @@
           "TemporalStore"
         ]
       }
+    },
+    "/v3/store/status": {
+      "get": {
+        "operationId": "Status",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/storeEmpty"
+            }
+          }
+        },
+        "tags": [
+          "TemporalStore"
+        ]
+      }
     }
   },
   "definitions": {
-    "storeMessage": {
+    "KeyED25519": {
       "type": "object",
       "properties": {
+        "size": {
+          "$ref": "#/definitions/KeyED25519Size"
+        }
+      }
+    },
+    "KeyED25519Size": {
+      "type": "string",
+      "enum": [
+        "S_256"
+      ],
+      "default": "S_256"
+    },
+    "KeyRSA": {
+      "type": "object",
+      "properties": {
+        "size": {
+          "$ref": "#/definitions/KeyRSASize"
+        }
+      }
+    },
+    "KeyRSASize": {
+      "type": "string",
+      "enum": [
+        "S_2048",
+        "S_3072",
+        "S_4096"
+      ],
+      "default": "S_2048"
+    },
+    "ObjectInfoDetails": {
+      "type": "object",
+      "properties": {
+        "created_at": {
+          "type": "string",
+          "format": "int64"
+        },
+        "deleted_at": {
+          "type": "string",
+          "format": "int64"
+        },
+        "updated_at": {
+          "type": "string",
+          "format": "int64"
+        },
+        "encrypted": {
+          "type": "boolean",
+          "format": "boolean"
+        },
+        "hold_time": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "type": {
+          "type": "string"
+        }
+      }
+    },
+    "ObjectInfoPermissions": {
+      "type": "object",
+      "properties": {
+        "uploader": {
+          "type": "string"
+        },
+        "users": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "storeBlob": {
+      "type": "object",
+      "properties": {
+        "content": {
+          "type": "string",
+          "format": "byte"
+        },
+        "hold_time": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    },
+    "storeEmpty": {
+      "type": "object"
+    },
+    "storeEvent": {
+      "type": "object",
+      "properties": {
+        "topic": {
+          "$ref": "#/definitions/storeTopic"
+        },
         "message": {
+          "type": "string"
+        }
+      }
+    },
+    "storeKey": {
+      "type": "object",
+      "properties": {
+        "rsa": {
+          "$ref": "#/definitions/KeyRSA"
+        },
+        "ed25519": {
+          "$ref": "#/definitions/KeyED25519"
+        },
+        "name": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        }
+      }
+    },
+    "storeKeyList": {
+      "type": "object",
+      "properties": {
+        "keys": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/storeKey"
+          }
+        }
+      }
+    },
+    "storeObject": {
+      "type": "object",
+      "properties": {
+        "hash": {
+          "type": "string"
+        },
+        "hold_time": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    },
+    "storeObjectInfo": {
+      "type": "object",
+      "properties": {
+        "object": {
+          "$ref": "#/definitions/storeObject"
+        },
+        "stats": {
+          "$ref": "#/definitions/storeObjectStats"
+        },
+        "details": {
+          "$ref": "#/definitions/ObjectInfoDetails"
+        },
+        "perms": {
+          "$ref": "#/definitions/ObjectInfoPermissions"
+        }
+      }
+    },
+    "storeObjectList": {
+      "type": "object",
+      "properties": {
+        "objects": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/storeObjectInfo"
+          }
+        }
+      }
+    },
+    "storeObjectOptions": {
+      "type": "object",
+      "properties": {
+        "passphrase": {
+          "type": "string"
+        },
+        "network": {
+          "type": "string"
+        }
+      }
+    },
+    "storeObjectStats": {
+      "type": "object",
+      "properties": {
+        "block_size": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "cumulative_size": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "data_size": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "links_size": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "link_count": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "storeTopic": {
+      "type": "object",
+      "properties": {
+        "topic": {
+          "type": "string"
+        },
+        "network": {
           "type": "string"
         }
       }

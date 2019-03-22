@@ -1,0 +1,186 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "proto/ipfs.proto",
+    "version": "version not set"
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/v3/ipfs/networks/create": {
+      "post": {
+        "operationId": "CreateNetwork",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/ipfsNetworkDetails"
+            }
+          }
+        },
+        "tags": [
+          "TemporalIPFS"
+        ]
+      }
+    },
+    "/v3/ipfs/networks/list": {
+      "post": {
+        "operationId": "ListNetworks",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/ipfsNetworkList"
+            }
+          }
+        },
+        "tags": [
+          "TemporalIPFS"
+        ]
+      }
+    },
+    "/v3/ipfs/networks/start": {
+      "post": {
+        "operationId": "StartNetwork",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/ipfsEmpty"
+            }
+          }
+        },
+        "tags": [
+          "TemporalIPFS"
+        ]
+      }
+    },
+    "/v3/ipfs/networks/stat": {
+      "get": {
+        "operationId": "NetworkInfo",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/ipfsNetworkDetails"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "TemporalIPFS"
+        ]
+      }
+    },
+    "/v3/ipfs/networks/stop": {
+      "post": {
+        "operationId": "RemoveNetwork",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/ipfsEmpty"
+            }
+          }
+        },
+        "tags": [
+          "TemporalIPFS"
+        ]
+      }
+    },
+    "/v3/ipfs/status": {
+      "get": {
+        "operationId": "Status",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/ipfsEmpty"
+            }
+          }
+        },
+        "tags": [
+          "TemporalIPFS"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "ipfsEmpty": {
+      "type": "object"
+    },
+    "ipfsNetwork": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "ipfsNetworkDetails": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "created_at": {
+          "type": "string",
+          "format": "int64"
+        },
+        "deleted_at": {
+          "type": "string",
+          "format": "int64"
+        },
+        "activated": {
+          "type": "string",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string"
+        },
+        "swarm_key": {
+          "type": "string"
+        },
+        "users": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "peers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "ipfsNetworkList": {
+      "type": "object",
+      "properties": {
+        "networks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ipfsNetwork"
+          }
+        }
+      }
+    }
+  }
+}
