@@ -62,6 +62,102 @@ public final class TemporalStoreGrpc {
      return getStatusMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<cloud.temporal.store.Store.Blob,
+      cloud.temporal.store.Store.Object> getUploadMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "Upload",
+      requestType = cloud.temporal.store.Store.Blob.class,
+      responseType = cloud.temporal.store.Store.Object.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.CLIENT_STREAMING)
+  public static io.grpc.MethodDescriptor<cloud.temporal.store.Store.Blob,
+      cloud.temporal.store.Store.Object> getUploadMethod() {
+    io.grpc.MethodDescriptor<cloud.temporal.store.Store.Blob, cloud.temporal.store.Store.Object> getUploadMethod;
+    if ((getUploadMethod = TemporalStoreGrpc.getUploadMethod) == null) {
+      synchronized (TemporalStoreGrpc.class) {
+        if ((getUploadMethod = TemporalStoreGrpc.getUploadMethod) == null) {
+          TemporalStoreGrpc.getUploadMethod = getUploadMethod = 
+              io.grpc.MethodDescriptor.<cloud.temporal.store.Store.Blob, cloud.temporal.store.Store.Object>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.CLIENT_STREAMING)
+              .setFullMethodName(generateFullMethodName(
+                  "store.TemporalStore", "Upload"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  cloud.temporal.store.Store.Blob.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  cloud.temporal.store.Store.Object.getDefaultInstance()))
+                  .setSchemaDescriptor(new TemporalStoreMethodDescriptorSupplier("Upload"))
+                  .build();
+          }
+        }
+     }
+     return getUploadMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<cloud.temporal.store.Store.Object,
+      cloud.temporal.store.Store.Message> getPinMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "Pin",
+      requestType = cloud.temporal.store.Store.Object.class,
+      responseType = cloud.temporal.store.Store.Message.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<cloud.temporal.store.Store.Object,
+      cloud.temporal.store.Store.Message> getPinMethod() {
+    io.grpc.MethodDescriptor<cloud.temporal.store.Store.Object, cloud.temporal.store.Store.Message> getPinMethod;
+    if ((getPinMethod = TemporalStoreGrpc.getPinMethod) == null) {
+      synchronized (TemporalStoreGrpc.class) {
+        if ((getPinMethod = TemporalStoreGrpc.getPinMethod) == null) {
+          TemporalStoreGrpc.getPinMethod = getPinMethod = 
+              io.grpc.MethodDescriptor.<cloud.temporal.store.Store.Object, cloud.temporal.store.Store.Message>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(
+                  "store.TemporalStore", "Pin"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  cloud.temporal.store.Store.Object.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  cloud.temporal.store.Store.Message.getDefaultInstance()))
+                  .setSchemaDescriptor(new TemporalStoreMethodDescriptorSupplier("Pin"))
+                  .build();
+          }
+        }
+     }
+     return getPinMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<cloud.temporal.store.Store.Object,
+      cloud.temporal.store.Store.ObjectStats> getStatMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "Stat",
+      requestType = cloud.temporal.store.Store.Object.class,
+      responseType = cloud.temporal.store.Store.ObjectStats.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<cloud.temporal.store.Store.Object,
+      cloud.temporal.store.Store.ObjectStats> getStatMethod() {
+    io.grpc.MethodDescriptor<cloud.temporal.store.Store.Object, cloud.temporal.store.Store.ObjectStats> getStatMethod;
+    if ((getStatMethod = TemporalStoreGrpc.getStatMethod) == null) {
+      synchronized (TemporalStoreGrpc.class) {
+        if ((getStatMethod = TemporalStoreGrpc.getStatMethod) == null) {
+          TemporalStoreGrpc.getStatMethod = getStatMethod = 
+              io.grpc.MethodDescriptor.<cloud.temporal.store.Store.Object, cloud.temporal.store.Store.ObjectStats>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(
+                  "store.TemporalStore", "Stat"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  cloud.temporal.store.Store.Object.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  cloud.temporal.store.Store.ObjectStats.getDefaultInstance()))
+                  .setSchemaDescriptor(new TemporalStoreMethodDescriptorSupplier("Stat"))
+                  .build();
+          }
+        }
+     }
+     return getStatMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -99,6 +195,36 @@ public final class TemporalStoreGrpc {
       asyncUnimplementedUnaryCall(getStatusMethod(), responseObserver);
     }
 
+    /**
+     * <pre>
+     * Upload accepts files and directories
+     * </pre>
+     */
+    public io.grpc.stub.StreamObserver<cloud.temporal.store.Store.Blob> upload(
+        io.grpc.stub.StreamObserver<cloud.temporal.store.Store.Object> responseObserver) {
+      return asyncUnimplementedStreamingCall(getUploadMethod(), responseObserver);
+    }
+
+    /**
+     * <pre>
+     * Pin handles new pins and pin extensions
+     * </pre>
+     */
+    public void pin(cloud.temporal.store.Store.Object request,
+        io.grpc.stub.StreamObserver<cloud.temporal.store.Store.Message> responseObserver) {
+      asyncUnimplementedUnaryCall(getPinMethod(), responseObserver);
+    }
+
+    /**
+     * <pre>
+     * Stat retrieves details about an object
+     * </pre>
+     */
+    public void stat(cloud.temporal.store.Store.Object request,
+        io.grpc.stub.StreamObserver<cloud.temporal.store.Store.ObjectStats> responseObserver) {
+      asyncUnimplementedUnaryCall(getStatMethod(), responseObserver);
+    }
+
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -108,6 +234,27 @@ public final class TemporalStoreGrpc {
                 cloud.temporal.store.Store.Message,
                 cloud.temporal.store.Store.Message>(
                   this, METHODID_STATUS)))
+          .addMethod(
+            getUploadMethod(),
+            asyncClientStreamingCall(
+              new MethodHandlers<
+                cloud.temporal.store.Store.Blob,
+                cloud.temporal.store.Store.Object>(
+                  this, METHODID_UPLOAD)))
+          .addMethod(
+            getPinMethod(),
+            asyncUnaryCall(
+              new MethodHandlers<
+                cloud.temporal.store.Store.Object,
+                cloud.temporal.store.Store.Message>(
+                  this, METHODID_PIN)))
+          .addMethod(
+            getStatMethod(),
+            asyncUnaryCall(
+              new MethodHandlers<
+                cloud.temporal.store.Store.Object,
+                cloud.temporal.store.Store.ObjectStats>(
+                  this, METHODID_STAT)))
           .build();
     }
   }
@@ -140,6 +287,39 @@ public final class TemporalStoreGrpc {
       asyncUnaryCall(
           getChannel().newCall(getStatusMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     * <pre>
+     * Upload accepts files and directories
+     * </pre>
+     */
+    public io.grpc.stub.StreamObserver<cloud.temporal.store.Store.Blob> upload(
+        io.grpc.stub.StreamObserver<cloud.temporal.store.Store.Object> responseObserver) {
+      return asyncClientStreamingCall(
+          getChannel().newCall(getUploadMethod(), getCallOptions()), responseObserver);
+    }
+
+    /**
+     * <pre>
+     * Pin handles new pins and pin extensions
+     * </pre>
+     */
+    public void pin(cloud.temporal.store.Store.Object request,
+        io.grpc.stub.StreamObserver<cloud.temporal.store.Store.Message> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(getPinMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     * <pre>
+     * Stat retrieves details about an object
+     * </pre>
+     */
+    public void stat(cloud.temporal.store.Store.Object request,
+        io.grpc.stub.StreamObserver<cloud.temporal.store.Store.ObjectStats> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(getStatMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -168,6 +348,26 @@ public final class TemporalStoreGrpc {
     public cloud.temporal.store.Store.Message status(cloud.temporal.store.Store.Message request) {
       return blockingUnaryCall(
           getChannel(), getStatusMethod(), getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
+     * Pin handles new pins and pin extensions
+     * </pre>
+     */
+    public cloud.temporal.store.Store.Message pin(cloud.temporal.store.Store.Object request) {
+      return blockingUnaryCall(
+          getChannel(), getPinMethod(), getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
+     * Stat retrieves details about an object
+     * </pre>
+     */
+    public cloud.temporal.store.Store.ObjectStats stat(cloud.temporal.store.Store.Object request) {
+      return blockingUnaryCall(
+          getChannel(), getStatMethod(), getCallOptions(), request);
     }
   }
 
@@ -199,9 +399,34 @@ public final class TemporalStoreGrpc {
       return futureUnaryCall(
           getChannel().newCall(getStatusMethod(), getCallOptions()), request);
     }
+
+    /**
+     * <pre>
+     * Pin handles new pins and pin extensions
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<cloud.temporal.store.Store.Message> pin(
+        cloud.temporal.store.Store.Object request) {
+      return futureUnaryCall(
+          getChannel().newCall(getPinMethod(), getCallOptions()), request);
+    }
+
+    /**
+     * <pre>
+     * Stat retrieves details about an object
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<cloud.temporal.store.Store.ObjectStats> stat(
+        cloud.temporal.store.Store.Object request) {
+      return futureUnaryCall(
+          getChannel().newCall(getStatMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_STATUS = 0;
+  private static final int METHODID_PIN = 1;
+  private static final int METHODID_STAT = 2;
+  private static final int METHODID_UPLOAD = 3;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -224,6 +449,14 @@ public final class TemporalStoreGrpc {
           serviceImpl.status((cloud.temporal.store.Store.Message) request,
               (io.grpc.stub.StreamObserver<cloud.temporal.store.Store.Message>) responseObserver);
           break;
+        case METHODID_PIN:
+          serviceImpl.pin((cloud.temporal.store.Store.Object) request,
+              (io.grpc.stub.StreamObserver<cloud.temporal.store.Store.Message>) responseObserver);
+          break;
+        case METHODID_STAT:
+          serviceImpl.stat((cloud.temporal.store.Store.Object) request,
+              (io.grpc.stub.StreamObserver<cloud.temporal.store.Store.ObjectStats>) responseObserver);
+          break;
         default:
           throw new AssertionError();
       }
@@ -234,6 +467,9 @@ public final class TemporalStoreGrpc {
     public io.grpc.stub.StreamObserver<Req> invoke(
         io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
+        case METHODID_UPLOAD:
+          return (io.grpc.stub.StreamObserver<Req>) serviceImpl.upload(
+              (io.grpc.stub.StreamObserver<cloud.temporal.store.Store.Object>) responseObserver);
         default:
           throw new AssertionError();
       }
@@ -286,6 +522,9 @@ public final class TemporalStoreGrpc {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new TemporalStoreFileDescriptorSupplier())
               .addMethod(getStatusMethod())
+              .addMethod(getUploadMethod())
+              .addMethod(getPinMethod())
+              .addMethod(getStatMethod())
               .build();
         }
       }

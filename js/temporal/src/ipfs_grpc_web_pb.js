@@ -186,5 +186,111 @@ proto.ipfs.TemporalIPFSPromiseClient.prototype.newKey =
 };
 
 
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.ipfs.Event,
+ *   !proto.ipfs.Empty>}
+ */
+const methodInfo_TemporalIPFS_Publish = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.ipfs.Empty,
+  /** @param {!proto.ipfs.Event} request */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.ipfs.Empty.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.ipfs.Event} request The
+ *     request proto
+ * @param {!Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.Error, ?proto.ipfs.Empty)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.ipfs.Empty>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.ipfs.TemporalIPFSClient.prototype.publish =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/ipfs.TemporalIPFS/Publish',
+      request,
+      metadata,
+      methodInfo_TemporalIPFS_Publish,
+      callback);
+};
+
+
+/**
+ * @param {!proto.ipfs.Event} request The
+ *     request proto
+ * @param {!Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.ipfs.Empty>}
+ *     The XHR Node Readable Stream
+ */
+proto.ipfs.TemporalIPFSPromiseClient.prototype.publish =
+    function(request, metadata) {
+  return new Promise((resolve, reject) => {
+    this.delegateClient_.publish(
+      request, metadata, (error, response) => {
+        error ? reject(error) : resolve(response);
+      });
+  });
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.ipfs.Topic,
+ *   !proto.ipfs.Event>}
+ */
+const methodInfo_TemporalIPFS_Subscribe = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.ipfs.Event,
+  /** @param {!proto.ipfs.Topic} request */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.ipfs.Event.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.ipfs.Topic} request The request proto
+ * @param {!Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!grpc.web.ClientReadableStream<!proto.ipfs.Event>}
+ *     The XHR Node Readable Stream
+ */
+proto.ipfs.TemporalIPFSClient.prototype.subscribe =
+    function(request, metadata) {
+  return this.client_.serverStreaming(this.hostname_ +
+      '/ipfs.TemporalIPFS/Subscribe',
+      request,
+      metadata,
+      methodInfo_TemporalIPFS_Subscribe);
+};
+
+
+/**
+ * @param {!proto.ipfs.Topic} request The request proto
+ * @param {!Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!grpc.web.ClientReadableStream<!proto.ipfs.Event>}
+ *     The XHR Node Readable Stream
+ */
+proto.ipfs.TemporalIPFSPromiseClient.prototype.subscribe =
+    function(request, metadata) {
+  return this.delegateClient_.client_.serverStreaming(this.delegateClient_.hostname_ +
+      '/ipfs.TemporalIPFS/Subscribe',
+      request,
+      metadata,
+      methodInfo_TemporalIPFS_Subscribe);
+};
+
+
 module.exports = proto.ipfs;
 

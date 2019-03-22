@@ -3,14 +3,13 @@
 
 package store
 
-import proto "github.com/golang/protobuf/proto"
-import fmt "fmt"
-import math "math"
-import _ "google.golang.org/genproto/googleapis/api/annotations"
-
 import (
-	context "golang.org/x/net/context"
+	context "context"
+	fmt "fmt"
+	proto "github.com/golang/protobuf/proto"
+	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
+	math "math"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -22,7 +21,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 type Message struct {
 	Message              string   `protobuf:"bytes,1,opt,name=message,proto3" json:"message,omitempty"`
@@ -35,16 +34,17 @@ func (m *Message) Reset()         { *m = Message{} }
 func (m *Message) String() string { return proto.CompactTextString(m) }
 func (*Message) ProtoMessage()    {}
 func (*Message) Descriptor() ([]byte, []int) {
-	return fileDescriptor_store_2bf46e8be68952db, []int{0}
+	return fileDescriptor_98bbca36ef968dfc, []int{0}
 }
+
 func (m *Message) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Message.Unmarshal(m, b)
 }
 func (m *Message) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_Message.Marshal(b, m, deterministic)
 }
-func (dst *Message) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Message.Merge(dst, src)
+func (m *Message) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Message.Merge(m, src)
 }
 func (m *Message) XXX_Size() int {
 	return xxx_messageInfo_Message.Size(m)
@@ -62,8 +62,258 @@ func (m *Message) GetMessage() string {
 	return ""
 }
 
+type ObjectStats struct {
+	Hash                 string   `protobuf:"bytes,1,opt,name=hash,proto3" json:"hash,omitempty"`
+	BlockSize            int32    `protobuf:"varint,2,opt,name=block_size,json=blockSize,proto3" json:"block_size,omitempty"`
+	CumulativeSize       int32    `protobuf:"varint,3,opt,name=cumulative_size,json=cumulativeSize,proto3" json:"cumulative_size,omitempty"`
+	DataSize             int32    `protobuf:"varint,4,opt,name=data_size,json=dataSize,proto3" json:"data_size,omitempty"`
+	LinksSize            int32    `protobuf:"varint,5,opt,name=links_size,json=linksSize,proto3" json:"links_size,omitempty"`
+	LinkCount            int32    `protobuf:"varint,6,opt,name=link_count,json=linkCount,proto3" json:"link_count,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *ObjectStats) Reset()         { *m = ObjectStats{} }
+func (m *ObjectStats) String() string { return proto.CompactTextString(m) }
+func (*ObjectStats) ProtoMessage()    {}
+func (*ObjectStats) Descriptor() ([]byte, []int) {
+	return fileDescriptor_98bbca36ef968dfc, []int{1}
+}
+
+func (m *ObjectStats) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ObjectStats.Unmarshal(m, b)
+}
+func (m *ObjectStats) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ObjectStats.Marshal(b, m, deterministic)
+}
+func (m *ObjectStats) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ObjectStats.Merge(m, src)
+}
+func (m *ObjectStats) XXX_Size() int {
+	return xxx_messageInfo_ObjectStats.Size(m)
+}
+func (m *ObjectStats) XXX_DiscardUnknown() {
+	xxx_messageInfo_ObjectStats.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ObjectStats proto.InternalMessageInfo
+
+func (m *ObjectStats) GetHash() string {
+	if m != nil {
+		return m.Hash
+	}
+	return ""
+}
+
+func (m *ObjectStats) GetBlockSize() int32 {
+	if m != nil {
+		return m.BlockSize
+	}
+	return 0
+}
+
+func (m *ObjectStats) GetCumulativeSize() int32 {
+	if m != nil {
+		return m.CumulativeSize
+	}
+	return 0
+}
+
+func (m *ObjectStats) GetDataSize() int32 {
+	if m != nil {
+		return m.DataSize
+	}
+	return 0
+}
+
+func (m *ObjectStats) GetLinksSize() int32 {
+	if m != nil {
+		return m.LinksSize
+	}
+	return 0
+}
+
+func (m *ObjectStats) GetLinkCount() int32 {
+	if m != nil {
+		return m.LinkCount
+	}
+	return 0
+}
+
+type Object struct {
+	Hash                 string   `protobuf:"bytes,1,opt,name=hash,proto3" json:"hash,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *Object) Reset()         { *m = Object{} }
+func (m *Object) String() string { return proto.CompactTextString(m) }
+func (*Object) ProtoMessage()    {}
+func (*Object) Descriptor() ([]byte, []int) {
+	return fileDescriptor_98bbca36ef968dfc, []int{2}
+}
+
+func (m *Object) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_Object.Unmarshal(m, b)
+}
+func (m *Object) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_Object.Marshal(b, m, deterministic)
+}
+func (m *Object) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Object.Merge(m, src)
+}
+func (m *Object) XXX_Size() int {
+	return xxx_messageInfo_Object.Size(m)
+}
+func (m *Object) XXX_DiscardUnknown() {
+	xxx_messageInfo_Object.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_Object proto.InternalMessageInfo
+
+func (m *Object) GetHash() string {
+	if m != nil {
+		return m.Hash
+	}
+	return ""
+}
+
+type Blob struct {
+	Content              []byte        `protobuf:"bytes,1,opt,name=content,proto3" json:"content,omitempty"`
+	HoldTime             int64         `protobuf:"varint,2,opt,name=hold_time,json=holdTime,proto3" json:"hold_time,omitempty"`
+	Options              *Blob_Options `protobuf:"bytes,3,opt,name=options,proto3" json:"options,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}      `json:"-"`
+	XXX_unrecognized     []byte        `json:"-"`
+	XXX_sizecache        int32         `json:"-"`
+}
+
+func (m *Blob) Reset()         { *m = Blob{} }
+func (m *Blob) String() string { return proto.CompactTextString(m) }
+func (*Blob) ProtoMessage()    {}
+func (*Blob) Descriptor() ([]byte, []int) {
+	return fileDescriptor_98bbca36ef968dfc, []int{3}
+}
+
+func (m *Blob) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_Blob.Unmarshal(m, b)
+}
+func (m *Blob) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_Blob.Marshal(b, m, deterministic)
+}
+func (m *Blob) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Blob.Merge(m, src)
+}
+func (m *Blob) XXX_Size() int {
+	return xxx_messageInfo_Blob.Size(m)
+}
+func (m *Blob) XXX_DiscardUnknown() {
+	xxx_messageInfo_Blob.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_Blob proto.InternalMessageInfo
+
+func (m *Blob) GetContent() []byte {
+	if m != nil {
+		return m.Content
+	}
+	return nil
+}
+
+func (m *Blob) GetHoldTime() int64 {
+	if m != nil {
+		return m.HoldTime
+	}
+	return 0
+}
+
+func (m *Blob) GetOptions() *Blob_Options {
+	if m != nil {
+		return m.Options
+	}
+	return nil
+}
+
+type Blob_Options struct {
+	Passphrase           string   `protobuf:"bytes,1,opt,name=passphrase,proto3" json:"passphrase,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *Blob_Options) Reset()         { *m = Blob_Options{} }
+func (m *Blob_Options) String() string { return proto.CompactTextString(m) }
+func (*Blob_Options) ProtoMessage()    {}
+func (*Blob_Options) Descriptor() ([]byte, []int) {
+	return fileDescriptor_98bbca36ef968dfc, []int{3, 0}
+}
+
+func (m *Blob_Options) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_Blob_Options.Unmarshal(m, b)
+}
+func (m *Blob_Options) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_Blob_Options.Marshal(b, m, deterministic)
+}
+func (m *Blob_Options) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Blob_Options.Merge(m, src)
+}
+func (m *Blob_Options) XXX_Size() int {
+	return xxx_messageInfo_Blob_Options.Size(m)
+}
+func (m *Blob_Options) XXX_DiscardUnknown() {
+	xxx_messageInfo_Blob_Options.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_Blob_Options proto.InternalMessageInfo
+
+func (m *Blob_Options) GetPassphrase() string {
+	if m != nil {
+		return m.Passphrase
+	}
+	return ""
+}
+
 func init() {
 	proto.RegisterType((*Message)(nil), "store.Message")
+	proto.RegisterType((*ObjectStats)(nil), "store.ObjectStats")
+	proto.RegisterType((*Object)(nil), "store.Object")
+	proto.RegisterType((*Blob)(nil), "store.Blob")
+	proto.RegisterType((*Blob_Options)(nil), "store.Blob.Options")
+}
+
+func init() { proto.RegisterFile("store.proto", fileDescriptor_98bbca36ef968dfc) }
+
+var fileDescriptor_98bbca36ef968dfc = []byte{
+	// 439 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x6c, 0x52, 0xcd, 0x6e, 0x13, 0x31,
+	0x10, 0xd6, 0xe6, 0x67, 0xd3, 0x4c, 0x48, 0x5a, 0x0d, 0x50, 0xad, 0x42, 0x8b, 0xaa, 0xe5, 0x40,
+	0x38, 0x90, 0x95, 0xda, 0x23, 0x17, 0x08, 0x67, 0x54, 0xb4, 0x29, 0xe7, 0xc8, 0xd9, 0x58, 0x89,
+	0xa9, 0xd7, 0xb6, 0x62, 0x6f, 0x0f, 0x3d, 0xf2, 0x0a, 0x08, 0xf1, 0x42, 0xbc, 0x01, 0xaf, 0xc0,
+	0x83, 0x20, 0x8f, 0x77, 0x95, 0x1f, 0xb8, 0x79, 0xbe, 0x9f, 0xb1, 0xbf, 0x19, 0xc3, 0xc0, 0x3a,
+	0xbd, 0xe5, 0x53, 0xb3, 0xd5, 0x4e, 0x63, 0x97, 0x8a, 0xf1, 0xc5, 0x5a, 0xeb, 0xb5, 0xe4, 0x19,
+	0x33, 0x22, 0x63, 0x4a, 0x69, 0xc7, 0x9c, 0xd0, 0xca, 0x06, 0x51, 0xfa, 0x0a, 0x7a, 0x9f, 0xb8,
+	0xb5, 0x6c, 0xcd, 0x31, 0x81, 0x5e, 0x19, 0x8e, 0x49, 0x74, 0x15, 0x4d, 0xfa, 0x79, 0x53, 0xa6,
+	0xbf, 0x22, 0x18, 0xdc, 0x2e, 0xbf, 0xf2, 0xc2, 0xcd, 0x1d, 0x73, 0x16, 0x11, 0x3a, 0x1b, 0x66,
+	0x37, 0xb5, 0x8c, 0xce, 0x78, 0x09, 0xb0, 0x94, 0xba, 0xb8, 0x5f, 0x58, 0xf1, 0xc8, 0x93, 0xd6,
+	0x55, 0x34, 0xe9, 0xe6, 0x7d, 0x42, 0xe6, 0xe2, 0x91, 0xe3, 0x6b, 0x38, 0x2d, 0xaa, 0xb2, 0x92,
+	0xcc, 0x89, 0x07, 0x1e, 0x34, 0x6d, 0xd2, 0x8c, 0x76, 0x30, 0x09, 0x5f, 0x40, 0x7f, 0xc5, 0x1c,
+	0x0b, 0x92, 0x0e, 0x49, 0x4e, 0x3c, 0x40, 0xe4, 0x25, 0x80, 0x14, 0xea, 0xde, 0x06, 0xb6, 0x1b,
+	0x2e, 0x21, 0x64, 0x9f, 0x5e, 0x14, 0xba, 0x52, 0x2e, 0x89, 0x77, 0xf4, 0x47, 0x0f, 0xa4, 0x17,
+	0x10, 0x87, 0x14, 0xff, 0x0b, 0x90, 0xfe, 0x8c, 0xa0, 0x33, 0x93, 0x7a, 0xe9, 0xe7, 0x50, 0x68,
+	0xe5, 0xb8, 0x72, 0xc4, 0x3f, 0xc9, 0x9b, 0xd2, 0xbf, 0x6d, 0xa3, 0xe5, 0x6a, 0xe1, 0x44, 0x19,
+	0x22, 0xb6, 0xf3, 0x13, 0x0f, 0xdc, 0x89, 0x92, 0xe3, 0x5b, 0xe8, 0x69, 0x43, 0xa3, 0xa5, 0x64,
+	0x83, 0xeb, 0xa7, 0xd3, 0xb0, 0x0d, 0xdf, 0x74, 0x7a, 0x1b, 0xa8, 0xbc, 0xd1, 0x8c, 0xdf, 0x40,
+	0xaf, 0xc6, 0xf0, 0x25, 0x80, 0x61, 0xd6, 0x9a, 0xcd, 0x96, 0xd9, 0x66, 0xf6, 0x7b, 0xc8, 0xf5,
+	0x8f, 0x16, 0x0c, 0xef, 0x78, 0x69, 0xf4, 0x96, 0xc9, 0xb9, 0x6f, 0x89, 0x33, 0x88, 0xfd, 0x26,
+	0x2a, 0x8b, 0xa3, 0xfa, 0x92, 0x7a, 0x89, 0xe3, 0xa3, 0x3a, 0x4d, 0xbe, 0xfd, 0xfe, 0xf3, 0xbd,
+	0x85, 0x78, 0x96, 0x3d, 0xdc, 0x64, 0x44, 0x65, 0x36, 0x38, 0xdf, 0x43, 0xfc, 0xc5, 0x48, 0xcd,
+	0x56, 0x38, 0xd8, 0x7b, 0xe8, 0x78, 0x58, 0x17, 0x61, 0x52, 0x8d, 0x3f, 0xdd, 0xf3, 0x57, 0xe4,
+	0x9a, 0x44, 0xf8, 0x0e, 0xda, 0x9f, 0x85, 0xc2, 0x43, 0xc7, 0x3f, 0x2f, 0x78, 0x4e, 0x1d, 0x4e,
+	0x71, 0xb8, 0xeb, 0x60, 0x84, 0xc2, 0x0f, 0xd0, 0xf1, 0x11, 0x8e, 0xdd, 0x78, 0x50, 0xd2, 0x77,
+	0x4b, 0xcf, 0xa9, 0xc3, 0x19, 0x8e, 0x0e, 0x33, 0xcc, 0xce, 0xe1, 0x59, 0x21, 0x75, 0xb5, 0x9a,
+	0xba, 0x7a, 0x38, 0xc1, 0xbb, 0x8c, 0xe9, 0x6b, 0xdf, 0xfc, 0x0d, 0x00, 0x00, 0xff, 0xff, 0x05,
+	0xf9, 0x29, 0x4c, 0x0e, 0x03, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -79,6 +329,12 @@ const _ = grpc.SupportPackageIsVersion4
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type TemporalStoreClient interface {
 	Status(ctx context.Context, in *Message, opts ...grpc.CallOption) (*Message, error)
+	// Upload accepts files and directories
+	Upload(ctx context.Context, opts ...grpc.CallOption) (TemporalStore_UploadClient, error)
+	// Pin handles new pins and pin extensions
+	Pin(ctx context.Context, in *Object, opts ...grpc.CallOption) (*Message, error)
+	// Stat retrieves details about an object
+	Stat(ctx context.Context, in *Object, opts ...grpc.CallOption) (*ObjectStats, error)
 }
 
 type temporalStoreClient struct {
@@ -98,20 +354,56 @@ func (c *temporalStoreClient) Status(ctx context.Context, in *Message, opts ...g
 	return out, nil
 }
 
-// TemporalStoreServer is the server API for TemporalStore service.
-func init() { proto.RegisterFile("store.proto", fileDescriptor_store_2bf46e8be68952db) }
-
-var fileDescriptor_store_2bf46e8be68952db = []byte{
-	// 169 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0xe2, 0x2e, 0x2e, 0xc9, 0x2f,
-	0x4a, 0xd5, 0x2b, 0x28, 0xca, 0x2f, 0xc9, 0x17, 0x62, 0x05, 0x73, 0xa4, 0x64, 0xd2, 0xf3, 0xf3,
-	0xd3, 0x73, 0x52, 0xf5, 0x13, 0x0b, 0x32, 0xf5, 0x13, 0xf3, 0xf2, 0xf2, 0x4b, 0x12, 0x4b, 0x32,
-	0xf3, 0xf3, 0x8a, 0x21, 0x8a, 0x94, 0x94, 0xb9, 0xd8, 0x7d, 0x53, 0x8b, 0x8b, 0x13, 0xd3, 0x53,
-	0x85, 0x24, 0xb8, 0xd8, 0x73, 0x21, 0x4c, 0x09, 0x46, 0x05, 0x46, 0x0d, 0xce, 0x20, 0x18, 0xd7,
-	0x28, 0x98, 0x8b, 0x37, 0x24, 0x35, 0xb7, 0x20, 0xbf, 0x28, 0x31, 0x27, 0x18, 0x64, 0xa6, 0x90,
-	0x13, 0x17, 0x5b, 0x70, 0x49, 0x62, 0x49, 0x69, 0xb1, 0x10, 0x9f, 0x1e, 0xc4, 0x4a, 0xa8, 0x21,
-	0x52, 0x68, 0x7c, 0x25, 0x89, 0xa6, 0xcb, 0x4f, 0x26, 0x33, 0x09, 0x09, 0x09, 0xe8, 0x97, 0x19,
-	0xeb, 0x83, 0xa5, 0xf4, 0x8b, 0xc1, 0x3a, 0x9d, 0xc4, 0xb8, 0x44, 0x92, 0x73, 0xf2, 0x4b, 0x53,
-	0xf4, 0x4a, 0xa0, 0x46, 0x43, 0x74, 0x26, 0xb1, 0x81, 0x1d, 0x66, 0x0c, 0x08, 0x00, 0x00, 0xff,
-	0xff, 0xcd, 0xcd, 0x8b, 0x48, 0xcc, 0x00, 0x00, 0x00,
+func (c *temporalStoreClient) Upload(ctx context.Context, opts ...grpc.CallOption) (TemporalStore_UploadClient, error) {
+	stream, err := c.cc.NewStream(ctx, &_TemporalStore_serviceDesc.Streams[0], "/store.TemporalStore/Upload", opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &temporalStoreUploadClient{stream}
+	return x, nil
 }
+
+type TemporalStore_UploadClient interface {
+	Send(*Blob) error
+	CloseAndRecv() (*Object, error)
+	grpc.ClientStream
+}
+
+type temporalStoreUploadClient struct {
+	grpc.ClientStream
+}
+
+func (x *temporalStoreUploadClient) Send(m *Blob) error {
+	return x.ClientStream.SendMsg(m)
+}
+
+func (x *temporalStoreUploadClient) CloseAndRecv() (*Object, error) {
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	m := new(Object)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
+func (c *temporalStoreClient) Pin(ctx context.Context, in *Object, opts ...grpc.CallOption) (*Message, error) {
+	out := new(Message)
+	err := c.cc.Invoke(ctx, "/store.TemporalStore/Pin", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *temporalStoreClient) Stat(ctx context.Context, in *Object, opts ...grpc.CallOption) (*ObjectStats, error) {
+	out := new(ObjectStats)
+	err := c.cc.Invoke(ctx, "/store.TemporalStore/Stat", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// TemporalStoreServer is the server API for TemporalStore service.

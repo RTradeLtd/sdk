@@ -94,6 +94,70 @@ public final class TemporalIPFSGrpc {
      return getNewKeyMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<cloud.temporal.ipfs.Ipfs.Event,
+      cloud.temporal.ipfs.Ipfs.Empty> getPublishMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "Publish",
+      requestType = cloud.temporal.ipfs.Ipfs.Event.class,
+      responseType = cloud.temporal.ipfs.Ipfs.Empty.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<cloud.temporal.ipfs.Ipfs.Event,
+      cloud.temporal.ipfs.Ipfs.Empty> getPublishMethod() {
+    io.grpc.MethodDescriptor<cloud.temporal.ipfs.Ipfs.Event, cloud.temporal.ipfs.Ipfs.Empty> getPublishMethod;
+    if ((getPublishMethod = TemporalIPFSGrpc.getPublishMethod) == null) {
+      synchronized (TemporalIPFSGrpc.class) {
+        if ((getPublishMethod = TemporalIPFSGrpc.getPublishMethod) == null) {
+          TemporalIPFSGrpc.getPublishMethod = getPublishMethod = 
+              io.grpc.MethodDescriptor.<cloud.temporal.ipfs.Ipfs.Event, cloud.temporal.ipfs.Ipfs.Empty>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(
+                  "ipfs.TemporalIPFS", "Publish"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  cloud.temporal.ipfs.Ipfs.Event.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  cloud.temporal.ipfs.Ipfs.Empty.getDefaultInstance()))
+                  .setSchemaDescriptor(new TemporalIPFSMethodDescriptorSupplier("Publish"))
+                  .build();
+          }
+        }
+     }
+     return getPublishMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<cloud.temporal.ipfs.Ipfs.Topic,
+      cloud.temporal.ipfs.Ipfs.Event> getSubscribeMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "Subscribe",
+      requestType = cloud.temporal.ipfs.Ipfs.Topic.class,
+      responseType = cloud.temporal.ipfs.Ipfs.Event.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
+  public static io.grpc.MethodDescriptor<cloud.temporal.ipfs.Ipfs.Topic,
+      cloud.temporal.ipfs.Ipfs.Event> getSubscribeMethod() {
+    io.grpc.MethodDescriptor<cloud.temporal.ipfs.Ipfs.Topic, cloud.temporal.ipfs.Ipfs.Event> getSubscribeMethod;
+    if ((getSubscribeMethod = TemporalIPFSGrpc.getSubscribeMethod) == null) {
+      synchronized (TemporalIPFSGrpc.class) {
+        if ((getSubscribeMethod = TemporalIPFSGrpc.getSubscribeMethod) == null) {
+          TemporalIPFSGrpc.getSubscribeMethod = getSubscribeMethod = 
+              io.grpc.MethodDescriptor.<cloud.temporal.ipfs.Ipfs.Topic, cloud.temporal.ipfs.Ipfs.Event>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
+              .setFullMethodName(generateFullMethodName(
+                  "ipfs.TemporalIPFS", "Subscribe"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  cloud.temporal.ipfs.Ipfs.Topic.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  cloud.temporal.ipfs.Ipfs.Event.getDefaultInstance()))
+                  .setSchemaDescriptor(new TemporalIPFSMethodDescriptorSupplier("Subscribe"))
+                  .build();
+          }
+        }
+     }
+     return getSubscribeMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -144,6 +208,20 @@ public final class TemporalIPFSGrpc {
       asyncUnimplementedUnaryCall(getNewKeyMethod(), responseObserver);
     }
 
+    /**
+     */
+    public void publish(cloud.temporal.ipfs.Ipfs.Event request,
+        io.grpc.stub.StreamObserver<cloud.temporal.ipfs.Ipfs.Empty> responseObserver) {
+      asyncUnimplementedUnaryCall(getPublishMethod(), responseObserver);
+    }
+
+    /**
+     */
+    public void subscribe(cloud.temporal.ipfs.Ipfs.Topic request,
+        io.grpc.stub.StreamObserver<cloud.temporal.ipfs.Ipfs.Event> responseObserver) {
+      asyncUnimplementedUnaryCall(getSubscribeMethod(), responseObserver);
+    }
+
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -160,6 +238,20 @@ public final class TemporalIPFSGrpc {
                 cloud.temporal.ipfs.Ipfs.Key,
                 cloud.temporal.ipfs.Ipfs.Empty>(
                   this, METHODID_NEW_KEY)))
+          .addMethod(
+            getPublishMethod(),
+            asyncUnaryCall(
+              new MethodHandlers<
+                cloud.temporal.ipfs.Ipfs.Event,
+                cloud.temporal.ipfs.Ipfs.Empty>(
+                  this, METHODID_PUBLISH)))
+          .addMethod(
+            getSubscribeMethod(),
+            asyncServerStreamingCall(
+              new MethodHandlers<
+                cloud.temporal.ipfs.Ipfs.Topic,
+                cloud.temporal.ipfs.Ipfs.Event>(
+                  this, METHODID_SUBSCRIBE)))
           .build();
     }
   }
@@ -206,6 +298,22 @@ public final class TemporalIPFSGrpc {
       asyncUnaryCall(
           getChannel().newCall(getNewKeyMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     */
+    public void publish(cloud.temporal.ipfs.Ipfs.Event request,
+        io.grpc.stub.StreamObserver<cloud.temporal.ipfs.Ipfs.Empty> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(getPublishMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void subscribe(cloud.temporal.ipfs.Ipfs.Topic request,
+        io.grpc.stub.StreamObserver<cloud.temporal.ipfs.Ipfs.Event> responseObserver) {
+      asyncServerStreamingCall(
+          getChannel().newCall(getSubscribeMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -247,6 +355,21 @@ public final class TemporalIPFSGrpc {
     public cloud.temporal.ipfs.Ipfs.Empty newKey(cloud.temporal.ipfs.Ipfs.Key request) {
       return blockingUnaryCall(
           getChannel(), getNewKeyMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public cloud.temporal.ipfs.Ipfs.Empty publish(cloud.temporal.ipfs.Ipfs.Event request) {
+      return blockingUnaryCall(
+          getChannel(), getPublishMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public java.util.Iterator<cloud.temporal.ipfs.Ipfs.Event> subscribe(
+        cloud.temporal.ipfs.Ipfs.Topic request) {
+      return blockingServerStreamingCall(
+          getChannel(), getSubscribeMethod(), getCallOptions(), request);
     }
   }
 
@@ -292,10 +415,20 @@ public final class TemporalIPFSGrpc {
       return futureUnaryCall(
           getChannel().newCall(getNewKeyMethod(), getCallOptions()), request);
     }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<cloud.temporal.ipfs.Ipfs.Empty> publish(
+        cloud.temporal.ipfs.Ipfs.Event request) {
+      return futureUnaryCall(
+          getChannel().newCall(getPublishMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_KEYS = 0;
   private static final int METHODID_NEW_KEY = 1;
+  private static final int METHODID_PUBLISH = 2;
+  private static final int METHODID_SUBSCRIBE = 3;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -321,6 +454,14 @@ public final class TemporalIPFSGrpc {
         case METHODID_NEW_KEY:
           serviceImpl.newKey((cloud.temporal.ipfs.Ipfs.Key) request,
               (io.grpc.stub.StreamObserver<cloud.temporal.ipfs.Ipfs.Empty>) responseObserver);
+          break;
+        case METHODID_PUBLISH:
+          serviceImpl.publish((cloud.temporal.ipfs.Ipfs.Event) request,
+              (io.grpc.stub.StreamObserver<cloud.temporal.ipfs.Ipfs.Empty>) responseObserver);
+          break;
+        case METHODID_SUBSCRIBE:
+          serviceImpl.subscribe((cloud.temporal.ipfs.Ipfs.Topic) request,
+              (io.grpc.stub.StreamObserver<cloud.temporal.ipfs.Ipfs.Event>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -385,6 +526,8 @@ public final class TemporalIPFSGrpc {
               .setSchemaDescriptor(new TemporalIPFSFileDescriptorSupplier())
               .addMethod(getKeysMethod())
               .addMethod(getNewKeyMethod())
+              .addMethod(getPublishMethod())
+              .addMethod(getSubscribeMethod())
               .build();
         }
       }

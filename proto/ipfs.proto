@@ -17,12 +17,29 @@ service TemporalIPFS {
   rpc NewKey(Key) returns (Empty) {
     option (google.api.http) = { post: "/v3/ipfs/keys/new" };
   };
+
+  rpc Publish(Event) returns (Empty) {
+    option (google.api.http) = { post: "/v3/ipfs/pubsub/publish" };
+  };
+
+  rpc Subscribe(Topic) returns (stream Event) {
+    option (google.api.http) = { get: "/v3/ipfs/pubsub/subscribe" };
+  };
 }
 
 message Empty { }
 
 message KeysResp { 
   repeated Key keys = 1;
+}
+
+message Event {
+  string topic = 1;
+  string message = 2;
+}
+
+message Topic {
+  string topic = 1;
 }
 
 /* MODELS */

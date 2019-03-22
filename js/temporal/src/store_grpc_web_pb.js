@@ -130,5 +130,117 @@ proto.store.TemporalStorePromiseClient.prototype.status =
 };
 
 
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.store.Object,
+ *   !proto.store.Message>}
+ */
+const methodInfo_TemporalStore_Pin = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.store.Message,
+  /** @param {!proto.store.Object} request */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.store.Message.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.store.Object} request The
+ *     request proto
+ * @param {!Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.Error, ?proto.store.Message)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.store.Message>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.store.TemporalStoreClient.prototype.pin =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/store.TemporalStore/Pin',
+      request,
+      metadata,
+      methodInfo_TemporalStore_Pin,
+      callback);
+};
+
+
+/**
+ * @param {!proto.store.Object} request The
+ *     request proto
+ * @param {!Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.store.Message>}
+ *     The XHR Node Readable Stream
+ */
+proto.store.TemporalStorePromiseClient.prototype.pin =
+    function(request, metadata) {
+  return new Promise((resolve, reject) => {
+    this.delegateClient_.pin(
+      request, metadata, (error, response) => {
+        error ? reject(error) : resolve(response);
+      });
+  });
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.store.Object,
+ *   !proto.store.ObjectStats>}
+ */
+const methodInfo_TemporalStore_Stat = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.store.ObjectStats,
+  /** @param {!proto.store.Object} request */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.store.ObjectStats.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.store.Object} request The
+ *     request proto
+ * @param {!Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.Error, ?proto.store.ObjectStats)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.store.ObjectStats>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.store.TemporalStoreClient.prototype.stat =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/store.TemporalStore/Stat',
+      request,
+      metadata,
+      methodInfo_TemporalStore_Stat,
+      callback);
+};
+
+
+/**
+ * @param {!proto.store.Object} request The
+ *     request proto
+ * @param {!Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.store.ObjectStats>}
+ *     The XHR Node Readable Stream
+ */
+proto.store.TemporalStorePromiseClient.prototype.stat =
+    function(request, metadata) {
+  return new Promise((resolve, reject) => {
+    this.delegateClient_.stat(
+      request, metadata, (error, response) => {
+        error ? reject(error) : resolve(response);
+      });
+  });
+};
+
+
 module.exports = proto.store;
 

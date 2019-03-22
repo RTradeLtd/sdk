@@ -3,14 +3,13 @@
 
 package ipfs
 
-import proto "github.com/golang/protobuf/proto"
-import fmt "fmt"
-import math "math"
-import _ "google.golang.org/genproto/googleapis/api/annotations"
-
 import (
-	context "golang.org/x/net/context"
+	context "context"
+	fmt "fmt"
+	proto "github.com/golang/protobuf/proto"
+	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
+	math "math"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -22,7 +21,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 type Key_RSA_Size int32
 
@@ -37,6 +36,7 @@ var Key_RSA_Size_name = map[int32]string{
 	1: "S_3072",
 	2: "S_4096",
 }
+
 var Key_RSA_Size_value = map[string]int32{
 	"S_2048": 0,
 	"S_3072": 1,
@@ -46,8 +46,9 @@ var Key_RSA_Size_value = map[string]int32{
 func (x Key_RSA_Size) String() string {
 	return proto.EnumName(Key_RSA_Size_name, int32(x))
 }
+
 func (Key_RSA_Size) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_ipfs_bb7a65297640261e, []int{2, 0, 0}
+	return fileDescriptor_faea06b5b3eb1738, []int{4, 0, 0}
 }
 
 type Key_ED25519_Size int32
@@ -59,6 +60,7 @@ const (
 var Key_ED25519_Size_name = map[int32]string{
 	0: "S_256",
 }
+
 var Key_ED25519_Size_value = map[string]int32{
 	"S_256": 0,
 }
@@ -66,8 +68,9 @@ var Key_ED25519_Size_value = map[string]int32{
 func (x Key_ED25519_Size) String() string {
 	return proto.EnumName(Key_ED25519_Size_name, int32(x))
 }
+
 func (Key_ED25519_Size) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_ipfs_bb7a65297640261e, []int{2, 1, 0}
+	return fileDescriptor_faea06b5b3eb1738, []int{4, 1, 0}
 }
 
 type Empty struct {
@@ -80,16 +83,17 @@ func (m *Empty) Reset()         { *m = Empty{} }
 func (m *Empty) String() string { return proto.CompactTextString(m) }
 func (*Empty) ProtoMessage()    {}
 func (*Empty) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ipfs_bb7a65297640261e, []int{0}
+	return fileDescriptor_faea06b5b3eb1738, []int{0}
 }
+
 func (m *Empty) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Empty.Unmarshal(m, b)
 }
 func (m *Empty) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_Empty.Marshal(b, m, deterministic)
 }
-func (dst *Empty) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Empty.Merge(dst, src)
+func (m *Empty) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Empty.Merge(m, src)
 }
 func (m *Empty) XXX_Size() int {
 	return xxx_messageInfo_Empty.Size(m)
@@ -111,16 +115,17 @@ func (m *KeysResp) Reset()         { *m = KeysResp{} }
 func (m *KeysResp) String() string { return proto.CompactTextString(m) }
 func (*KeysResp) ProtoMessage()    {}
 func (*KeysResp) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ipfs_bb7a65297640261e, []int{1}
+	return fileDescriptor_faea06b5b3eb1738, []int{1}
 }
+
 func (m *KeysResp) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_KeysResp.Unmarshal(m, b)
 }
 func (m *KeysResp) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_KeysResp.Marshal(b, m, deterministic)
 }
-func (dst *KeysResp) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_KeysResp.Merge(dst, src)
+func (m *KeysResp) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_KeysResp.Merge(m, src)
 }
 func (m *KeysResp) XXX_Size() int {
 	return xxx_messageInfo_KeysResp.Size(m)
@@ -136,6 +141,92 @@ func (m *KeysResp) GetKeys() []*Key {
 		return m.Keys
 	}
 	return nil
+}
+
+type Event struct {
+	Topic                string   `protobuf:"bytes,1,opt,name=topic,proto3" json:"topic,omitempty"`
+	Message              string   `protobuf:"bytes,2,opt,name=message,proto3" json:"message,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *Event) Reset()         { *m = Event{} }
+func (m *Event) String() string { return proto.CompactTextString(m) }
+func (*Event) ProtoMessage()    {}
+func (*Event) Descriptor() ([]byte, []int) {
+	return fileDescriptor_faea06b5b3eb1738, []int{2}
+}
+
+func (m *Event) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_Event.Unmarshal(m, b)
+}
+func (m *Event) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_Event.Marshal(b, m, deterministic)
+}
+func (m *Event) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Event.Merge(m, src)
+}
+func (m *Event) XXX_Size() int {
+	return xxx_messageInfo_Event.Size(m)
+}
+func (m *Event) XXX_DiscardUnknown() {
+	xxx_messageInfo_Event.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_Event proto.InternalMessageInfo
+
+func (m *Event) GetTopic() string {
+	if m != nil {
+		return m.Topic
+	}
+	return ""
+}
+
+func (m *Event) GetMessage() string {
+	if m != nil {
+		return m.Message
+	}
+	return ""
+}
+
+type Topic struct {
+	Topic                string   `protobuf:"bytes,1,opt,name=topic,proto3" json:"topic,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *Topic) Reset()         { *m = Topic{} }
+func (m *Topic) String() string { return proto.CompactTextString(m) }
+func (*Topic) ProtoMessage()    {}
+func (*Topic) Descriptor() ([]byte, []int) {
+	return fileDescriptor_faea06b5b3eb1738, []int{3}
+}
+
+func (m *Topic) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_Topic.Unmarshal(m, b)
+}
+func (m *Topic) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_Topic.Marshal(b, m, deterministic)
+}
+func (m *Topic) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Topic.Merge(m, src)
+}
+func (m *Topic) XXX_Size() int {
+	return xxx_messageInfo_Topic.Size(m)
+}
+func (m *Topic) XXX_DiscardUnknown() {
+	xxx_messageInfo_Topic.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_Topic proto.InternalMessageInfo
+
+func (m *Topic) GetTopic() string {
+	if m != nil {
+		return m.Topic
+	}
+	return ""
 }
 
 type Key struct {
@@ -154,16 +245,17 @@ func (m *Key) Reset()         { *m = Key{} }
 func (m *Key) String() string { return proto.CompactTextString(m) }
 func (*Key) ProtoMessage()    {}
 func (*Key) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ipfs_bb7a65297640261e, []int{2}
+	return fileDescriptor_faea06b5b3eb1738, []int{4}
 }
+
 func (m *Key) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Key.Unmarshal(m, b)
 }
 func (m *Key) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_Key.Marshal(b, m, deterministic)
 }
-func (dst *Key) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Key.Merge(dst, src)
+func (m *Key) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Key.Merge(m, src)
 }
 func (m *Key) XXX_Size() int {
 	return xxx_messageInfo_Key.Size(m)
@@ -225,78 +317,12 @@ func (m *Key) GetId() string {
 	return ""
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*Key) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _Key_OneofMarshaler, _Key_OneofUnmarshaler, _Key_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*Key) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*Key_Rsa)(nil),
 		(*Key_Ed25519)(nil),
 	}
-}
-
-func _Key_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*Key)
-	// type
-	switch x := m.Type.(type) {
-	case *Key_Rsa:
-		b.EncodeVarint(1<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.Rsa); err != nil {
-			return err
-		}
-	case *Key_Ed25519:
-		b.EncodeVarint(2<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.Ed25519); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("Key.Type has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _Key_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*Key)
-	switch tag {
-	case 1: // type.rsa
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(Key_RSA)
-		err := b.DecodeMessage(msg)
-		m.Type = &Key_Rsa{msg}
-		return true, err
-	case 2: // type.ed25519
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(Key_ED25519)
-		err := b.DecodeMessage(msg)
-		m.Type = &Key_Ed25519{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _Key_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*Key)
-	// type
-	switch x := m.Type.(type) {
-	case *Key_Rsa:
-		s := proto.Size(x.Rsa)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *Key_Ed25519:
-		s := proto.Size(x.Ed25519)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 type Key_RSA struct {
@@ -310,16 +336,17 @@ func (m *Key_RSA) Reset()         { *m = Key_RSA{} }
 func (m *Key_RSA) String() string { return proto.CompactTextString(m) }
 func (*Key_RSA) ProtoMessage()    {}
 func (*Key_RSA) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ipfs_bb7a65297640261e, []int{2, 0}
+	return fileDescriptor_faea06b5b3eb1738, []int{4, 0}
 }
+
 func (m *Key_RSA) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Key_RSA.Unmarshal(m, b)
 }
 func (m *Key_RSA) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_Key_RSA.Marshal(b, m, deterministic)
 }
-func (dst *Key_RSA) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Key_RSA.Merge(dst, src)
+func (m *Key_RSA) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Key_RSA.Merge(m, src)
 }
 func (m *Key_RSA) XXX_Size() int {
 	return xxx_messageInfo_Key_RSA.Size(m)
@@ -348,16 +375,17 @@ func (m *Key_ED25519) Reset()         { *m = Key_ED25519{} }
 func (m *Key_ED25519) String() string { return proto.CompactTextString(m) }
 func (*Key_ED25519) ProtoMessage()    {}
 func (*Key_ED25519) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ipfs_bb7a65297640261e, []int{2, 1}
+	return fileDescriptor_faea06b5b3eb1738, []int{4, 1}
 }
+
 func (m *Key_ED25519) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Key_ED25519.Unmarshal(m, b)
 }
 func (m *Key_ED25519) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_Key_ED25519.Marshal(b, m, deterministic)
 }
-func (dst *Key_ED25519) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Key_ED25519.Merge(dst, src)
+func (m *Key_ED25519) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Key_ED25519.Merge(m, src)
 }
 func (m *Key_ED25519) XXX_Size() int {
 	return xxx_messageInfo_Key_ED25519.Size(m)
@@ -376,13 +404,52 @@ func (m *Key_ED25519) GetSize() Key_ED25519_Size {
 }
 
 func init() {
+	proto.RegisterEnum("ipfs.Key_RSA_Size", Key_RSA_Size_name, Key_RSA_Size_value)
+	proto.RegisterEnum("ipfs.Key_ED25519_Size", Key_ED25519_Size_name, Key_ED25519_Size_value)
 	proto.RegisterType((*Empty)(nil), "ipfs.Empty")
 	proto.RegisterType((*KeysResp)(nil), "ipfs.KeysResp")
+	proto.RegisterType((*Event)(nil), "ipfs.Event")
+	proto.RegisterType((*Topic)(nil), "ipfs.Topic")
 	proto.RegisterType((*Key)(nil), "ipfs.Key")
 	proto.RegisterType((*Key_RSA)(nil), "ipfs.Key.RSA")
 	proto.RegisterType((*Key_ED25519)(nil), "ipfs.Key.ED25519")
-	proto.RegisterEnum("ipfs.Key_RSA_Size", Key_RSA_Size_name, Key_RSA_Size_value)
-	proto.RegisterEnum("ipfs.Key_ED25519_Size", Key_ED25519_Size_name, Key_ED25519_Size_value)
+}
+
+func init() { proto.RegisterFile("ipfs.proto", fileDescriptor_faea06b5b3eb1738) }
+
+var fileDescriptor_faea06b5b3eb1738 = []byte{
+	// 495 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x6c, 0x92, 0xcb, 0x6e, 0xd3, 0x50,
+	0x10, 0x86, 0x13, 0x5f, 0x62, 0x32, 0xa1, 0x25, 0x99, 0x52, 0x70, 0x0c, 0x15, 0xed, 0x59, 0xa0,
+	0x52, 0x09, 0x3b, 0x38, 0x4d, 0x4b, 0x61, 0xd5, 0xaa, 0x41, 0x81, 0x48, 0xa8, 0xb2, 0xbb, 0x61,
+	0x55, 0xd9, 0xc9, 0x21, 0x1c, 0x91, 0xd8, 0x56, 0x8e, 0xdd, 0xca, 0x5d, 0xf2, 0x0a, 0xac, 0x78,
+	0x03, 0xde, 0x87, 0x57, 0xe0, 0x41, 0x90, 0x27, 0x97, 0x26, 0xc0, 0xca, 0x73, 0xfb, 0xbf, 0xdf,
+	0x3a, 0x33, 0x00, 0x22, 0xf9, 0x2c, 0xed, 0x64, 0x1a, 0xa7, 0x31, 0x6a, 0x45, 0x6c, 0x3d, 0x1d,
+	0xc5, 0xf1, 0x68, 0xcc, 0x9d, 0x20, 0x11, 0x4e, 0x10, 0x45, 0x71, 0x1a, 0xa4, 0x22, 0x8e, 0xe6,
+	0x33, 0xcc, 0x00, 0xbd, 0x3b, 0x49, 0xd2, 0x9c, 0xbd, 0x80, 0x7b, 0x7d, 0x9e, 0x4b, 0x8f, 0xcb,
+	0x04, 0x77, 0x40, 0xfb, 0xca, 0x73, 0x69, 0x96, 0x77, 0xd5, 0xfd, 0x9a, 0x5b, 0xb5, 0x89, 0xd9,
+	0xe7, 0xb9, 0x47, 0x65, 0x76, 0x0c, 0x7a, 0xf7, 0x9a, 0x47, 0x29, 0x3e, 0x04, 0x3d, 0x8d, 0x13,
+	0x31, 0x30, 0xcb, 0xbb, 0xe5, 0xfd, 0xaa, 0x37, 0x4b, 0xd0, 0x04, 0x63, 0xc2, 0xa5, 0x0c, 0x46,
+	0xdc, 0x54, 0xa8, 0xbe, 0x48, 0xd9, 0x0e, 0xe8, 0x97, 0x34, 0xf2, 0x5f, 0x21, 0xfb, 0xa9, 0x80,
+	0xda, 0xe7, 0x39, 0xee, 0x81, 0x3a, 0x95, 0x01, 0xf5, 0x6a, 0xee, 0xc6, 0xd2, 0xdd, 0xf6, 0xfc,
+	0xd3, 0x5e, 0xc9, 0x2b, 0x7a, 0xf8, 0x12, 0x0c, 0x3e, 0x74, 0x3b, 0x9d, 0x57, 0x27, 0xe4, 0x51,
+	0x73, 0x1b, 0x77, 0x63, 0xdd, 0x73, 0x6a, 0xf4, 0x4a, 0xde, 0x62, 0x06, 0x11, 0xb4, 0x28, 0x98,
+	0x70, 0x53, 0x25, 0x3b, 0x8a, 0x71, 0x13, 0x14, 0x31, 0x34, 0x35, 0xaa, 0x28, 0x62, 0x68, 0x7d,
+	0x02, 0xd5, 0xf3, 0x4f, 0xf1, 0x39, 0x68, 0x52, 0xdc, 0x72, 0x72, 0xdf, 0x74, 0x71, 0xcd, 0xdd,
+	0xf6, 0xc5, 0x2d, 0xf7, 0xa8, 0xcf, 0x0e, 0x40, 0x2b, 0x32, 0x04, 0xa8, 0xf8, 0x57, 0x6e, 0xeb,
+	0xf0, 0x75, 0xbd, 0x34, 0x8b, 0xdb, 0xad, 0x63, 0xb7, 0x5e, 0x9e, 0xc5, 0x87, 0xad, 0x93, 0xa3,
+	0xba, 0x62, 0xf5, 0xc0, 0x98, 0xff, 0x14, 0x1e, 0xac, 0xe1, 0x1f, 0xfd, 0xf3, 0xd7, 0xab, 0x16,
+	0x8d, 0xb9, 0x45, 0x15, 0x74, 0xff, 0xca, 0xed, 0x1c, 0xd5, 0x4b, 0x67, 0x15, 0xd0, 0xd2, 0x3c,
+	0xe1, 0xee, 0x0f, 0x05, 0xee, 0x5f, 0xf2, 0x49, 0x12, 0x4f, 0x83, 0xf1, 0xfb, 0x8b, 0x77, 0x3e,
+	0xbe, 0x01, 0xad, 0x58, 0x1f, 0xd6, 0x66, 0x44, 0xda, 0xa9, 0xb5, 0xb9, 0xc4, 0xd3, 0x5e, 0xd9,
+	0xf6, 0xb7, 0x5f, 0xbf, 0xbf, 0x2b, 0x0f, 0x70, 0xc3, 0xb9, 0x6e, 0x3b, 0x45, 0xcb, 0x29, 0xf6,
+	0x89, 0x6f, 0xa1, 0xf2, 0x91, 0xdf, 0x14, 0x2f, 0x7f, 0xb7, 0x6a, 0x6b, 0x15, 0xc4, 0x9a, 0x24,
+	0xdc, 0x62, 0x8d, 0x35, 0xa1, 0x13, 0xf1, 0x1b, 0x3c, 0x07, 0xe3, 0x22, 0x0b, 0xc7, 0x42, 0x7e,
+	0x59, 0x7a, 0x17, 0xb7, 0xb1, 0xae, 0x7f, 0x46, 0xfa, 0x26, 0x7b, 0xbc, 0xd4, 0x27, 0x59, 0x28,
+	0xb3, 0xb0, 0xf8, 0x90, 0xf4, 0x03, 0x54, 0xfd, 0x2c, 0x94, 0x83, 0xa9, 0x08, 0xf9, 0x82, 0x43,
+	0xa7, 0x62, 0xad, 0x42, 0xd9, 0x1e, 0x71, 0x9e, 0x60, 0xf3, 0x6f, 0x8e, 0x5c, 0x88, 0x5b, 0xe5,
+	0xb3, 0x6d, 0xd8, 0x1a, 0x8c, 0xe3, 0x6c, 0x68, 0xa7, 0xf3, 0x07, 0x22, 0x42, 0x58, 0xa1, 0x83,
+	0x6f, 0xff, 0x09, 0x00, 0x00, 0xff, 0xff, 0xf9, 0x3a, 0xe1, 0xa2, 0x22, 0x03, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -401,6 +468,8 @@ type TemporalIPFSClient interface {
 	Keys(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*KeysResp, error)
 	// NewKey generates a new IPFS key associated with an authenticated request.
 	NewKey(ctx context.Context, in *Key, opts ...grpc.CallOption) (*Empty, error)
+	Publish(ctx context.Context, in *Event, opts ...grpc.CallOption) (*Empty, error)
+	Subscribe(ctx context.Context, in *Topic, opts ...grpc.CallOption) (TemporalIPFS_SubscribeClient, error)
 }
 
 type temporalIPFSClient struct {
@@ -429,34 +498,45 @@ func (c *temporalIPFSClient) NewKey(ctx context.Context, in *Key, opts ...grpc.C
 	return out, nil
 }
 
-// TemporalIPFSServer is the server API for TemporalIPFS service.
-func init() { proto.RegisterFile("ipfs.proto", fileDescriptor_ipfs_bb7a65297640261e) }
-
-var fileDescriptor_ipfs_bb7a65297640261e = []byte{
-	// 398 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x64, 0x52, 0xcb, 0x6e, 0xda, 0x40,
-	0x14, 0xf5, 0x63, 0x30, 0xe5, 0x52, 0xa8, 0x19, 0x44, 0xe5, 0x5a, 0xad, 0x44, 0xbd, 0xa8, 0x28,
-	0x52, 0x6d, 0x3a, 0x3c, 0x5a, 0xda, 0x15, 0xa8, 0x54, 0x54, 0x48, 0x55, 0x35, 0xee, 0xa6, 0x2b,
-	0xe4, 0xc6, 0x13, 0x64, 0x05, 0x3c, 0x16, 0x76, 0x82, 0xcc, 0x32, 0x9b, 0x7c, 0x40, 0x7e, 0x22,
-	0xff, 0x93, 0x5f, 0xc8, 0x87, 0x44, 0x1e, 0x1c, 0x1e, 0xca, 0xee, 0xf8, 0x9e, 0x73, 0xcf, 0xb9,
-	0x3a, 0x1e, 0x80, 0x20, 0x3a, 0x8f, 0xed, 0x68, 0xcd, 0x13, 0x8e, 0x51, 0x86, 0xcd, 0xb7, 0x0b,
-	0xce, 0x17, 0x4b, 0xe6, 0x78, 0x51, 0xe0, 0x78, 0x61, 0xc8, 0x13, 0x2f, 0x09, 0x78, 0x98, 0x6b,
-	0xac, 0x22, 0x14, 0x26, 0xab, 0x28, 0x49, 0xad, 0x8f, 0xf0, 0x62, 0xc6, 0xd2, 0x98, 0xb2, 0x38,
-	0xc2, 0xef, 0x00, 0x5d, 0xb0, 0x34, 0x36, 0xe4, 0xa6, 0xda, 0x2a, 0x93, 0x92, 0x2d, 0x3c, 0x67,
-	0x2c, 0xa5, 0x62, 0x6c, 0xdd, 0x29, 0xa0, 0xce, 0x58, 0x8a, 0xdf, 0x83, 0xba, 0x8e, 0x3d, 0x43,
-	0x6e, 0xca, 0xad, 0x32, 0xa9, 0xec, 0x55, 0x36, 0x75, 0x47, 0x53, 0x89, 0x66, 0x1c, 0xfe, 0x04,
-	0x45, 0xe6, 0x93, 0x7e, 0xff, 0xf3, 0xd0, 0x50, 0x84, 0xac, 0x76, 0x90, 0x4d, 0x7e, 0x08, 0x62,
-	0x2a, 0xd1, 0x27, 0x0d, 0xc6, 0x80, 0x42, 0x6f, 0xc5, 0x0c, 0xb5, 0x29, 0xb7, 0x4a, 0x54, 0x60,
-	0x5c, 0x05, 0x25, 0xf0, 0x0d, 0x24, 0x26, 0x4a, 0xe0, 0x9b, 0xff, 0x40, 0xa5, 0xee, 0x08, 0x7f,
-	0x00, 0x14, 0x07, 0x5b, 0x26, 0xd2, 0xab, 0x04, 0x9f, 0xa4, 0xdb, 0x6e, 0xb0, 0x65, 0x54, 0xf0,
-	0x56, 0x1b, 0x50, 0xf6, 0x85, 0x01, 0x34, 0x77, 0x4e, 0x3a, 0xbd, 0xaf, 0xba, 0xb4, 0xc3, 0xdd,
-	0xce, 0x17, 0xa2, 0xcb, 0x3b, 0xdc, 0xeb, 0x0c, 0x07, 0xba, 0x62, 0x4e, 0xa1, 0x98, 0x1f, 0x85,
-	0xdb, 0x27, 0xf6, 0xaf, 0x9f, 0x5d, 0x7d, 0x1c, 0x51, 0xcb, 0x23, 0x4a, 0x50, 0x70, 0xe7, 0xa4,
-	0x3f, 0xd0, 0xa5, 0xb1, 0x06, 0x28, 0x49, 0x23, 0x46, 0x6e, 0x64, 0x78, 0xf9, 0x97, 0xad, 0x22,
-	0xbe, 0xf6, 0x96, 0xbf, 0xfe, 0xfc, 0x74, 0xf1, 0x37, 0x40, 0x59, 0xcd, 0xb8, 0xbc, 0x73, 0x14,
-	0xdd, 0x9b, 0xd5, 0xbd, 0xbd, 0xe8, 0xdf, 0x6a, 0x5c, 0xdf, 0x3f, 0xdc, 0x2a, 0xaf, 0x70, 0xc5,
-	0xb9, 0xea, 0x3a, 0x19, 0xe5, 0x64, 0xbd, 0xe3, 0xef, 0xa0, 0xfd, 0x66, 0x9b, 0xac, 0xf9, 0xc3,
-	0x2f, 0x31, 0x8f, 0x8d, 0xac, 0x37, 0x62, 0xb1, 0x6e, 0xd5, 0x4e, 0x16, 0x9d, 0x90, 0x6d, 0xc6,
-	0x0d, 0xa8, 0x9f, 0x2d, 0xf9, 0xa5, 0x6f, 0x27, 0xf9, 0x39, 0x62, 0xef, 0xbf, 0x26, 0x9e, 0x41,
-	0xf7, 0x31, 0x00, 0x00, 0xff, 0xff, 0x0a, 0x46, 0x7c, 0x28, 0x38, 0x02, 0x00, 0x00,
+func (c *temporalIPFSClient) Publish(ctx context.Context, in *Event, opts ...grpc.CallOption) (*Empty, error) {
+	out := new(Empty)
+	err := c.cc.Invoke(ctx, "/ipfs.TemporalIPFS/Publish", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
 }
+
+func (c *temporalIPFSClient) Subscribe(ctx context.Context, in *Topic, opts ...grpc.CallOption) (TemporalIPFS_SubscribeClient, error) {
+	stream, err := c.cc.NewStream(ctx, &_TemporalIPFS_serviceDesc.Streams[0], "/ipfs.TemporalIPFS/Subscribe", opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &temporalIPFSSubscribeClient{stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+type TemporalIPFS_SubscribeClient interface {
+	Recv() (*Event, error)
+	grpc.ClientStream
+}
+
+type temporalIPFSSubscribeClient struct {
+	grpc.ClientStream
+}
+
+func (x *temporalIPFSSubscribeClient) Recv() (*Event, error) {
+	m := new(Event)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
+// TemporalIPFSServer is the server API for TemporalIPFS service.
