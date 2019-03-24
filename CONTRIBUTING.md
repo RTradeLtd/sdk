@@ -7,14 +7,16 @@ prerequisites installed first:
 
 ### Go
 
-* TODO
+See [`scripts/install/protoc-go.sh`](/scripts/install/protoc-go.sh)
 
 ### Java
 
-* Download the plugin from [Maven](https://search.maven.org/search?q=g:io.grpc%20a:protoc-gen-grpc-java)
-  and save it as `./build/protoc-gen-grpc-java`.
+See [`scripts/install/protoc-java.sh`](/scripts/install/protoc-java.sh)
 
 ### JavaScript
 
-* Download the plugin from [`grpc-web`](https://github.com/grpc/grpc-web/releases)
-  and save it as `./build/protoc-gen-grpc-web`.
+See [`scripts/install/protoc-js.sh`](/scripts/install/protoc-js.sh)
+
+## Python
+
+See [`scripts/install/protoc-py.sh`](/scripts/install/protoc-py.sh)
