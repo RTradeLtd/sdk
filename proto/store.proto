@@ -15,6 +15,7 @@ service TemporalStore {
     option (google.api.http) = { post: "/v3/store/objects/upload" };
   };
 
+  // Download retrieves an object
   rpc Download(DownloadReq) returns (stream Blob) {
     option (google.api.http) = { post: "/v3/store/objects/download" };
   };
@@ -29,23 +30,26 @@ service TemporalStore {
     option (google.api.http) = { get: "/v3/store/objects/stat" };
   };
 
+  // ListObjects retrieves a list of the authenticated user's objects
   rpc ListObjects(ListObjectsReq) returns (ObjectList) {
     option (google.api.http) = { post: "/v3/store/objects/list" };
   };
 
   /* IPFS PUBSUB */
 
+  // Publish publishes a message to the requested topic
   rpc Publish(Event) returns (Empty) {
     option (google.api.http) = { post: "/v3/store/pubsub/publish" };
   };
 
+  // Subscribe subscribes to messages from the requested topic
   rpc Subscribe(Topic) returns (stream Event) {
     option (google.api.http) = { get: "/v3/store/pubsub/subscribe" };
   };
 
   /* IPFS KEYS */
 
-  // Keys returns the IPFS keys associated with an authenticated request.
+  // Keys returns the IPFS keys associated with an authenticated request
   rpc Keys(Empty) returns (KeyList) {
     option (google.api.http) = { get: "/v3/store/keys" };
   };

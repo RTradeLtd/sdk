@@ -359,6 +359,9 @@ public final class TemporalStoreGrpc {
     }
 
     /**
+     * <pre>
+     * Download retrieves an object
+     * </pre>
      */
     public void download(cloud.temporal.store.Store.DownloadReq request,
         io.grpc.stub.StreamObserver<cloud.temporal.store.Store.Blob> responseObserver) {
@@ -386,6 +389,9 @@ public final class TemporalStoreGrpc {
     }
 
     /**
+     * <pre>
+     * ListObjects retrieves a list of the authenticated user's objects
+     * </pre>
      */
     public void listObjects(cloud.temporal.store.Store.ListObjectsReq request,
         io.grpc.stub.StreamObserver<cloud.temporal.store.Store.ObjectList> responseObserver) {
@@ -393,6 +399,9 @@ public final class TemporalStoreGrpc {
     }
 
     /**
+     * <pre>
+     * Publish publishes a message to the requested topic
+     * </pre>
      */
     public void publish(cloud.temporal.store.Store.Event request,
         io.grpc.stub.StreamObserver<cloud.temporal.store.Store.Empty> responseObserver) {
@@ -400,6 +409,9 @@ public final class TemporalStoreGrpc {
     }
 
     /**
+     * <pre>
+     * Subscribe subscribes to messages from the requested topic
+     * </pre>
      */
     public void subscribe(cloud.temporal.store.Store.Topic request,
         io.grpc.stub.StreamObserver<cloud.temporal.store.Store.Event> responseObserver) {
@@ -408,7 +420,7 @@ public final class TemporalStoreGrpc {
 
     /**
      * <pre>
-     * Keys returns the IPFS keys associated with an authenticated request.
+     * Keys returns the IPFS keys associated with an authenticated request
      * </pre>
      */
     public void keys(cloud.temporal.store.Store.Empty request,
@@ -528,6 +540,9 @@ public final class TemporalStoreGrpc {
     }
 
     /**
+     * <pre>
+     * Download retrieves an object
+     * </pre>
      */
     public void download(cloud.temporal.store.Store.DownloadReq request,
         io.grpc.stub.StreamObserver<cloud.temporal.store.Store.Blob> responseObserver) {
@@ -558,6 +573,9 @@ public final class TemporalStoreGrpc {
     }
 
     /**
+     * <pre>
+     * ListObjects retrieves a list of the authenticated user's objects
+     * </pre>
      */
     public void listObjects(cloud.temporal.store.Store.ListObjectsReq request,
         io.grpc.stub.StreamObserver<cloud.temporal.store.Store.ObjectList> responseObserver) {
@@ -566,6 +584,9 @@ public final class TemporalStoreGrpc {
     }
 
     /**
+     * <pre>
+     * Publish publishes a message to the requested topic
+     * </pre>
      */
     public void publish(cloud.temporal.store.Store.Event request,
         io.grpc.stub.StreamObserver<cloud.temporal.store.Store.Empty> responseObserver) {
@@ -574,6 +595,9 @@ public final class TemporalStoreGrpc {
     }
 
     /**
+     * <pre>
+     * Subscribe subscribes to messages from the requested topic
+     * </pre>
      */
     public void subscribe(cloud.temporal.store.Store.Topic request,
         io.grpc.stub.StreamObserver<cloud.temporal.store.Store.Event> responseObserver) {
@@ -583,7 +607,7 @@ public final class TemporalStoreGrpc {
 
     /**
      * <pre>
-     * Keys returns the IPFS keys associated with an authenticated request.
+     * Keys returns the IPFS keys associated with an authenticated request
      * </pre>
      */
     public void keys(cloud.temporal.store.Store.Empty request,
@@ -626,6 +650,9 @@ public final class TemporalStoreGrpc {
     }
 
     /**
+     * <pre>
+     * Download retrieves an object
+     * </pre>
      */
     public java.util.Iterator<cloud.temporal.store.Store.Blob> download(
         cloud.temporal.store.Store.DownloadReq request) {
@@ -654,6 +681,9 @@ public final class TemporalStoreGrpc {
     }
 
     /**
+     * <pre>
+     * ListObjects retrieves a list of the authenticated user's objects
+     * </pre>
      */
     public cloud.temporal.store.Store.ObjectList listObjects(cloud.temporal.store.Store.ListObjectsReq request) {
       return blockingUnaryCall(
@@ -661,6 +691,9 @@ public final class TemporalStoreGrpc {
     }
 
     /**
+     * <pre>
+     * Publish publishes a message to the requested topic
+     * </pre>
      */
     public cloud.temporal.store.Store.Empty publish(cloud.temporal.store.Store.Event request) {
       return blockingUnaryCall(
@@ -668,6 +701,9 @@ public final class TemporalStoreGrpc {
     }
 
     /**
+     * <pre>
+     * Subscribe subscribes to messages from the requested topic
+     * </pre>
      */
     public java.util.Iterator<cloud.temporal.store.Store.Event> subscribe(
         cloud.temporal.store.Store.Topic request) {
@@ -677,7 +713,7 @@ public final class TemporalStoreGrpc {
 
     /**
      * <pre>
-     * Keys returns the IPFS keys associated with an authenticated request.
+     * Keys returns the IPFS keys associated with an authenticated request
      * </pre>
      */
     public cloud.temporal.store.Store.KeyList keys(cloud.temporal.store.Store.Empty request) {
@@ -740,6 +776,9 @@ public final class TemporalStoreGrpc {
     }
 
     /**
+     * <pre>
+     * ListObjects retrieves a list of the authenticated user's objects
+     * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<cloud.temporal.store.Store.ObjectList> listObjects(
         cloud.temporal.store.Store.ListObjectsReq request) {
@@ -748,6 +787,9 @@ public final class TemporalStoreGrpc {
     }
 
     /**
+     * <pre>
+     * Publish publishes a message to the requested topic
+     * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<cloud.temporal.store.Store.Empty> publish(
         cloud.temporal.store.Store.Event request) {
@@ -757,7 +799,7 @@ public final class TemporalStoreGrpc {
 
     /**
      * <pre>
-     * Keys returns the IPFS keys associated with an authenticated request.
+     * Keys returns the IPFS keys associated with an authenticated request
      * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<cloud.temporal.store.Store.KeyList> keys(

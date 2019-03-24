@@ -8,26 +8,32 @@ import "google/api/annotations.proto";
 // TemporalIPFS implements Temporal's IPFS management APIs, most notably private
 // networks.
 service TemporalIPFS {
+  // CreateNetwork creates a new hosted IPFS network
   rpc CreateNetwork(CreateNetworkReq) returns (NetworkDetails) {
     option (google.api.http) = { post: "/v3/ipfs/networks/create" };
   };
 
+  // StartNetwork spins up a previously created IPFS network
   rpc StartNetwork(Network) returns (Empty) {
     option (google.api.http) = { post: "/v3/ipfs/networks/start" };
   };
 
+  // StopNetwork shuts down an IPFS network
   rpc StopNetwork(Network) returns (Empty) {
     option (google.api.http) = { post: "/v3/ipfs/networks/stop" };
   };
 
+  // RemoveNetwork deletes an IPFS network
   rpc RemoveNetwork(Network) returns (Empty) {
     option (google.api.http) = { post: "/v3/ipfs/networks/stop" };
   };
 
+  // NetworkInfo retrieves information about a network
   rpc NetworkInfo(Network) returns (NetworkDetails) {
     option (google.api.http) = { get: "/v3/ipfs/networks/stat" };
   };
 
+  // ListNetworks retrieves a list of the authenticated user's networks
   rpc ListNetworks(Empty) returns (NetworkList) {
     option (google.api.http) = { post: "/v3/ipfs/networks/list" };
   };

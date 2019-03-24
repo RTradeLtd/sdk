@@ -1112,15 +1112,19 @@ const _ = grpc.SupportPackageIsVersion4
 type TemporalStoreClient interface {
 	// Upload accepts files and directories
 	Upload(ctx context.Context, opts ...grpc.CallOption) (TemporalStore_UploadClient, error)
+	// Download retrieves an object
 	Download(ctx context.Context, in *DownloadReq, opts ...grpc.CallOption) (TemporalStore_DownloadClient, error)
 	// Pin handles new pins and pin extensions
 	Pin(ctx context.Context, in *Object, opts ...grpc.CallOption) (*Empty, error)
 	// Stat retrieves details about an object
 	Stat(ctx context.Context, in *Object, opts ...grpc.CallOption) (*ObjectStats, error)
+	// ListObjects retrieves a list of the authenticated user's objects
 	ListObjects(ctx context.Context, in *ListObjectsReq, opts ...grpc.CallOption) (*ObjectList, error)
+	// Publish publishes a message to the requested topic
 	Publish(ctx context.Context, in *Event, opts ...grpc.CallOption) (*Empty, error)
+	// Subscribe subscribes to messages from the requested topic
 	Subscribe(ctx context.Context, in *Topic, opts ...grpc.CallOption) (TemporalStore_SubscribeClient, error)
-	// Keys returns the IPFS keys associated with an authenticated request.
+	// Keys returns the IPFS keys associated with an authenticated request
 	Keys(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*KeyList, error)
 	// NewKey generates a new IPFS key associated with an authenticated request.
 	NewKey(ctx context.Context, in *Key, opts ...grpc.CallOption) (*Empty, error)
@@ -1290,15 +1294,19 @@ func (c *temporalStoreClient) NewKey(ctx context.Context, in *Key, opts ...grpc.
 type TemporalStoreServer interface {
 	// Upload accepts files and directories
 	Upload(TemporalStore_UploadServer) error
+	// Download retrieves an object
 	Download(*DownloadReq, TemporalStore_DownloadServer) error
 	// Pin handles new pins and pin extensions
 	Pin(context.Context, *Object) (*Empty, error)
 	// Stat retrieves details about an object
 	Stat(context.Context, *Object) (*ObjectStats, error)
+	// ListObjects retrieves a list of the authenticated user's objects
 	ListObjects(context.Context, *ListObjectsReq) (*ObjectList, error)
+	// Publish publishes a message to the requested topic
 	Publish(context.Context, *Event) (*Empty, error)
+	// Subscribe subscribes to messages from the requested topic
 	Subscribe(*Topic, TemporalStore_SubscribeServer) error
-	// Keys returns the IPFS keys associated with an authenticated request.
+	// Keys returns the IPFS keys associated with an authenticated request
 	Keys(context.Context, *Empty) (*KeyList, error)
 	// NewKey generates a new IPFS key associated with an authenticated request.
 	NewKey(context.Context, *Key) (*Empty, error)

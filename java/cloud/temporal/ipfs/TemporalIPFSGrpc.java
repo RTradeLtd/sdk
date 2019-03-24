@@ -255,6 +255,9 @@ public final class TemporalIPFSGrpc {
   public static abstract class TemporalIPFSImplBase implements io.grpc.BindableService {
 
     /**
+     * <pre>
+     * CreateNetwork creates a new hosted IPFS network
+     * </pre>
      */
     public void createNetwork(cloud.temporal.ipfs.Ipfs.CreateNetworkReq request,
         io.grpc.stub.StreamObserver<cloud.temporal.ipfs.Ipfs.NetworkDetails> responseObserver) {
@@ -262,6 +265,9 @@ public final class TemporalIPFSGrpc {
     }
 
     /**
+     * <pre>
+     * StartNetwork spins up a previously created IPFS network
+     * </pre>
      */
     public void startNetwork(cloud.temporal.ipfs.Ipfs.Network request,
         io.grpc.stub.StreamObserver<cloud.temporal.ipfs.Ipfs.Empty> responseObserver) {
@@ -269,6 +275,9 @@ public final class TemporalIPFSGrpc {
     }
 
     /**
+     * <pre>
+     * StopNetwork shuts down an IPFS network
+     * </pre>
      */
     public void stopNetwork(cloud.temporal.ipfs.Ipfs.Network request,
         io.grpc.stub.StreamObserver<cloud.temporal.ipfs.Ipfs.Empty> responseObserver) {
@@ -276,6 +285,9 @@ public final class TemporalIPFSGrpc {
     }
 
     /**
+     * <pre>
+     * RemoveNetwork deletes an IPFS network
+     * </pre>
      */
     public void removeNetwork(cloud.temporal.ipfs.Ipfs.Network request,
         io.grpc.stub.StreamObserver<cloud.temporal.ipfs.Ipfs.Empty> responseObserver) {
@@ -283,6 +295,9 @@ public final class TemporalIPFSGrpc {
     }
 
     /**
+     * <pre>
+     * NetworkInfo retrieves information about a network
+     * </pre>
      */
     public void networkInfo(cloud.temporal.ipfs.Ipfs.Network request,
         io.grpc.stub.StreamObserver<cloud.temporal.ipfs.Ipfs.NetworkDetails> responseObserver) {
@@ -290,6 +305,9 @@ public final class TemporalIPFSGrpc {
     }
 
     /**
+     * <pre>
+     * ListNetworks retrieves a list of the authenticated user's networks
+     * </pre>
      */
     public void listNetworks(cloud.temporal.ipfs.Ipfs.Empty request,
         io.grpc.stub.StreamObserver<cloud.temporal.ipfs.Ipfs.NetworkList> responseObserver) {
@@ -367,6 +385,9 @@ public final class TemporalIPFSGrpc {
     }
 
     /**
+     * <pre>
+     * CreateNetwork creates a new hosted IPFS network
+     * </pre>
      */
     public void createNetwork(cloud.temporal.ipfs.Ipfs.CreateNetworkReq request,
         io.grpc.stub.StreamObserver<cloud.temporal.ipfs.Ipfs.NetworkDetails> responseObserver) {
@@ -375,6 +396,9 @@ public final class TemporalIPFSGrpc {
     }
 
     /**
+     * <pre>
+     * StartNetwork spins up a previously created IPFS network
+     * </pre>
      */
     public void startNetwork(cloud.temporal.ipfs.Ipfs.Network request,
         io.grpc.stub.StreamObserver<cloud.temporal.ipfs.Ipfs.Empty> responseObserver) {
@@ -383,6 +407,9 @@ public final class TemporalIPFSGrpc {
     }
 
     /**
+     * <pre>
+     * StopNetwork shuts down an IPFS network
+     * </pre>
      */
     public void stopNetwork(cloud.temporal.ipfs.Ipfs.Network request,
         io.grpc.stub.StreamObserver<cloud.temporal.ipfs.Ipfs.Empty> responseObserver) {
@@ -391,6 +418,9 @@ public final class TemporalIPFSGrpc {
     }
 
     /**
+     * <pre>
+     * RemoveNetwork deletes an IPFS network
+     * </pre>
      */
     public void removeNetwork(cloud.temporal.ipfs.Ipfs.Network request,
         io.grpc.stub.StreamObserver<cloud.temporal.ipfs.Ipfs.Empty> responseObserver) {
@@ -399,6 +429,9 @@ public final class TemporalIPFSGrpc {
     }
 
     /**
+     * <pre>
+     * NetworkInfo retrieves information about a network
+     * </pre>
      */
     public void networkInfo(cloud.temporal.ipfs.Ipfs.Network request,
         io.grpc.stub.StreamObserver<cloud.temporal.ipfs.Ipfs.NetworkDetails> responseObserver) {
@@ -407,6 +440,9 @@ public final class TemporalIPFSGrpc {
     }
 
     /**
+     * <pre>
+     * ListNetworks retrieves a list of the authenticated user's networks
+     * </pre>
      */
     public void listNetworks(cloud.temporal.ipfs.Ipfs.Empty request,
         io.grpc.stub.StreamObserver<cloud.temporal.ipfs.Ipfs.NetworkList> responseObserver) {
@@ -438,6 +474,9 @@ public final class TemporalIPFSGrpc {
     }
 
     /**
+     * <pre>
+     * CreateNetwork creates a new hosted IPFS network
+     * </pre>
      */
     public cloud.temporal.ipfs.Ipfs.NetworkDetails createNetwork(cloud.temporal.ipfs.Ipfs.CreateNetworkReq request) {
       return blockingUnaryCall(
@@ -445,6 +484,9 @@ public final class TemporalIPFSGrpc {
     }
 
     /**
+     * <pre>
+     * StartNetwork spins up a previously created IPFS network
+     * </pre>
      */
     public cloud.temporal.ipfs.Ipfs.Empty startNetwork(cloud.temporal.ipfs.Ipfs.Network request) {
       return blockingUnaryCall(
@@ -452,6 +494,9 @@ public final class TemporalIPFSGrpc {
     }
 
     /**
+     * <pre>
+     * StopNetwork shuts down an IPFS network
+     * </pre>
      */
     public cloud.temporal.ipfs.Ipfs.Empty stopNetwork(cloud.temporal.ipfs.Ipfs.Network request) {
       return blockingUnaryCall(
@@ -459,6 +504,9 @@ public final class TemporalIPFSGrpc {
     }
 
     /**
+     * <pre>
+     * RemoveNetwork deletes an IPFS network
+     * </pre>
      */
     public cloud.temporal.ipfs.Ipfs.Empty removeNetwork(cloud.temporal.ipfs.Ipfs.Network request) {
       return blockingUnaryCall(
@@ -466,6 +514,9 @@ public final class TemporalIPFSGrpc {
     }
 
     /**
+     * <pre>
+     * NetworkInfo retrieves information about a network
+     * </pre>
      */
     public cloud.temporal.ipfs.Ipfs.NetworkDetails networkInfo(cloud.temporal.ipfs.Ipfs.Network request) {
       return blockingUnaryCall(
@@ -473,6 +524,9 @@ public final class TemporalIPFSGrpc {
     }
 
     /**
+     * <pre>
+     * ListNetworks retrieves a list of the authenticated user's networks
+     * </pre>
      */
     public cloud.temporal.ipfs.Ipfs.NetworkList listNetworks(cloud.temporal.ipfs.Ipfs.Empty request) {
       return blockingUnaryCall(
@@ -503,6 +557,9 @@ public final class TemporalIPFSGrpc {
     }
 
     /**
+     * <pre>
+     * CreateNetwork creates a new hosted IPFS network
+     * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<cloud.temporal.ipfs.Ipfs.NetworkDetails> createNetwork(
         cloud.temporal.ipfs.Ipfs.CreateNetworkReq request) {
@@ -511,6 +568,9 @@ public final class TemporalIPFSGrpc {
     }
 
     /**
+     * <pre>
+     * StartNetwork spins up a previously created IPFS network
+     * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<cloud.temporal.ipfs.Ipfs.Empty> startNetwork(
         cloud.temporal.ipfs.Ipfs.Network request) {
@@ -519,6 +579,9 @@ public final class TemporalIPFSGrpc {
     }
 
     /**
+     * <pre>
+     * StopNetwork shuts down an IPFS network
+     * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<cloud.temporal.ipfs.Ipfs.Empty> stopNetwork(
         cloud.temporal.ipfs.Ipfs.Network request) {
@@ -527,6 +590,9 @@ public final class TemporalIPFSGrpc {
     }
 
     /**
+     * <pre>
+     * RemoveNetwork deletes an IPFS network
+     * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<cloud.temporal.ipfs.Ipfs.Empty> removeNetwork(
         cloud.temporal.ipfs.Ipfs.Network request) {
@@ -535,6 +601,9 @@ public final class TemporalIPFSGrpc {
     }
 
     /**
+     * <pre>
+     * NetworkInfo retrieves information about a network
+     * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<cloud.temporal.ipfs.Ipfs.NetworkDetails> networkInfo(
         cloud.temporal.ipfs.Ipfs.Network request) {
@@ -543,6 +612,9 @@ public final class TemporalIPFSGrpc {
     }
 
     /**
+     * <pre>
+     * ListNetworks retrieves a list of the authenticated user's networks
+     * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<cloud.temporal.ipfs.Ipfs.NetworkList> listNetworks(
         cloud.temporal.ipfs.Ipfs.Empty request) {
