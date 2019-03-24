@@ -11,6 +11,8 @@ on [GitHub](https://github.com/RTradeLtd/Temporal).
 
 The SDK offers support for the Temporal V3 API.
 
+**⚠️ The Temporal V3 API is still under active development.**
+
 | Language                     | Status                                                                    | Usage                                            | Examples                      |
 |------------------------------|---------------------------------------------------------------------------|--------------------------------------------------|-------------------------------|
 | [Golang](/go/temporal)       | ![preview](https://img.shields.io/badge/status-preview-orange.svg) | `go get github.com/RTradeLtd/sdk/go/temporal...` | [`docs/examples/go`](/docs/examples/go) |
