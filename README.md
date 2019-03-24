@@ -1,6 +1,7 @@
-# RTrade Software Development Kits
+# Software Development Kits
 
-This repository hosts software development kits for RTrade's various services.
+This repository hosts software development kits for
+[RTrade's](https://www.rtradetechnologies.com/) services.
 
 ## ☄️ Temporal
 
@@ -16,6 +17,11 @@ The SDK offers support for the Temporal V3 API.
 | [Javascript](/js/temporal)   | ![experimental](https://img.shields.io/badge/status-experimental-red.svg) |                                                  |                               |
 | [Java](/java/cloud/temporal) | ![experimental](https://img.shields.io/badge/status-experimental-red.svg) |                                                  |                               |
 | [Python](/py/temporal)   | ![experimental](https://img.shields.io/badge/status-experimental-red.svg) |                                                  |                               |
+
+## Gateway
+
+The Temporal V3 API also offers a traditional REST API gateway - see the
+[gateway documentation](https://rtradeltd.github.io/sdk/gateway).
 
 ## Building
 
