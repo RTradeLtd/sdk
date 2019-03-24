@@ -22,7 +22,7 @@ import static io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall;
  */
 @javax.annotation.Generated(
     value = "by gRPC proto compiler (version 1.19.0)",
-    comments = "Source: proto/auth.proto")
+    comments = "Source: auth.proto")
 public final class TemporalAuthGrpc {
 
   private TemporalAuthGrpc() {}

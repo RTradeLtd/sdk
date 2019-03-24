@@ -1,4 +1,5 @@
 PKGS=core auth store ipfs
+LANGS=go java js py
 
 all: deps
 
@@ -13,11 +14,10 @@ deps:
 proto:
 	$(foreach var,$(PKGS),$(MAKE) gen-pkg PKG=$(var);)
 
+PKG=
 .PHONY: gen-pkg
 gen-pkg:
-	scripts/gen-go-pkg.sh ${PKG}
-	scripts/gen-java-pkg.sh ${PKG}
-	scripts/gen-js-pkg.sh ${PKG}
+	$(foreach var,$(LANGS),scripts/gen-$(var)-pkg.sh $(PKG);)
 
 .PHONY: swagger
 swagger:

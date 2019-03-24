@@ -9,20 +9,21 @@ then
 fi
 
 # GOLANG BINDINGS
+echo "[INFO] generating golang bindings for '$PKG'..."
 mkdir -p "$OUT"
 protoc -Iproto \
   -I"$GOPATH"/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis \
-  --go_out=plugins=grpc:"$OUT"\
-  proto/"$PKG".proto
+  --go_out=plugins=grpc:"$OUT" \
+  "$PKG.proto"
 
 # strip out server stubs, unless prompted to otherwise
 if test -z "$SERVER" 
 then
   exit 0
 else
-  echo "generating server gateways for '$PKG'..."
+  echo "[INFO] generating server gateways for '$PKG'..."
 	protoc -Iproto \
     -I"$GOPATH"/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis \
 		--grpc-gateway_out=logtostderr=true:"$OUT" \
-    proto/"$PKG".proto
+    "$PKG".proto
 fi

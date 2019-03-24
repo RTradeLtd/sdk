@@ -23,7 +23,7 @@ import static io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall;
  */
 @javax.annotation.Generated(
     value = "by gRPC proto compiler (version 1.19.0)",
-    comments = "Source: proto/ipfs.proto")
+    comments = "Source: ipfs.proto")
 public final class TemporalIPFSGrpc {
 
   private TemporalIPFSGrpc() {}
