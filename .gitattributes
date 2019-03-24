@@ -1,3 +1,15 @@
 docs/* linguist-generated
-java/* linguist-generated
-js/* linguist-generated
+
+go/temporal/auth/* linguist-generated
+go/temporal/core/* linguist-generated
+go/temporal/ipfs/* linguist-generated
+go/temporal/store/* linguist-generated
+
+java/cloud/temporal/auth/* linguist-generated
+java/cloud/temporal/core/* linguist-generated
+java/cloud/temporal/ipfs/* linguist-generated
+java/cloud/temporal/store/* linguist-generated
+
+js/temporal/src/pb/* linguist-generated
+
+py/temporal/pb/* linguist-generated
