@@ -7,9 +7,6 @@ import "google/api/annotations.proto";
 
 // TemporalStore implements Temporal's storage APIs
 service TemporalStore {
-  rpc Status(Empty) returns (Empty) {
-    option (google.api.http) = { get: "/v3/store/status" };
-  };
 
   /* OBJECT APIs */
 

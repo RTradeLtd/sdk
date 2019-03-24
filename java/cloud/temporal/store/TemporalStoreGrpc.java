@@ -30,38 +30,6 @@ public final class TemporalStoreGrpc {
   public static final String SERVICE_NAME = "store.TemporalStore";
 
   // Static method descriptors that strictly reflect the proto.
-  private static volatile io.grpc.MethodDescriptor<cloud.temporal.store.Store.Empty,
-      cloud.temporal.store.Store.Empty> getStatusMethod;
-
-  @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "Status",
-      requestType = cloud.temporal.store.Store.Empty.class,
-      responseType = cloud.temporal.store.Store.Empty.class,
-      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<cloud.temporal.store.Store.Empty,
-      cloud.temporal.store.Store.Empty> getStatusMethod() {
-    io.grpc.MethodDescriptor<cloud.temporal.store.Store.Empty, cloud.temporal.store.Store.Empty> getStatusMethod;
-    if ((getStatusMethod = TemporalStoreGrpc.getStatusMethod) == null) {
-      synchronized (TemporalStoreGrpc.class) {
-        if ((getStatusMethod = TemporalStoreGrpc.getStatusMethod) == null) {
-          TemporalStoreGrpc.getStatusMethod = getStatusMethod = 
-              io.grpc.MethodDescriptor.<cloud.temporal.store.Store.Empty, cloud.temporal.store.Store.Empty>newBuilder()
-              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(
-                  "store.TemporalStore", "Status"))
-              .setSampledToLocalTracing(true)
-              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  cloud.temporal.store.Store.Empty.getDefaultInstance()))
-              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  cloud.temporal.store.Store.Empty.getDefaultInstance()))
-                  .setSchemaDescriptor(new TemporalStoreMethodDescriptorSupplier("Status"))
-                  .build();
-          }
-        }
-     }
-     return getStatusMethod;
-  }
-
   private static volatile io.grpc.MethodDescriptor<cloud.temporal.store.Store.UploadReq,
       cloud.temporal.store.Store.Object> getUploadMethod;
 
@@ -381,13 +349,6 @@ public final class TemporalStoreGrpc {
   public static abstract class TemporalStoreImplBase implements io.grpc.BindableService {
 
     /**
-     */
-    public void status(cloud.temporal.store.Store.Empty request,
-        io.grpc.stub.StreamObserver<cloud.temporal.store.Store.Empty> responseObserver) {
-      asyncUnimplementedUnaryCall(getStatusMethod(), responseObserver);
-    }
-
-    /**
      * <pre>
      * Upload accepts files and directories
      * </pre>
@@ -467,13 +428,6 @@ public final class TemporalStoreGrpc {
 
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
-          .addMethod(
-            getStatusMethod(),
-            asyncUnaryCall(
-              new MethodHandlers<
-                cloud.temporal.store.Store.Empty,
-                cloud.temporal.store.Store.Empty>(
-                  this, METHODID_STATUS)))
           .addMethod(
             getUploadMethod(),
             asyncClientStreamingCall(
@@ -560,14 +514,6 @@ public final class TemporalStoreGrpc {
     protected TemporalStoreStub build(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
       return new TemporalStoreStub(channel, callOptions);
-    }
-
-    /**
-     */
-    public void status(cloud.temporal.store.Store.Empty request,
-        io.grpc.stub.StreamObserver<cloud.temporal.store.Store.Empty> responseObserver) {
-      asyncUnaryCall(
-          getChannel().newCall(getStatusMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
@@ -681,13 +627,6 @@ public final class TemporalStoreGrpc {
 
     /**
      */
-    public cloud.temporal.store.Store.Empty status(cloud.temporal.store.Store.Empty request) {
-      return blockingUnaryCall(
-          getChannel(), getStatusMethod(), getCallOptions(), request);
-    }
-
-    /**
-     */
     public java.util.Iterator<cloud.temporal.store.Store.Blob> download(
         cloud.temporal.store.Store.DownloadReq request) {
       return blockingServerStreamingCall(
@@ -779,14 +718,6 @@ public final class TemporalStoreGrpc {
     }
 
     /**
-     */
-    public com.google.common.util.concurrent.ListenableFuture<cloud.temporal.store.Store.Empty> status(
-        cloud.temporal.store.Store.Empty request) {
-      return futureUnaryCall(
-          getChannel().newCall(getStatusMethod(), getCallOptions()), request);
-    }
-
-    /**
      * <pre>
      * Pin handles new pins and pin extensions
      * </pre>
@@ -847,16 +778,15 @@ public final class TemporalStoreGrpc {
     }
   }
 
-  private static final int METHODID_STATUS = 0;
-  private static final int METHODID_DOWNLOAD = 1;
-  private static final int METHODID_PIN = 2;
-  private static final int METHODID_STAT = 3;
-  private static final int METHODID_LIST_OBJECTS = 4;
-  private static final int METHODID_PUBLISH = 5;
-  private static final int METHODID_SUBSCRIBE = 6;
-  private static final int METHODID_KEYS = 7;
-  private static final int METHODID_NEW_KEY = 8;
-  private static final int METHODID_UPLOAD = 9;
+  private static final int METHODID_DOWNLOAD = 0;
+  private static final int METHODID_PIN = 1;
+  private static final int METHODID_STAT = 2;
+  private static final int METHODID_LIST_OBJECTS = 3;
+  private static final int METHODID_PUBLISH = 4;
+  private static final int METHODID_SUBSCRIBE = 5;
+  private static final int METHODID_KEYS = 6;
+  private static final int METHODID_NEW_KEY = 7;
+  private static final int METHODID_UPLOAD = 8;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -875,10 +805,6 @@ public final class TemporalStoreGrpc {
     @java.lang.SuppressWarnings("unchecked")
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
-        case METHODID_STATUS:
-          serviceImpl.status((cloud.temporal.store.Store.Empty) request,
-              (io.grpc.stub.StreamObserver<cloud.temporal.store.Store.Empty>) responseObserver);
-          break;
         case METHODID_DOWNLOAD:
           serviceImpl.download((cloud.temporal.store.Store.DownloadReq) request,
               (io.grpc.stub.StreamObserver<cloud.temporal.store.Store.Blob>) responseObserver);
@@ -975,7 +901,6 @@ public final class TemporalStoreGrpc {
         if (result == null) {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new TemporalStoreFileDescriptorSupplier())
-              .addMethod(getStatusMethod())
               .addMethod(getUploadMethod())
               .addMethod(getDownloadMethod())
               .addMethod(getPinMethod())

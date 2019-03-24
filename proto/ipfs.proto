@@ -8,10 +8,6 @@ import "google/api/annotations.proto";
 // TemporalIPFS implements Temporal's IPFS management APIs, most notably private
 // networks.
 service TemporalIPFS {
-  rpc Status(Empty) returns (Empty) {
-    option (google.api.http) = { get: "/v3/ipfs/status" };
-  };
-
   rpc CreateNetwork(CreateNetworkReq) returns (NetworkDetails) {
     option (google.api.http) = { post: "/v3/ipfs/networks/create" };
   };

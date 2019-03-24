@@ -77,62 +77,6 @@ proto.ipfs.TemporalIPFSPromiseClient =
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.ipfs.Empty,
- *   !proto.ipfs.Empty>}
- */
-const methodInfo_TemporalIPFS_Status = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.ipfs.Empty,
-  /** @param {!proto.ipfs.Empty} request */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.ipfs.Empty.deserializeBinary
-);
-
-
-/**
- * @param {!proto.ipfs.Empty} request The
- *     request proto
- * @param {!Object<string, string>} metadata User defined
- *     call metadata
- * @param {function(?grpc.web.Error, ?proto.ipfs.Empty)}
- *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.ipfs.Empty>|undefined}
- *     The XHR Node Readable Stream
- */
-proto.ipfs.TemporalIPFSClient.prototype.status =
-    function(request, metadata, callback) {
-  return this.client_.rpcCall(this.hostname_ +
-      '/ipfs.TemporalIPFS/Status',
-      request,
-      metadata,
-      methodInfo_TemporalIPFS_Status,
-      callback);
-};
-
-
-/**
- * @param {!proto.ipfs.Empty} request The
- *     request proto
- * @param {!Object<string, string>} metadata User defined
- *     call metadata
- * @return {!Promise<!proto.ipfs.Empty>}
- *     The XHR Node Readable Stream
- */
-proto.ipfs.TemporalIPFSPromiseClient.prototype.status =
-    function(request, metadata) {
-  return new Promise((resolve, reject) => {
-    this.delegateClient_.status(
-      request, metadata, (error, response) => {
-        error ? reject(error) : resolve(response);
-      });
-  });
-};
-
-
-/**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
  *   !proto.ipfs.CreateNetworkReq,
  *   !proto.ipfs.NetworkDetails>}
  */

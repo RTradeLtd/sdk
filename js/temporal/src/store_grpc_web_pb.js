@@ -77,62 +77,6 @@ proto.store.TemporalStorePromiseClient =
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.store.Empty,
- *   !proto.store.Empty>}
- */
-const methodInfo_TemporalStore_Status = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.store.Empty,
-  /** @param {!proto.store.Empty} request */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.store.Empty.deserializeBinary
-);
-
-
-/**
- * @param {!proto.store.Empty} request The
- *     request proto
- * @param {!Object<string, string>} metadata User defined
- *     call metadata
- * @param {function(?grpc.web.Error, ?proto.store.Empty)}
- *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.store.Empty>|undefined}
- *     The XHR Node Readable Stream
- */
-proto.store.TemporalStoreClient.prototype.status =
-    function(request, metadata, callback) {
-  return this.client_.rpcCall(this.hostname_ +
-      '/store.TemporalStore/Status',
-      request,
-      metadata,
-      methodInfo_TemporalStore_Status,
-      callback);
-};
-
-
-/**
- * @param {!proto.store.Empty} request The
- *     request proto
- * @param {!Object<string, string>} metadata User defined
- *     call metadata
- * @return {!Promise<!proto.store.Empty>}
- *     The XHR Node Readable Stream
- */
-proto.store.TemporalStorePromiseClient.prototype.status =
-    function(request, metadata) {
-  return new Promise((resolve, reject) => {
-    this.delegateClient_.status(
-      request, metadata, (error, response) => {
-        error ? reject(error) : resolve(response);
-      });
-  });
-};
-
-
-/**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
  *   !proto.store.DownloadReq,
  *   !proto.store.Blob>}
  */

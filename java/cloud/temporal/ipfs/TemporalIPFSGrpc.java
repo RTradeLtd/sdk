@@ -31,38 +31,6 @@ public final class TemporalIPFSGrpc {
   public static final String SERVICE_NAME = "ipfs.TemporalIPFS";
 
   // Static method descriptors that strictly reflect the proto.
-  private static volatile io.grpc.MethodDescriptor<cloud.temporal.ipfs.Ipfs.Empty,
-      cloud.temporal.ipfs.Ipfs.Empty> getStatusMethod;
-
-  @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "Status",
-      requestType = cloud.temporal.ipfs.Ipfs.Empty.class,
-      responseType = cloud.temporal.ipfs.Ipfs.Empty.class,
-      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<cloud.temporal.ipfs.Ipfs.Empty,
-      cloud.temporal.ipfs.Ipfs.Empty> getStatusMethod() {
-    io.grpc.MethodDescriptor<cloud.temporal.ipfs.Ipfs.Empty, cloud.temporal.ipfs.Ipfs.Empty> getStatusMethod;
-    if ((getStatusMethod = TemporalIPFSGrpc.getStatusMethod) == null) {
-      synchronized (TemporalIPFSGrpc.class) {
-        if ((getStatusMethod = TemporalIPFSGrpc.getStatusMethod) == null) {
-          TemporalIPFSGrpc.getStatusMethod = getStatusMethod = 
-              io.grpc.MethodDescriptor.<cloud.temporal.ipfs.Ipfs.Empty, cloud.temporal.ipfs.Ipfs.Empty>newBuilder()
-              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(
-                  "ipfs.TemporalIPFS", "Status"))
-              .setSampledToLocalTracing(true)
-              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  cloud.temporal.ipfs.Ipfs.Empty.getDefaultInstance()))
-              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  cloud.temporal.ipfs.Ipfs.Empty.getDefaultInstance()))
-                  .setSchemaDescriptor(new TemporalIPFSMethodDescriptorSupplier("Status"))
-                  .build();
-          }
-        }
-     }
-     return getStatusMethod;
-  }
-
   private static volatile io.grpc.MethodDescriptor<cloud.temporal.ipfs.Ipfs.CreateNetworkReq,
       cloud.temporal.ipfs.Ipfs.NetworkDetails> getCreateNetworkMethod;
 
@@ -288,13 +256,6 @@ public final class TemporalIPFSGrpc {
 
     /**
      */
-    public void status(cloud.temporal.ipfs.Ipfs.Empty request,
-        io.grpc.stub.StreamObserver<cloud.temporal.ipfs.Ipfs.Empty> responseObserver) {
-      asyncUnimplementedUnaryCall(getStatusMethod(), responseObserver);
-    }
-
-    /**
-     */
     public void createNetwork(cloud.temporal.ipfs.Ipfs.CreateNetworkReq request,
         io.grpc.stub.StreamObserver<cloud.temporal.ipfs.Ipfs.NetworkDetails> responseObserver) {
       asyncUnimplementedUnaryCall(getCreateNetworkMethod(), responseObserver);
@@ -337,13 +298,6 @@ public final class TemporalIPFSGrpc {
 
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
-          .addMethod(
-            getStatusMethod(),
-            asyncUnaryCall(
-              new MethodHandlers<
-                cloud.temporal.ipfs.Ipfs.Empty,
-                cloud.temporal.ipfs.Ipfs.Empty>(
-                  this, METHODID_STATUS)))
           .addMethod(
             getCreateNetworkMethod(),
             asyncUnaryCall(
@@ -410,14 +364,6 @@ public final class TemporalIPFSGrpc {
     protected TemporalIPFSStub build(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
       return new TemporalIPFSStub(channel, callOptions);
-    }
-
-    /**
-     */
-    public void status(cloud.temporal.ipfs.Ipfs.Empty request,
-        io.grpc.stub.StreamObserver<cloud.temporal.ipfs.Ipfs.Empty> responseObserver) {
-      asyncUnaryCall(
-          getChannel().newCall(getStatusMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
@@ -493,13 +439,6 @@ public final class TemporalIPFSGrpc {
 
     /**
      */
-    public cloud.temporal.ipfs.Ipfs.Empty status(cloud.temporal.ipfs.Ipfs.Empty request) {
-      return blockingUnaryCall(
-          getChannel(), getStatusMethod(), getCallOptions(), request);
-    }
-
-    /**
-     */
     public cloud.temporal.ipfs.Ipfs.NetworkDetails createNetwork(cloud.temporal.ipfs.Ipfs.CreateNetworkReq request) {
       return blockingUnaryCall(
           getChannel(), getCreateNetworkMethod(), getCallOptions(), request);
@@ -565,14 +504,6 @@ public final class TemporalIPFSGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<cloud.temporal.ipfs.Ipfs.Empty> status(
-        cloud.temporal.ipfs.Ipfs.Empty request) {
-      return futureUnaryCall(
-          getChannel().newCall(getStatusMethod(), getCallOptions()), request);
-    }
-
-    /**
-     */
     public com.google.common.util.concurrent.ListenableFuture<cloud.temporal.ipfs.Ipfs.NetworkDetails> createNetwork(
         cloud.temporal.ipfs.Ipfs.CreateNetworkReq request) {
       return futureUnaryCall(
@@ -620,13 +551,12 @@ public final class TemporalIPFSGrpc {
     }
   }
 
-  private static final int METHODID_STATUS = 0;
-  private static final int METHODID_CREATE_NETWORK = 1;
-  private static final int METHODID_START_NETWORK = 2;
-  private static final int METHODID_STOP_NETWORK = 3;
-  private static final int METHODID_REMOVE_NETWORK = 4;
-  private static final int METHODID_NETWORK_INFO = 5;
-  private static final int METHODID_LIST_NETWORKS = 6;
+  private static final int METHODID_CREATE_NETWORK = 0;
+  private static final int METHODID_START_NETWORK = 1;
+  private static final int METHODID_STOP_NETWORK = 2;
+  private static final int METHODID_REMOVE_NETWORK = 3;
+  private static final int METHODID_NETWORK_INFO = 4;
+  private static final int METHODID_LIST_NETWORKS = 5;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -645,10 +575,6 @@ public final class TemporalIPFSGrpc {
     @java.lang.SuppressWarnings("unchecked")
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
-        case METHODID_STATUS:
-          serviceImpl.status((cloud.temporal.ipfs.Ipfs.Empty) request,
-              (io.grpc.stub.StreamObserver<cloud.temporal.ipfs.Ipfs.Empty>) responseObserver);
-          break;
         case METHODID_CREATE_NETWORK:
           serviceImpl.createNetwork((cloud.temporal.ipfs.Ipfs.CreateNetworkReq) request,
               (io.grpc.stub.StreamObserver<cloud.temporal.ipfs.Ipfs.NetworkDetails>) responseObserver);
@@ -734,7 +660,6 @@ public final class TemporalIPFSGrpc {
         if (result == null) {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new TemporalIPFSFileDescriptorSupplier())
-              .addMethod(getStatusMethod())
               .addMethod(getCreateNetworkMethod())
               .addMethod(getStartNetworkMethod())
               .addMethod(getStopNetworkMethod())
