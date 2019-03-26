@@ -16,6 +16,7 @@ func UploadFile(
 	ctx context.Context,
 	client store.TemporalStoreClient,
 	file *os.File,
+	holdTime int32,
 	fileOpts *store.ObjectOptions,
 	grpcOpts ...grpc.CallOption,
 ) (*store.Object, error) {
@@ -25,7 +26,7 @@ func UploadFile(
 	}
 
 	// declare file options
-	stream.Send(&store.UploadReq{Options: fileOpts})
+	stream.Send(&store.UploadReq{HoldTime: holdTime, Options: fileOpts})
 
 	// upload file
 	buf := make([]byte, 10)

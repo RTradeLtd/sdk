@@ -541,6 +541,7 @@ proto.store.UploadReq.prototype.toObject = function(opt_includeInstance) {
 proto.store.UploadReq.toObject = function(includeInstance, msg) {
   var obj = {
     blob: (f = msg.getBlob()) && proto.store.Blob.toObject(includeInstance, f),
+    holdTime: jspb.Message.getFieldWithDefault(msg, 2, 0),
     options: (f = msg.getOptions()) && proto.store.ObjectOptions.toObject(includeInstance, f)
   };
 
@@ -584,6 +585,10 @@ proto.store.UploadReq.deserializeBinaryFromReader = function(msg, reader) {
       msg.setBlob(value);
       break;
     case 2:
+      var value = /** @type {number} */ (reader.readInt32());
+      msg.setHoldTime(value);
+      break;
+    case 3:
       var value = new proto.store.ObjectOptions;
       reader.readMessage(value,proto.store.ObjectOptions.deserializeBinaryFromReader);
       msg.setOptions(value);
@@ -625,10 +630,17 @@ proto.store.UploadReq.serializeBinaryToWriter = function(message, writer) {
       proto.store.Blob.serializeBinaryToWriter
     );
   }
+  f = message.getHoldTime();
+  if (f !== 0) {
+    writer.writeInt32(
+      2,
+      f
+    );
+  }
   f = message.getOptions();
   if (f != null) {
     writer.writeMessage(
-      2,
+      3,
       f,
       proto.store.ObjectOptions.serializeBinaryToWriter
     );
@@ -670,18 +682,33 @@ proto.store.UploadReq.prototype.hasBlob = function() {
 
 
 /**
- * optional ObjectOptions options = 2;
+ * optional int32 hold_time = 2;
+ * @return {number}
+ */
+proto.store.UploadReq.prototype.getHoldTime = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
+};
+
+
+/** @param {number} value */
+proto.store.UploadReq.prototype.setHoldTime = function(value) {
+  jspb.Message.setProto3IntField(this, 2, value);
+};
+
+
+/**
+ * optional ObjectOptions options = 3;
  * @return {?proto.store.ObjectOptions}
  */
 proto.store.UploadReq.prototype.getOptions = function() {
   return /** @type{?proto.store.ObjectOptions} */ (
-    jspb.Message.getWrapperField(this, proto.store.ObjectOptions, 2));
+    jspb.Message.getWrapperField(this, proto.store.ObjectOptions, 3));
 };
 
 
 /** @param {?proto.store.ObjectOptions|undefined} value */
 proto.store.UploadReq.prototype.setOptions = function(value) {
-  jspb.Message.setWrapperField(this, 2, value);
+  jspb.Message.setWrapperField(this, 3, value);
 };
 
 
@@ -698,7 +725,7 @@ proto.store.UploadReq.prototype.clearOptions = function() {
  * @return {boolean}
  */
 proto.store.UploadReq.prototype.hasOptions = function() {
-  return jspb.Message.getField(this, 2) != null;
+  return jspb.Message.getField(this, 3) != null;
 };
 
 
@@ -1146,9 +1173,8 @@ proto.store.ObjectOptions.prototype.toObject = function(opt_includeInstance) {
  */
 proto.store.ObjectOptions.toObject = function(includeInstance, msg) {
   var obj = {
-    holdTime: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    passphrase: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    network: jspb.Message.getFieldWithDefault(msg, 3, "")
+    passphrase: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    network: jspb.Message.getFieldWithDefault(msg, 2, "")
   };
 
   if (includeInstance) {
@@ -1186,14 +1212,10 @@ proto.store.ObjectOptions.deserializeBinaryFromReader = function(msg, reader) {
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {number} */ (reader.readInt64());
-      msg.setHoldTime(value);
-      break;
-    case 2:
       var value = /** @type {string} */ (reader.readString());
       msg.setPassphrase(value);
       break;
-    case 3:
+    case 2:
       var value = /** @type {string} */ (reader.readString());
       msg.setNetwork(value);
       break;
@@ -1226,24 +1248,17 @@ proto.store.ObjectOptions.prototype.serializeBinary = function() {
  */
 proto.store.ObjectOptions.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getHoldTime();
-  if (f !== 0) {
-    writer.writeInt64(
-      1,
-      f
-    );
-  }
   f = message.getPassphrase();
   if (f.length > 0) {
     writer.writeString(
-      2,
+      1,
       f
     );
   }
   f = message.getNetwork();
   if (f.length > 0) {
     writer.writeString(
-      3,
+      2,
       f
     );
   }
@@ -1251,47 +1266,32 @@ proto.store.ObjectOptions.serializeBinaryToWriter = function(message, writer) {
 
 
 /**
- * optional int64 hold_time = 1;
- * @return {number}
- */
-proto.store.ObjectOptions.prototype.getHoldTime = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
-};
-
-
-/** @param {number} value */
-proto.store.ObjectOptions.prototype.setHoldTime = function(value) {
-  jspb.Message.setProto3IntField(this, 1, value);
-};
-
-
-/**
- * optional string passphrase = 2;
+ * optional string passphrase = 1;
  * @return {string}
  */
 proto.store.ObjectOptions.prototype.getPassphrase = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
 
 
 /** @param {string} value */
 proto.store.ObjectOptions.prototype.setPassphrase = function(value) {
-  jspb.Message.setProto3StringField(this, 2, value);
+  jspb.Message.setProto3StringField(this, 1, value);
 };
 
 
 /**
- * optional string network = 3;
+ * optional string network = 2;
  * @return {string}
  */
 proto.store.ObjectOptions.prototype.getNetwork = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
 };
 
 
 /** @param {string} value */
 proto.store.ObjectOptions.prototype.setNetwork = function(value) {
-  jspb.Message.setProto3StringField(this, 3, value);
+  jspb.Message.setProto3StringField(this, 2, value);
 };
 
 

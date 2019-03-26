@@ -77,8 +77,9 @@ service TemporalStore {
 message Empty { }
 
 message UploadReq {
-  Blob blob = 1;
-  ObjectOptions options = 2;
+  Blob blob             = 1;
+  int32 hold_time       = 2;
+  ObjectOptions options = 3;
 }
 
 message DownloadReq {
@@ -93,9 +94,8 @@ message ListObjectsReq {
 }
 
 message ObjectOptions {
-  int64 hold_time   = 1;
-  string passphrase = 2;
-  string network    = 3;
+  string passphrase = 1;
+  string network    = 2;
 }
 
 message KeyList { repeated Key keys = 1; }

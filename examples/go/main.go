@@ -38,8 +38,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	object, err := store.UploadFile(ctx, temporalStore, file, &store.ObjectOptions{
-		HoldTime:   3,
+	object, err := temporal.UploadFile(ctx, temporalStore, file, 3, &store.ObjectOptions{
 		Passphrase: os.Getenv("FILE_PW"),
 	})
 	if err != nil {
