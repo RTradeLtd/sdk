@@ -77,6 +77,62 @@ proto.store.TemporalStorePromiseClient =
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.store.UploadReq,
+ *   !proto.store.Object>}
+ */
+const methodInfo_TemporalStore_UploadBlob = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.store.Object,
+  /** @param {!proto.store.UploadReq} request */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.store.Object.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.store.UploadReq} request The
+ *     request proto
+ * @param {!Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.Error, ?proto.store.Object)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.store.Object>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.store.TemporalStoreClient.prototype.uploadBlob =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/store.TemporalStore/UploadBlob',
+      request,
+      metadata,
+      methodInfo_TemporalStore_UploadBlob,
+      callback);
+};
+
+
+/**
+ * @param {!proto.store.UploadReq} request The
+ *     request proto
+ * @param {!Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.store.Object>}
+ *     The XHR Node Readable Stream
+ */
+proto.store.TemporalStorePromiseClient.prototype.uploadBlob =
+    function(request, metadata) {
+  return new Promise((resolve, reject) => {
+    this.delegateClient_.uploadBlob(
+      request, metadata, (error, response) => {
+        error ? reject(error) : resolve(response);
+      });
+  });
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
  *   !proto.store.DownloadReq,
  *   !proto.store.Blob>}
  */
@@ -121,6 +177,62 @@ proto.store.TemporalStorePromiseClient.prototype.download =
       request,
       metadata,
       methodInfo_TemporalStore_Download);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.store.DownloadReq,
+ *   !proto.store.Blob>}
+ */
+const methodInfo_TemporalStore_DownloadBlob = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.store.Blob,
+  /** @param {!proto.store.DownloadReq} request */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.store.Blob.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.store.DownloadReq} request The
+ *     request proto
+ * @param {!Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.Error, ?proto.store.Blob)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.store.Blob>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.store.TemporalStoreClient.prototype.downloadBlob =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/store.TemporalStore/DownloadBlob',
+      request,
+      metadata,
+      methodInfo_TemporalStore_DownloadBlob,
+      callback);
+};
+
+
+/**
+ * @param {!proto.store.DownloadReq} request The
+ *     request proto
+ * @param {!Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.store.Blob>}
+ *     The XHR Node Readable Stream
+ */
+proto.store.TemporalStorePromiseClient.prototype.downloadBlob =
+    function(request, metadata) {
+  return new Promise((resolve, reject) => {
+    this.delegateClient_.downloadBlob(
+      request, metadata, (error, response) => {
+        error ? reject(error) : resolve(response);
+      });
+  });
 };
 
 

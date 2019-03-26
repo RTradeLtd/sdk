@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='store',
   syntax='proto3',
   serialized_options=_b('\n\024cloud.temporal.store'),
-  serialized_pb=_b('\n\x0bstore.proto\x12\x05store\x1a\x1cgoogle/api/annotations.proto\"\x07\n\x05\x45mpty\"M\n\tUploadReq\x12\x19\n\x04\x62lob\x18\x01 \x01(\x0b\x32\x0b.store.Blob\x12%\n\x07options\x18\x02 \x01(\x0b\x32\x14.store.ObjectOptions\"S\n\x0b\x44ownloadReq\x12\x1d\n\x06object\x18\x01 \x01(\x0b\x32\r.store.Object\x12%\n\x07options\x18\x02 \x01(\x0b\x32\x14.store.ObjectOptions\"J\n\x0eListObjectsReq\x12\x10\n\x08networks\x18\x01 \x03(\t\x12\x0e\n\x06hashes\x18\x02 \x03(\t\x12\x16\n\x0e\x65ncrypted_only\x18\x03 \x01(\x08\"G\n\rObjectOptions\x12\x11\n\thold_time\x18\x01 \x01(\x03\x12\x12\n\npassphrase\x18\x02 \x01(\t\x12\x0f\n\x07network\x18\x03 \x01(\t\"#\n\x07KeyList\x12\x18\n\x04keys\x18\x01 \x03(\x0b\x32\n.store.Key\"0\n\nObjectList\x12\"\n\x07objects\x18\x02 \x03(\x0b\x32\x11.store.ObjectInfo\"*\n\x04\x42lob\x12\x0f\n\x07\x63ontent\x18\x01 \x01(\x0c\x12\x11\n\thold_time\x18\x02 \x01(\x03\"\x16\n\x06Object\x12\x0c\n\x04hash\x18\x01 \x01(\t\"u\n\x0bObjectStats\x12\x12\n\nblock_size\x18\x01 \x01(\x05\x12\x17\n\x0f\x63umulative_size\x18\x02 \x01(\x05\x12\x11\n\tdata_size\x18\x03 \x01(\x05\x12\x12\n\nlinks_size\x18\x04 \x01(\x05\x12\x12\n\nlink_count\x18\x05 \x01(\x05\"\xd3\x02\n\nObjectInfo\x12\x1d\n\x06object\x18\x01 \x01(\x0b\x32\r.store.Object\x12!\n\x05stats\x18\x02 \x01(\x0b\x32\x12.store.ObjectStats\x12*\n\x07\x64\x65tails\x18\x03 \x01(\x0b\x32\x19.store.ObjectInfo.Details\x12,\n\x05perms\x18\x04 \x01(\x0b\x32\x1d.store.ObjectInfo.Permissions\x1ay\n\x07\x44\x65tails\x12\x12\n\ncreated_at\x18\x01 \x01(\x03\x12\x12\n\ndeleted_at\x18\x02 \x01(\x03\x12\x12\n\nupdated_at\x18\x03 \x01(\x03\x12\x11\n\tencrypted\x18\x04 \x01(\x08\x12\x11\n\thold_time\x18\x05 \x01(\x05\x12\x0c\n\x04type\x18\x06 \x01(\t\x1a.\n\x0bPermissions\x12\x10\n\x08uploader\x18\x01 \x01(\t\x12\r\n\x05users\x18\x02 \x03(\t\"5\n\x05\x45vent\x12\x1b\n\x05topic\x18\x01 \x01(\x0b\x32\x0c.store.Topic\x12\x0f\n\x07message\x18\x02 \x01(\t\"\'\n\x05Topic\x12\r\n\x05topic\x18\x01 \x01(\t\x12\x0f\n\x07network\x18\x02 \x01(\t\"\x88\x02\n\x03Key\x12\x1d\n\x03rsa\x18\x01 \x01(\x0b\x32\x0e.store.Key.RSAH\x00\x12%\n\x07\x65\x64\x32\x35\x35\x31\x39\x18\x02 \x01(\x0b\x32\x12.store.Key.ED25519H\x00\x12\x0c\n\x04name\x18\x03 \x01(\t\x12\n\n\x02id\x18\x04 \x01(\t\x1aT\n\x03RSA\x12!\n\x04size\x18\x01 \x01(\x0e\x32\x13.store.Key.RSA.Size\"*\n\x04Size\x12\n\n\x06S_2048\x10\x00\x12\n\n\x06S_3072\x10\x01\x12\n\n\x06S_4096\x10\x02\x1a\x43\n\x07\x45\x44\x32\x35\x35\x31\x39\x12%\n\x04size\x18\x01 \x01(\x0e\x32\x17.store.Key.ED25519.Size\"\x11\n\x04Size\x12\t\n\x05S_256\x10\x00\x42\x06\n\x04type2\xae\x05\n\rTemporalStore\x12M\n\x06Upload\x12\x10.store.UploadReq\x1a\r.store.Object\" \x82\xd3\xe4\x93\x02\x1a\"\x18/v3/store/objects/upload(\x01\x12Q\n\x08\x44ownload\x12\x12.store.DownloadReq\x1a\x0b.store.Blob\"\"\x82\xd3\xe4\x93\x02\x1c\"\x1a/v3/store/objects/download0\x01\x12\x41\n\x03Pin\x12\r.store.Object\x1a\x0c.store.Empty\"\x1d\x82\xd3\xe4\x93\x02\x17\"\x15/v3/store/objects/pin\x12I\n\x04Stat\x12\r.store.Object\x1a\x12.store.ObjectStats\"\x1e\x82\xd3\xe4\x93\x02\x18\x12\x16/v3/store/objects/stat\x12W\n\x0bListObjects\x12\x15.store.ListObjectsReq\x1a\x11.store.ObjectList\"\x1e\x82\xd3\xe4\x93\x02\x18\"\x16/v3/store/objects/list\x12G\n\x07Publish\x12\x0c.store.Event\x1a\x0c.store.Empty\" \x82\xd3\xe4\x93\x02\x1a\"\x18/v3/store/pubsub/publish\x12M\n\tSubscribe\x12\x0c.store.Topic\x1a\x0c.store.Event\"\"\x82\xd3\xe4\x93\x02\x1c\x12\x1a/v3/store/pubsub/subscribe0\x01\x12<\n\x04Keys\x12\x0c.store.Empty\x1a\x0e.store.KeyList\"\x16\x82\xd3\xe4\x93\x02\x10\x12\x0e/v3/store/keys\x12>\n\x06NewKey\x12\n.store.Key\x1a\x0c.store.Empty\"\x1a\x82\xd3\xe4\x93\x02\x14\"\x12/v3/store/keys/newB\x16\n\x14\x63loud.temporal.storeb\x06proto3')
+  serialized_pb=_b('\n\x0bstore.proto\x12\x05store\x1a\x1cgoogle/api/annotations.proto\"\x07\n\x05\x45mpty\"M\n\tUploadReq\x12\x19\n\x04\x62lob\x18\x01 \x01(\x0b\x32\x0b.store.Blob\x12%\n\x07options\x18\x02 \x01(\x0b\x32\x14.store.ObjectOptions\"S\n\x0b\x44ownloadReq\x12\x1d\n\x06object\x18\x01 \x01(\x0b\x32\r.store.Object\x12%\n\x07options\x18\x02 \x01(\x0b\x32\x14.store.ObjectOptions\"J\n\x0eListObjectsReq\x12\x10\n\x08networks\x18\x01 \x03(\t\x12\x0e\n\x06hashes\x18\x02 \x03(\t\x12\x16\n\x0e\x65ncrypted_only\x18\x03 \x01(\x08\"G\n\rObjectOptions\x12\x11\n\thold_time\x18\x01 \x01(\x03\x12\x12\n\npassphrase\x18\x02 \x01(\t\x12\x0f\n\x07network\x18\x03 \x01(\t\"#\n\x07KeyList\x12\x18\n\x04keys\x18\x01 \x03(\x0b\x32\n.store.Key\"0\n\nObjectList\x12\"\n\x07objects\x18\x02 \x03(\x0b\x32\x11.store.ObjectInfo\"*\n\x04\x42lob\x12\x0f\n\x07\x63ontent\x18\x01 \x01(\x0c\x12\x11\n\thold_time\x18\x02 \x01(\x03\"\x16\n\x06Object\x12\x0c\n\x04hash\x18\x01 \x01(\t\"u\n\x0bObjectStats\x12\x12\n\nblock_size\x18\x01 \x01(\x05\x12\x17\n\x0f\x63umulative_size\x18\x02 \x01(\x05\x12\x11\n\tdata_size\x18\x03 \x01(\x05\x12\x12\n\nlinks_size\x18\x04 \x01(\x05\x12\x12\n\nlink_count\x18\x05 \x01(\x05\"\xd3\x02\n\nObjectInfo\x12\x1d\n\x06object\x18\x01 \x01(\x0b\x32\r.store.Object\x12!\n\x05stats\x18\x02 \x01(\x0b\x32\x12.store.ObjectStats\x12*\n\x07\x64\x65tails\x18\x03 \x01(\x0b\x32\x19.store.ObjectInfo.Details\x12,\n\x05perms\x18\x04 \x01(\x0b\x32\x1d.store.ObjectInfo.Permissions\x1ay\n\x07\x44\x65tails\x12\x12\n\ncreated_at\x18\x01 \x01(\x03\x12\x12\n\ndeleted_at\x18\x02 \x01(\x03\x12\x12\n\nupdated_at\x18\x03 \x01(\x03\x12\x11\n\tencrypted\x18\x04 \x01(\x08\x12\x11\n\thold_time\x18\x05 \x01(\x05\x12\x0c\n\x04type\x18\x06 \x01(\t\x1a.\n\x0bPermissions\x12\x10\n\x08uploader\x18\x01 \x01(\t\x12\r\n\x05users\x18\x02 \x03(\t\"5\n\x05\x45vent\x12\x1b\n\x05topic\x18\x01 \x01(\x0b\x32\x0c.store.Topic\x12\x0f\n\x07message\x18\x02 \x01(\t\"\'\n\x05Topic\x12\r\n\x05topic\x18\x01 \x01(\t\x12\x0f\n\x07network\x18\x02 \x01(\t\"\x88\x02\n\x03Key\x12\x1d\n\x03rsa\x18\x01 \x01(\x0b\x32\x0e.store.Key.RSAH\x00\x12%\n\x07\x65\x64\x32\x35\x35\x31\x39\x18\x02 \x01(\x0b\x32\x12.store.Key.ED25519H\x00\x12\x0c\n\x04name\x18\x03 \x01(\t\x12\n\n\x02id\x18\x04 \x01(\t\x1aT\n\x03RSA\x12!\n\x04size\x18\x01 \x01(\x0e\x32\x13.store.Key.RSA.Size\"*\n\x04Size\x12\n\n\x06S_2048\x10\x00\x12\n\n\x06S_3072\x10\x01\x12\n\n\x06S_4096\x10\x02\x1a\x43\n\x07\x45\x44\x32\x35\x35\x31\x39\x12%\n\x04size\x18\x01 \x01(\x0e\x32\x17.store.Key.ED25519.Size\"\x11\n\x04Size\x12\t\n\x05S_256\x10\x00\x42\x06\n\x04type2\xde\x06\n\rTemporalStore\x12M\n\x06Upload\x12\x10.store.UploadReq\x1a\r.store.Object\" \x82\xd3\xe4\x93\x02\x1a\"\x18/v3/store/objects/upload(\x01\x12T\n\nUploadBlob\x12\x10.store.UploadReq\x1a\r.store.Object\"%\x82\xd3\xe4\x93\x02\x1f\"\x1d/v3/store/objects/upload/blob\x12Q\n\x08\x44ownload\x12\x12.store.DownloadReq\x1a\x0b.store.Blob\"\"\x82\xd3\xe4\x93\x02\x1c\"\x1a/v3/store/objects/download0\x01\x12X\n\x0c\x44ownloadBlob\x12\x12.store.DownloadReq\x1a\x0b.store.Blob\"\'\x82\xd3\xe4\x93\x02!\"\x1f/v3/store/objects/download/blob\x12\x41\n\x03Pin\x12\r.store.Object\x1a\x0c.store.Empty\"\x1d\x82\xd3\xe4\x93\x02\x17\"\x15/v3/store/objects/pin\x12I\n\x04Stat\x12\r.store.Object\x1a\x12.store.ObjectStats\"\x1e\x82\xd3\xe4\x93\x02\x18\x12\x16/v3/store/objects/stat\x12W\n\x0bListObjects\x12\x15.store.ListObjectsReq\x1a\x11.store.ObjectList\"\x1e\x82\xd3\xe4\x93\x02\x18\"\x16/v3/store/objects/list\x12G\n\x07Publish\x12\x0c.store.Event\x1a\x0c.store.Empty\" \x82\xd3\xe4\x93\x02\x1a\"\x18/v3/store/pubsub/publish\x12M\n\tSubscribe\x12\x0c.store.Topic\x1a\x0c.store.Event\"\"\x82\xd3\xe4\x93\x02\x1c\x12\x1a/v3/store/pubsub/subscribe0\x01\x12<\n\x04Keys\x12\x0c.store.Empty\x1a\x0e.store.KeyList\"\x16\x82\xd3\xe4\x93\x02\x10\x12\x0e/v3/store/keys\x12>\n\x06NewKey\x12\n.store.Key\x1a\x0c.store.Empty\"\x1a\x82\xd3\xe4\x93\x02\x14\"\x12/v3/store/keys/newB\x16\n\x14\x63loud.temporal.storeb\x06proto3')
   ,
   dependencies=[google_dot_api_dot_annotations__pb2.DESCRIPTOR,])
 
@@ -980,7 +980,7 @@ _TEMPORALSTORE = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   serialized_start=1354,
-  serialized_end=2040,
+  serialized_end=2216,
   methods=[
   _descriptor.MethodDescriptor(
     name='Upload',
@@ -992,18 +992,36 @@ _TEMPORALSTORE = _descriptor.ServiceDescriptor(
     serialized_options=_b('\202\323\344\223\002\032\"\030/v3/store/objects/upload'),
   ),
   _descriptor.MethodDescriptor(
+    name='UploadBlob',
+    full_name='store.TemporalStore.UploadBlob',
+    index=1,
+    containing_service=None,
+    input_type=_UPLOADREQ,
+    output_type=_OBJECT,
+    serialized_options=_b('\202\323\344\223\002\037\"\035/v3/store/objects/upload/blob'),
+  ),
+  _descriptor.MethodDescriptor(
     name='Download',
     full_name='store.TemporalStore.Download',
-    index=1,
+    index=2,
     containing_service=None,
     input_type=_DOWNLOADREQ,
     output_type=_BLOB,
     serialized_options=_b('\202\323\344\223\002\034\"\032/v3/store/objects/download'),
   ),
   _descriptor.MethodDescriptor(
+    name='DownloadBlob',
+    full_name='store.TemporalStore.DownloadBlob',
+    index=3,
+    containing_service=None,
+    input_type=_DOWNLOADREQ,
+    output_type=_BLOB,
+    serialized_options=_b('\202\323\344\223\002!\"\037/v3/store/objects/download/blob'),
+  ),
+  _descriptor.MethodDescriptor(
     name='Pin',
     full_name='store.TemporalStore.Pin',
-    index=2,
+    index=4,
     containing_service=None,
     input_type=_OBJECT,
     output_type=_EMPTY,
@@ -1012,7 +1030,7 @@ _TEMPORALSTORE = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='Stat',
     full_name='store.TemporalStore.Stat',
-    index=3,
+    index=5,
     containing_service=None,
     input_type=_OBJECT,
     output_type=_OBJECTSTATS,
@@ -1021,7 +1039,7 @@ _TEMPORALSTORE = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='ListObjects',
     full_name='store.TemporalStore.ListObjects',
-    index=4,
+    index=6,
     containing_service=None,
     input_type=_LISTOBJECTSREQ,
     output_type=_OBJECTLIST,
@@ -1030,7 +1048,7 @@ _TEMPORALSTORE = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='Publish',
     full_name='store.TemporalStore.Publish',
-    index=5,
+    index=7,
     containing_service=None,
     input_type=_EVENT,
     output_type=_EMPTY,
@@ -1039,7 +1057,7 @@ _TEMPORALSTORE = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='Subscribe',
     full_name='store.TemporalStore.Subscribe',
-    index=6,
+    index=8,
     containing_service=None,
     input_type=_TOPIC,
     output_type=_EVENT,
@@ -1048,7 +1066,7 @@ _TEMPORALSTORE = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='Keys',
     full_name='store.TemporalStore.Keys',
-    index=7,
+    index=9,
     containing_service=None,
     input_type=_EMPTY,
     output_type=_KEYLIST,
@@ -1057,7 +1075,7 @@ _TEMPORALSTORE = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='NewKey',
     full_name='store.TemporalStore.NewKey',
-    index=8,
+    index=10,
     containing_service=None,
     input_type=_KEY,
     output_type=_EMPTY,

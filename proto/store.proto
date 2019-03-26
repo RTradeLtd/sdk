@@ -10,14 +10,26 @@ service TemporalStore {
 
   /* OBJECT APIs */
 
-  // Upload accepts files and directories
+  // Upload uploads a stream of blobs - it accepts files and directories
   rpc Upload(stream UploadReq) returns (Object) {
     option (google.api.http) = { post: "/v3/store/objects/upload" };
   };
 
-  // Download retrieves an object
+  // UploadBlob allows the upload of a single blob - if it is too large, an
+  // error will be returned
+  rpc UploadBlob(UploadReq) returns (Object) {
+    option (google.api.http) = { post: "/v3/store/objects/upload/blob" };
+  };
+
+  // Download retrieves an object as a stream of blobs
   rpc Download(DownloadReq) returns (stream Blob) {
     option (google.api.http) = { post: "/v3/store/objects/download" };
+  };
+
+  // DownloadBlob allows the download of a single blob - if it is too large,
+  // an error will be returned
+  rpc DownloadBlob(DownloadReq) returns (Blob) {
+    option (google.api.http) = { post: "/v3/store/objects/download/blob" };
   };
 
   // Pin handles new pins and pin extensions

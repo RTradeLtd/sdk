@@ -19,8 +19,18 @@ class TemporalStoreStub(object):
         request_serializer=store__pb2.UploadReq.SerializeToString,
         response_deserializer=store__pb2.Object.FromString,
         )
+    self.UploadBlob = channel.unary_unary(
+        '/store.TemporalStore/UploadBlob',
+        request_serializer=store__pb2.UploadReq.SerializeToString,
+        response_deserializer=store__pb2.Object.FromString,
+        )
     self.Download = channel.unary_stream(
         '/store.TemporalStore/Download',
+        request_serializer=store__pb2.DownloadReq.SerializeToString,
+        response_deserializer=store__pb2.Blob.FromString,
+        )
+    self.DownloadBlob = channel.unary_unary(
+        '/store.TemporalStore/DownloadBlob',
         request_serializer=store__pb2.DownloadReq.SerializeToString,
         response_deserializer=store__pb2.Blob.FromString,
         )
@@ -68,14 +78,30 @@ class TemporalStoreServicer(object):
   def Upload(self, request_iterator, context):
     """OBJECT APIs 
 
-    Upload accepts files and directories
+    Upload uploads a stream of blobs - it accepts files and directories
+    """
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
+  def UploadBlob(self, request, context):
+    """UploadBlob allows the upload of a single blob - if it is too large, an
+    error will be returned
     """
     context.set_code(grpc.StatusCode.UNIMPLEMENTED)
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
   def Download(self, request, context):
-    """Download retrieves an object
+    """Download retrieves an object as a stream of blobs
+    """
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
+  def DownloadBlob(self, request, context):
+    """DownloadBlob allows the download of a single blob - if it is too large,
+    an error will be returned
     """
     context.set_code(grpc.StatusCode.UNIMPLEMENTED)
     context.set_details('Method not implemented!')
@@ -142,8 +168,18 @@ def add_TemporalStoreServicer_to_server(servicer, server):
           request_deserializer=store__pb2.UploadReq.FromString,
           response_serializer=store__pb2.Object.SerializeToString,
       ),
+      'UploadBlob': grpc.unary_unary_rpc_method_handler(
+          servicer.UploadBlob,
+          request_deserializer=store__pb2.UploadReq.FromString,
+          response_serializer=store__pb2.Object.SerializeToString,
+      ),
       'Download': grpc.unary_stream_rpc_method_handler(
           servicer.Download,
+          request_deserializer=store__pb2.DownloadReq.FromString,
+          response_serializer=store__pb2.Blob.SerializeToString,
+      ),
+      'DownloadBlob': grpc.unary_unary_rpc_method_handler(
+          servicer.DownloadBlob,
           request_deserializer=store__pb2.DownloadReq.FromString,
           response_serializer=store__pb2.Blob.SerializeToString,
       ),

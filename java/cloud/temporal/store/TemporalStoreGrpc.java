@@ -62,6 +62,38 @@ public final class TemporalStoreGrpc {
      return getUploadMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<cloud.temporal.store.Store.UploadReq,
+      cloud.temporal.store.Store.Object> getUploadBlobMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "UploadBlob",
+      requestType = cloud.temporal.store.Store.UploadReq.class,
+      responseType = cloud.temporal.store.Store.Object.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<cloud.temporal.store.Store.UploadReq,
+      cloud.temporal.store.Store.Object> getUploadBlobMethod() {
+    io.grpc.MethodDescriptor<cloud.temporal.store.Store.UploadReq, cloud.temporal.store.Store.Object> getUploadBlobMethod;
+    if ((getUploadBlobMethod = TemporalStoreGrpc.getUploadBlobMethod) == null) {
+      synchronized (TemporalStoreGrpc.class) {
+        if ((getUploadBlobMethod = TemporalStoreGrpc.getUploadBlobMethod) == null) {
+          TemporalStoreGrpc.getUploadBlobMethod = getUploadBlobMethod = 
+              io.grpc.MethodDescriptor.<cloud.temporal.store.Store.UploadReq, cloud.temporal.store.Store.Object>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(
+                  "store.TemporalStore", "UploadBlob"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  cloud.temporal.store.Store.UploadReq.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  cloud.temporal.store.Store.Object.getDefaultInstance()))
+                  .setSchemaDescriptor(new TemporalStoreMethodDescriptorSupplier("UploadBlob"))
+                  .build();
+          }
+        }
+     }
+     return getUploadBlobMethod;
+  }
+
   private static volatile io.grpc.MethodDescriptor<cloud.temporal.store.Store.DownloadReq,
       cloud.temporal.store.Store.Blob> getDownloadMethod;
 
@@ -92,6 +124,38 @@ public final class TemporalStoreGrpc {
         }
      }
      return getDownloadMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<cloud.temporal.store.Store.DownloadReq,
+      cloud.temporal.store.Store.Blob> getDownloadBlobMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "DownloadBlob",
+      requestType = cloud.temporal.store.Store.DownloadReq.class,
+      responseType = cloud.temporal.store.Store.Blob.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<cloud.temporal.store.Store.DownloadReq,
+      cloud.temporal.store.Store.Blob> getDownloadBlobMethod() {
+    io.grpc.MethodDescriptor<cloud.temporal.store.Store.DownloadReq, cloud.temporal.store.Store.Blob> getDownloadBlobMethod;
+    if ((getDownloadBlobMethod = TemporalStoreGrpc.getDownloadBlobMethod) == null) {
+      synchronized (TemporalStoreGrpc.class) {
+        if ((getDownloadBlobMethod = TemporalStoreGrpc.getDownloadBlobMethod) == null) {
+          TemporalStoreGrpc.getDownloadBlobMethod = getDownloadBlobMethod = 
+              io.grpc.MethodDescriptor.<cloud.temporal.store.Store.DownloadReq, cloud.temporal.store.Store.Blob>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(
+                  "store.TemporalStore", "DownloadBlob"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  cloud.temporal.store.Store.DownloadReq.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  cloud.temporal.store.Store.Blob.getDefaultInstance()))
+                  .setSchemaDescriptor(new TemporalStoreMethodDescriptorSupplier("DownloadBlob"))
+                  .build();
+          }
+        }
+     }
+     return getDownloadBlobMethod;
   }
 
   private static volatile io.grpc.MethodDescriptor<cloud.temporal.store.Store.Object,
@@ -350,7 +414,7 @@ public final class TemporalStoreGrpc {
 
     /**
      * <pre>
-     * Upload accepts files and directories
+     * Upload uploads a stream of blobs - it accepts files and directories
      * </pre>
      */
     public io.grpc.stub.StreamObserver<cloud.temporal.store.Store.UploadReq> upload(
@@ -360,12 +424,34 @@ public final class TemporalStoreGrpc {
 
     /**
      * <pre>
-     * Download retrieves an object
+     * UploadBlob allows the upload of a single blob - if it is too large, an
+     * error will be returned
+     * </pre>
+     */
+    public void uploadBlob(cloud.temporal.store.Store.UploadReq request,
+        io.grpc.stub.StreamObserver<cloud.temporal.store.Store.Object> responseObserver) {
+      asyncUnimplementedUnaryCall(getUploadBlobMethod(), responseObserver);
+    }
+
+    /**
+     * <pre>
+     * Download retrieves an object as a stream of blobs
      * </pre>
      */
     public void download(cloud.temporal.store.Store.DownloadReq request,
         io.grpc.stub.StreamObserver<cloud.temporal.store.Store.Blob> responseObserver) {
       asyncUnimplementedUnaryCall(getDownloadMethod(), responseObserver);
+    }
+
+    /**
+     * <pre>
+     * DownloadBlob allows the download of a single blob - if it is too large,
+     * an error will be returned
+     * </pre>
+     */
+    public void downloadBlob(cloud.temporal.store.Store.DownloadReq request,
+        io.grpc.stub.StreamObserver<cloud.temporal.store.Store.Blob> responseObserver) {
+      asyncUnimplementedUnaryCall(getDownloadBlobMethod(), responseObserver);
     }
 
     /**
@@ -448,12 +534,26 @@ public final class TemporalStoreGrpc {
                 cloud.temporal.store.Store.Object>(
                   this, METHODID_UPLOAD)))
           .addMethod(
+            getUploadBlobMethod(),
+            asyncUnaryCall(
+              new MethodHandlers<
+                cloud.temporal.store.Store.UploadReq,
+                cloud.temporal.store.Store.Object>(
+                  this, METHODID_UPLOAD_BLOB)))
+          .addMethod(
             getDownloadMethod(),
             asyncServerStreamingCall(
               new MethodHandlers<
                 cloud.temporal.store.Store.DownloadReq,
                 cloud.temporal.store.Store.Blob>(
                   this, METHODID_DOWNLOAD)))
+          .addMethod(
+            getDownloadBlobMethod(),
+            asyncUnaryCall(
+              new MethodHandlers<
+                cloud.temporal.store.Store.DownloadReq,
+                cloud.temporal.store.Store.Blob>(
+                  this, METHODID_DOWNLOAD_BLOB)))
           .addMethod(
             getPinMethod(),
             asyncUnaryCall(
@@ -530,7 +630,7 @@ public final class TemporalStoreGrpc {
 
     /**
      * <pre>
-     * Upload accepts files and directories
+     * Upload uploads a stream of blobs - it accepts files and directories
      * </pre>
      */
     public io.grpc.stub.StreamObserver<cloud.temporal.store.Store.UploadReq> upload(
@@ -541,13 +641,37 @@ public final class TemporalStoreGrpc {
 
     /**
      * <pre>
-     * Download retrieves an object
+     * UploadBlob allows the upload of a single blob - if it is too large, an
+     * error will be returned
+     * </pre>
+     */
+    public void uploadBlob(cloud.temporal.store.Store.UploadReq request,
+        io.grpc.stub.StreamObserver<cloud.temporal.store.Store.Object> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(getUploadBlobMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     * <pre>
+     * Download retrieves an object as a stream of blobs
      * </pre>
      */
     public void download(cloud.temporal.store.Store.DownloadReq request,
         io.grpc.stub.StreamObserver<cloud.temporal.store.Store.Blob> responseObserver) {
       asyncServerStreamingCall(
           getChannel().newCall(getDownloadMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     * <pre>
+     * DownloadBlob allows the download of a single blob - if it is too large,
+     * an error will be returned
+     * </pre>
+     */
+    public void downloadBlob(cloud.temporal.store.Store.DownloadReq request,
+        io.grpc.stub.StreamObserver<cloud.temporal.store.Store.Blob> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(getDownloadBlobMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
@@ -651,13 +775,35 @@ public final class TemporalStoreGrpc {
 
     /**
      * <pre>
-     * Download retrieves an object
+     * UploadBlob allows the upload of a single blob - if it is too large, an
+     * error will be returned
+     * </pre>
+     */
+    public cloud.temporal.store.Store.Object uploadBlob(cloud.temporal.store.Store.UploadReq request) {
+      return blockingUnaryCall(
+          getChannel(), getUploadBlobMethod(), getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
+     * Download retrieves an object as a stream of blobs
      * </pre>
      */
     public java.util.Iterator<cloud.temporal.store.Store.Blob> download(
         cloud.temporal.store.Store.DownloadReq request) {
       return blockingServerStreamingCall(
           getChannel(), getDownloadMethod(), getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
+     * DownloadBlob allows the download of a single blob - if it is too large,
+     * an error will be returned
+     * </pre>
+     */
+    public cloud.temporal.store.Store.Blob downloadBlob(cloud.temporal.store.Store.DownloadReq request) {
+      return blockingUnaryCall(
+          getChannel(), getDownloadBlobMethod(), getCallOptions(), request);
     }
 
     /**
@@ -755,6 +901,30 @@ public final class TemporalStoreGrpc {
 
     /**
      * <pre>
+     * UploadBlob allows the upload of a single blob - if it is too large, an
+     * error will be returned
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<cloud.temporal.store.Store.Object> uploadBlob(
+        cloud.temporal.store.Store.UploadReq request) {
+      return futureUnaryCall(
+          getChannel().newCall(getUploadBlobMethod(), getCallOptions()), request);
+    }
+
+    /**
+     * <pre>
+     * DownloadBlob allows the download of a single blob - if it is too large,
+     * an error will be returned
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<cloud.temporal.store.Store.Blob> downloadBlob(
+        cloud.temporal.store.Store.DownloadReq request) {
+      return futureUnaryCall(
+          getChannel().newCall(getDownloadBlobMethod(), getCallOptions()), request);
+    }
+
+    /**
+     * <pre>
      * Pin handles new pins and pin extensions
      * </pre>
      */
@@ -820,15 +990,17 @@ public final class TemporalStoreGrpc {
     }
   }
 
-  private static final int METHODID_DOWNLOAD = 0;
-  private static final int METHODID_PIN = 1;
-  private static final int METHODID_STAT = 2;
-  private static final int METHODID_LIST_OBJECTS = 3;
-  private static final int METHODID_PUBLISH = 4;
-  private static final int METHODID_SUBSCRIBE = 5;
-  private static final int METHODID_KEYS = 6;
-  private static final int METHODID_NEW_KEY = 7;
-  private static final int METHODID_UPLOAD = 8;
+  private static final int METHODID_UPLOAD_BLOB = 0;
+  private static final int METHODID_DOWNLOAD = 1;
+  private static final int METHODID_DOWNLOAD_BLOB = 2;
+  private static final int METHODID_PIN = 3;
+  private static final int METHODID_STAT = 4;
+  private static final int METHODID_LIST_OBJECTS = 5;
+  private static final int METHODID_PUBLISH = 6;
+  private static final int METHODID_SUBSCRIBE = 7;
+  private static final int METHODID_KEYS = 8;
+  private static final int METHODID_NEW_KEY = 9;
+  private static final int METHODID_UPLOAD = 10;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -847,8 +1019,16 @@ public final class TemporalStoreGrpc {
     @java.lang.SuppressWarnings("unchecked")
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
+        case METHODID_UPLOAD_BLOB:
+          serviceImpl.uploadBlob((cloud.temporal.store.Store.UploadReq) request,
+              (io.grpc.stub.StreamObserver<cloud.temporal.store.Store.Object>) responseObserver);
+          break;
         case METHODID_DOWNLOAD:
           serviceImpl.download((cloud.temporal.store.Store.DownloadReq) request,
+              (io.grpc.stub.StreamObserver<cloud.temporal.store.Store.Blob>) responseObserver);
+          break;
+        case METHODID_DOWNLOAD_BLOB:
+          serviceImpl.downloadBlob((cloud.temporal.store.Store.DownloadReq) request,
               (io.grpc.stub.StreamObserver<cloud.temporal.store.Store.Blob>) responseObserver);
           break;
         case METHODID_PIN:
@@ -944,7 +1124,9 @@ public final class TemporalStoreGrpc {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new TemporalStoreFileDescriptorSupplier())
               .addMethod(getUploadMethod())
+              .addMethod(getUploadBlobMethod())
               .addMethod(getDownloadMethod())
+              .addMethod(getDownloadBlobMethod())
               .addMethod(getPinMethod())
               .addMethod(getStatMethod())
               .addMethod(getListObjectsMethod())
