@@ -27,8 +27,8 @@ func UploadFile(
 	// declare file options
 	stream.Send(&store.UploadReq{HoldTime: holdTime, Options: fileOpts})
 
-	// upload file
-	buf := make([]byte, 10)
+	// upload file - chunked at 5mb each
+	buf := make([]byte, 5e+6)
 	for {
 		n, err := file.Read(buf)
 		if err == io.EOF {

@@ -10,7 +10,8 @@ service TemporalStore {
 
   /* OBJECT APIs */
 
-  // Upload uploads a stream of blobs - it accepts files and directories
+  // Upload uploads a stream of blobs - it accepts files and directories. Blobs
+  // larger than 5mb should use this API
   rpc Upload(stream UploadReq) returns (Object) {
     option (google.api.http) = { post: "/v3/store/objects/upload" };
   };
@@ -21,7 +22,8 @@ service TemporalStore {
     option (google.api.http) = { post: "/v3/store/objects/upload/blob" };
   };
 
-  // Download retrieves an object as a stream of blobs
+  // Download retrieves an object as a stream of blobs. Blobs larger than 5mb
+  // should use this API
   rpc Download(DownloadReq) returns (stream Blob) {
     option (google.api.http) = { post: "/v3/store/objects/download" };
   };
