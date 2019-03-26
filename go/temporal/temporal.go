@@ -13,6 +13,9 @@ const (
 	// MetaKeyAuthorization is the key for authorization tokens
 	MetaKeyAuthorization MetaKey = "authorization"
 
+	// BlobThreshold is the threshold in bytes before blobs are required to be broken up
+	BlobThreshold = 5e+6
+
 	apiAddress = "api.temporal.cloud"
 )
 
