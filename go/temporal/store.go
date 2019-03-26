@@ -4,7 +4,6 @@ import (
 	context "context"
 	"io"
 	"log"
-	"os"
 
 	grpc "google.golang.org/grpc"
 
@@ -15,12 +14,12 @@ import (
 func UploadFile(
 	ctx context.Context,
 	client store.TemporalStoreClient,
-	file *os.File,
+	file io.Reader,
 	holdTime int32,
 	fileOpts *store.ObjectOptions,
 	grpcOpts ...grpc.CallOption,
 ) (*store.Object, error) {
-	stream, err := client.Upload(ctx)
+	stream, err := client.Upload(ctx, grpcOpts...)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -42,4 +41,30 @@ func UploadFile(
 
 	// done
 	return stream.CloseAndRecv()
+}
+
+// DownloadFile is a convenience function for downloading a single file
+func DownloadFile(
+	ctx context.Context,
+	client store.TemporalStoreClient,
+	file io.Writer,
+	download *store.DownloadReq,
+	grpcOpts ...grpc.CallOption,
+) error {
+	stream, err := client.Download(ctx, download, grpcOpts...)
+	if err != nil {
+		return err
+	}
+	for {
+		b, err := stream.Recv()
+		if err == io.EOF {
+			break
+		} else if err != nil {
+			return err
+		}
+		if _, err := file.Write(b.Content); err != nil {
+			return err
+		}
+	}
+	return stream.CloseSend()
 }

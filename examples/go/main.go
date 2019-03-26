@@ -46,6 +46,26 @@ func main() {
 	}
 	log.Printf("successfully uploaded file '%s' as object '%s'!\n", os.Getenv("FILE"), object.GetHash())
 
+	// List available objects
+	resp, err := temporalStore.ListObjects(ctx, &store.ListObjectsReq{})
+	if err != nil {
+		log.Fatal(err)
+	}
+	log.Println("Your current objects:")
+	for _, o := range resp.GetObjects() {
+		log.Printf(" > %s:\n%s\n", o.GetObject().GetHash(), o.String())
+	}
+
 	// Retrieve an object
-	// TODO
+	download, err := os.Create(object.GetHash())
+	if err != nil {
+		log.Fatal(err)
+	}
+	if err := temporal.DownloadFile(ctx, temporalStore, download, &store.DownloadReq{
+		Object:  &store.Object{Hash: object.GetHash()},
+		Options: &store.ObjectOptions{Passphrase: os.Getenv("FILE_PW")},
+	}); err != nil {
+		log.Fatal(err)
+	}
+	log.Printf("successfully downloaded file '%s'!\n", object.GetHash())
 }
