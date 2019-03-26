@@ -81,8 +81,9 @@ message ListObjectsReq {
 }
 
 message ObjectOptions {
-  string passphrase = 1;
-  string network    = 2;
+  int64 hold_time   = 1;
+  string passphrase = 2;
+  string network    = 3;
 }
 
 message KeyList { repeated Key keys = 1; }
@@ -98,7 +99,6 @@ message Blob {
 
 message Object {
   string hash = 1;
-  int64 hold_time = 2;
 }
 
 message ObjectStats {

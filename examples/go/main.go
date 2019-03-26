@@ -11,10 +11,12 @@ import (
 )
 
 func main() {
+	ctx := context.Background()
+
 	// Authenticate against the TemporalV3 API. A bare connection can also be
 	// created using temporal.Connect(). When authenticated, the connection will
 	// handle token refreshes for you.
-	conn, err := temporal.Authenticate(context.Background(), &auth.Credentials{
+	conn, err := temporal.Authenticate(ctx, &auth.Credentials{
 		Username: os.Getenv("TEMPORAL_USER"),
 		Password: os.Getenv("TEMPORAL_PW"),
 	}, temporal.ConnOpts{})
@@ -23,16 +25,27 @@ func main() {
 	}
 
 	// Create a new IPFS key
-	var temporalStore = temporal.NewStoreClient(conn)
-	if _, err = temporalStore.NewKey(context.Background(), &store.Key{
+	temporalStore := temporal.NewStoreClient(conn)
+	if _, err = temporalStore.NewKey(ctx, &store.Key{
 		Name: "mykey",
 	}); err != nil {
 		log.Fatal(err)
 	}
-	println("key successfully created!")
+	log.Println("key successfully created!")
 
 	// Upload an object
-	// TODO
+	file, err := os.Open(os.Getenv("FILE"))
+	if err != nil {
+		log.Fatal(err)
+	}
+	object, err := store.UploadFile(ctx, temporalStore, file, &store.ObjectOptions{
+		HoldTime:   3,
+		Passphrase: os.Getenv("FILE_PW"),
+	})
+	if err != nil {
+		log.Fatal(err)
+	}
+	log.Printf("successfully uploaded file '%s' as object '%s'!\n", os.Getenv("FILE"), object.GetHash())
 
 	// Retrieve an object
 	// TODO
