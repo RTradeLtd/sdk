@@ -19,7 +19,7 @@ the Temporal V3 API.
 | [Java](/java/cloud/temporal) | ![experimental](https://img.shields.io/badge/status-experimental-red.svg) |                                                  |                               |
 | [Python](/py/temporal)   | ![experimental](https://img.shields.io/badge/status-experimental-red.svg) |                                                  |                               |
 
-## Gateway
+Standards for a complete Temporal client library is defined in [`CLIENTS`](/CLIENTS.md).
 
 The Temporal V3 API also offers a traditional REST API gateway - see the
 [gateway documentation](https://rtradeltd.github.io/sdk/gateway).
