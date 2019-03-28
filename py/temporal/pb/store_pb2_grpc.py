@@ -78,7 +78,8 @@ class TemporalStoreServicer(object):
   def Upload(self, request_iterator, context):
     """OBJECT APIs 
 
-    Upload uploads a stream of blobs - it accepts files and directories
+    Upload uploads a stream of blobs - it accepts files and directories. Blobs
+    larger than 5mb should use this API
     """
     context.set_code(grpc.StatusCode.UNIMPLEMENTED)
     context.set_details('Method not implemented!')
@@ -93,7 +94,8 @@ class TemporalStoreServicer(object):
     raise NotImplementedError('Method not implemented!')
 
   def Download(self, request, context):
-    """Download retrieves an object as a stream of blobs
+    """Download retrieves an object as a stream of blobs. Blobs larger than 5mb
+    should use this API
     """
     context.set_code(grpc.StatusCode.UNIMPLEMENTED)
     context.set_details('Method not implemented!')

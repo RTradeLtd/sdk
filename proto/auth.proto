@@ -92,13 +92,13 @@ enum Tier {
 }
 
 message User {
-  int32 id             = 1;
+  uint64 id            = 1;
   string user_name     = 2;
   string email_address = 3;
 
   // account properties
   bool verified                 = 4;
-  int32 credits                 = 5;
+  double credits                = 5;
   map<string, string> ipfs_keys = 6;
   repeated string ipfs_networks = 7;
   Tier tier                     = 8;

@@ -414,7 +414,8 @@ public final class TemporalStoreGrpc {
 
     /**
      * <pre>
-     * Upload uploads a stream of blobs - it accepts files and directories
+     * Upload uploads a stream of blobs - it accepts files and directories. Blobs
+     * larger than 5mb should use this API
      * </pre>
      */
     public io.grpc.stub.StreamObserver<cloud.temporal.store.Store.UploadReq> upload(
@@ -435,7 +436,8 @@ public final class TemporalStoreGrpc {
 
     /**
      * <pre>
-     * Download retrieves an object as a stream of blobs
+     * Download retrieves an object as a stream of blobs. Blobs larger than 5mb
+     * should use this API
      * </pre>
      */
     public void download(cloud.temporal.store.Store.DownloadReq request,
@@ -630,7 +632,8 @@ public final class TemporalStoreGrpc {
 
     /**
      * <pre>
-     * Upload uploads a stream of blobs - it accepts files and directories
+     * Upload uploads a stream of blobs - it accepts files and directories. Blobs
+     * larger than 5mb should use this API
      * </pre>
      */
     public io.grpc.stub.StreamObserver<cloud.temporal.store.Store.UploadReq> upload(
@@ -653,7 +656,8 @@ public final class TemporalStoreGrpc {
 
     /**
      * <pre>
-     * Download retrieves an object as a stream of blobs
+     * Download retrieves an object as a stream of blobs. Blobs larger than 5mb
+     * should use this API
      * </pre>
      */
     public void download(cloud.temporal.store.Store.DownloadReq request,
@@ -786,7 +790,8 @@ public final class TemporalStoreGrpc {
 
     /**
      * <pre>
-     * Download retrieves an object as a stream of blobs
+     * Download retrieves an object as a stream of blobs. Blobs larger than 5mb
+     * should use this API
      * </pre>
      */
     public java.util.Iterator<cloud.temporal.store.Store.Blob> download(

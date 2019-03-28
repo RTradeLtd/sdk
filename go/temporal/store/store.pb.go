@@ -1113,12 +1113,14 @@ const _ = grpc.SupportPackageIsVersion4
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type TemporalStoreClient interface {
-	// Upload uploads a stream of blobs - it accepts files and directories
+	// Upload uploads a stream of blobs - it accepts files and directories. Blobs
+	// larger than 5mb should use this API
 	Upload(ctx context.Context, opts ...grpc.CallOption) (TemporalStore_UploadClient, error)
 	// UploadBlob allows the upload of a single blob - if it is too large, an
 	// error will be returned
 	UploadBlob(ctx context.Context, in *UploadReq, opts ...grpc.CallOption) (*Object, error)
-	// Download retrieves an object as a stream of blobs
+	// Download retrieves an object as a stream of blobs. Blobs larger than 5mb
+	// should use this API
 	Download(ctx context.Context, in *DownloadReq, opts ...grpc.CallOption) (TemporalStore_DownloadClient, error)
 	// DownloadBlob allows the download of a single blob - if it is too large,
 	// an error will be returned
@@ -1319,12 +1321,14 @@ func (c *temporalStoreClient) NewKey(ctx context.Context, in *Key, opts ...grpc.
 
 // TemporalStoreServer is the server API for TemporalStore service.
 type TemporalStoreServer interface {
-	// Upload uploads a stream of blobs - it accepts files and directories
+	// Upload uploads a stream of blobs - it accepts files and directories. Blobs
+	// larger than 5mb should use this API
 	Upload(TemporalStore_UploadServer) error
 	// UploadBlob allows the upload of a single blob - if it is too large, an
 	// error will be returned
 	UploadBlob(context.Context, *UploadReq) (*Object, error)
-	// Download retrieves an object as a stream of blobs
+	// Download retrieves an object as a stream of blobs. Blobs larger than 5mb
+	// should use this API
 	Download(*DownloadReq, TemporalStore_DownloadServer) error
 	// DownloadBlob allows the download of a single blob - if it is too large,
 	// an error will be returned

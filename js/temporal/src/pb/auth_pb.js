@@ -1504,7 +1504,7 @@ proto.auth.User.toObject = function(includeInstance, msg) {
     userName: jspb.Message.getFieldWithDefault(msg, 2, ""),
     emailAddress: jspb.Message.getFieldWithDefault(msg, 3, ""),
     verified: jspb.Message.getFieldWithDefault(msg, 4, false),
-    credits: jspb.Message.getFieldWithDefault(msg, 5, 0),
+    credits: +jspb.Message.getFieldWithDefault(msg, 5, 0.0),
     ipfsKeysMap: (f = msg.getIpfsKeysMap()) ? f.toObject(includeInstance, undefined) : [],
     ipfsNetworksList: jspb.Message.getRepeatedField(msg, 7),
     tier: jspb.Message.getFieldWithDefault(msg, 8, 0),
@@ -1547,7 +1547,7 @@ proto.auth.User.deserializeBinaryFromReader = function(msg, reader) {
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {number} */ (reader.readInt32());
+      var value = /** @type {number} */ (reader.readUint64());
       msg.setId(value);
       break;
     case 2:
@@ -1563,7 +1563,7 @@ proto.auth.User.deserializeBinaryFromReader = function(msg, reader) {
       msg.setVerified(value);
       break;
     case 5:
-      var value = /** @type {number} */ (reader.readInt32());
+      var value = /** @type {number} */ (reader.readDouble());
       msg.setCredits(value);
       break;
     case 6:
@@ -1619,7 +1619,7 @@ proto.auth.User.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getId();
   if (f !== 0) {
-    writer.writeInt32(
+    writer.writeUint64(
       1,
       f
     );
@@ -1646,8 +1646,8 @@ proto.auth.User.serializeBinaryToWriter = function(message, writer) {
     );
   }
   f = message.getCredits();
-  if (f !== 0) {
-    writer.writeInt32(
+  if (f !== 0.0) {
+    writer.writeDouble(
       5,
       f
     );
@@ -1688,7 +1688,7 @@ proto.auth.User.serializeBinaryToWriter = function(message, writer) {
 
 
 /**
- * optional int32 id = 1;
+ * optional uint64 id = 1;
  * @return {number}
  */
 proto.auth.User.prototype.getId = function() {
@@ -1750,17 +1750,17 @@ proto.auth.User.prototype.setVerified = function(value) {
 
 
 /**
- * optional int32 credits = 5;
+ * optional double credits = 5;
  * @return {number}
  */
 proto.auth.User.prototype.getCredits = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 5, 0));
+  return /** @type {number} */ (+jspb.Message.getFieldWithDefault(this, 5, 0.0));
 };
 
 
 /** @param {number} value */
 proto.auth.User.prototype.setCredits = function(value) {
-  jspb.Message.setProto3IntField(this, 5, value);
+  jspb.Message.setProto3FloatField(this, 5, value);
 };
 
 
