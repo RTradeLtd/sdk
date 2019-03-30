@@ -9,15 +9,18 @@ import (
 	"google.golang.org/grpc/credentials"
 )
 
+// ConnOpts denotes options for connecting with the Temporal API
 type ConnOpts struct {
 	Advanced *AdvancedConnOpts
 }
 
+// AdvancedConnOpts denote advanced configuration options
 type AdvancedConnOpts struct {
 	API string      // leave blank for default
 	TLS *tls.Config // leave nil to disable
 }
 
+// Connect creates a new authenticated connection to the Temporal API
 func Connect(ctx context.Context, token *auth.Token, opts ConnOpts) (*grpc.ClientConn, error) {
 	dialOpts := make([]grpc.DialOption, 0)
 	if token != nil {
@@ -43,6 +46,7 @@ func Connect(ctx context.Context, token *auth.Token, opts ConnOpts) (*grpc.Clien
 	return grpc.DialContext(ctx, addr, dialOpts...)
 }
 
+// Authenticate creates a new authenticated connection to the Temporal API
 func Authenticate(ctx context.Context, creds *auth.Credentials, opts ConnOpts) (*grpc.ClientConn, error) {
 	conn, err := Connect(ctx, nil, opts)
 	if err != nil {

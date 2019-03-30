@@ -7,8 +7,6 @@ import (
 	"github.com/RTradeLtd/sdk/go/temporal/auth"
 )
 
-type RefreshFunc func(ctx context.Context) (*auth.Token, error)
-
 // Credentials holds per-rpc metadata for the gRPC clients
 type Credentials struct {
 	token    *auth.Token
