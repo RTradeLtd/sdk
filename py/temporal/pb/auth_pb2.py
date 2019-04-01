@@ -21,7 +21,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='auth',
   syntax='proto3',
   serialized_options=_b('\n\023cloud.temporal.auth'),
-  serialized_pb=_b('\n\nauth.proto\x12\x04\x61uth\x1a\x1cgoogle/api/annotations.proto\"\x07\n\x05\x45mpty\"L\n\x0bRegisterReq\x12&\n\x0b\x63redentials\x18\x01 \x01(\x0b\x32\x11.auth.Credentials\x12\x15\n\remail_address\x18\x02 \x01(\t\"l\n\nRecoverReq\x12#\n\x04type\x18\x01 \x01(\x0e\x32\x15.auth.RecoverReq.Type\x12\x15\n\remail_address\x18\x02 \x01(\t\"\"\n\x04Type\x12\x0c\n\x08USERNAME\x10\x00\x12\x0c\n\x08PASSWORD\x10\x01\"\xdf\x01\n\tUpdateReq\x12\x33\n\x0fpassword_change\x18\x01 \x01(\x0b\x32\x18.auth.UpdateReq.PasswordH\x00\x12+\n\x0btier_change\x18\x02 \x01(\x0b\x32\x14.auth.UpdateReq.TierH\x00\x1a\x36\n\x08Password\x12\x14\n\x0cold_password\x18\x01 \x01(\t\x12\x14\n\x0cnew_password\x18\x02 \x01(\t\x1a.\n\x04Tier\x12&\n\x08new_tier\x18\x01 \x01(\x0b\x32\x14.auth.UpdateReq.TierB\x08\n\x06update\"1\n\x0b\x43redentials\x12\x10\n\x08username\x18\x01 \x01(\t\x12\x10\n\x08password\x18\x02 \x01(\t\"&\n\x05Token\x12\x0e\n\x06\x65xpire\x18\x01 \x01(\x03\x12\r\n\x05token\x18\x02 \x01(\t\"\x98\x02\n\x04User\x12\n\n\x02id\x18\x01 \x01(\x04\x12\x11\n\tuser_name\x18\x02 \x01(\t\x12\x15\n\remail_address\x18\x03 \x01(\t\x12\x10\n\x08verified\x18\x04 \x01(\x08\x12\x0f\n\x07\x63redits\x18\x05 \x01(\x01\x12+\n\tipfs_keys\x18\x06 \x03(\x0b\x32\x18.auth.User.IpfsKeysEntry\x12\x15\n\ripfs_networks\x18\x07 \x03(\t\x12\x18\n\x04tier\x18\x08 \x01(\x0e\x32\n.auth.Tier\x12\x12\n\napi_access\x18\t \x01(\x08\x12\x14\n\x0c\x61\x64min_access\x18\n \x01(\x08\x1a/\n\rIpfsKeysEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01*.\n\x04Tier\x12\x08\n\x04\x46REE\x10\x00\x12\t\n\x05LIGHT\x10\x01\x12\x0b\n\x07PARTNER\x10\t\"\x04\x08\x02\x10\x08\x32\x95\x03\n\x0cTemporalAuth\x12\x44\n\x08Register\x12\x11.auth.RegisterReq\x1a\n.auth.User\"\x19\x82\xd3\xe4\x93\x02\x13\"\x11/v3/auth/register\x12\x41\n\x07Recover\x12\x10.auth.RecoverReq\x1a\n.auth.User\"\x18\x82\xd3\xe4\x93\x02\x12\"\x10/v3/auth/recover\x12?\n\x05Login\x12\x11.auth.Credentials\x1a\x0b.auth.Token\"\x16\x82\xd3\xe4\x93\x02\x10\"\x0e/v3/auth/login\x12<\n\x07\x41\x63\x63ount\x12\x0b.auth.Empty\x1a\n.auth.User\"\x18\x82\xd3\xe4\x93\x02\x12\x12\x10/v3/auth/account\x12>\n\x06Update\x12\x0f.auth.UpdateReq\x1a\n.auth.User\"\x17\x82\xd3\xe4\x93\x02\x11\"\x0f/v3/auth/update\x12=\n\x07Refresh\x12\x0b.auth.Empty\x1a\x0b.auth.Token\"\x18\x82\xd3\xe4\x93\x02\x12\"\x10/v3/auth/refreshB\x15\n\x13\x63loud.temporal.authb\x06proto3')
+  serialized_pb=_b('\n\nauth.proto\x12\x04\x61uth\x1a\x1cgoogle/api/annotations.proto\"\x07\n\x05\x45mpty\"L\n\x0bRegisterReq\x12&\n\x0b\x63redentials\x18\x01 \x01(\x0b\x32\x11.auth.Credentials\x12\x15\n\remail_address\x18\x02 \x01(\t\"l\n\nRecoverReq\x12#\n\x04type\x18\x01 \x01(\x0e\x32\x15.auth.RecoverReq.Type\x12\x15\n\remail_address\x18\x02 \x01(\t\"\"\n\x04Type\x12\x0c\n\x08USERNAME\x10\x00\x12\x0c\n\x08PASSWORD\x10\x01\"\xdf\x01\n\tUpdateReq\x12\x33\n\x0fpassword_change\x18\x01 \x01(\x0b\x32\x18.auth.UpdateReq.PasswordH\x00\x12+\n\x0btier_change\x18\x02 \x01(\x0b\x32\x14.auth.UpdateReq.TierH\x00\x1a\x36\n\x08Password\x12\x14\n\x0cold_password\x18\x01 \x01(\t\x12\x14\n\x0cnew_password\x18\x02 \x01(\t\x1a.\n\x04Tier\x12&\n\x08new_tier\x18\x01 \x01(\x0b\x32\x14.auth.UpdateReq.TierB\x08\n\x06update\"1\n\x0b\x43redentials\x12\x10\n\x08username\x18\x01 \x01(\t\x12\x10\n\x08password\x18\x02 \x01(\t\"&\n\x05Token\x12\x0e\n\x06\x65xpire\x18\x01 \x01(\x03\x12\r\n\x05token\x18\x02 \x01(\t\"\x95\x04\n\x04User\x12\n\n\x02id\x18\x01 \x01(\x04\x12\x11\n\tuser_name\x18\x02 \x01(\t\x12\x15\n\remail_address\x18\x03 \x01(\t\x12\x10\n\x08verified\x18\x04 \x01(\x08\x12\x0f\n\x07\x63redits\x18\x05 \x01(\x01\x12+\n\tipfs_keys\x18\x06 \x03(\x0b\x32\x18.auth.User.IpfsKeysEntry\x12\x15\n\ripfs_networks\x18\x07 \x03(\t\x12\x1f\n\x05usage\x18\x08 \x01(\x0b\x32\x10.auth.User.Usage\x12\x12\n\napi_access\x18\t \x01(\x08\x12\x14\n\x0c\x61\x64min_access\x18\n \x01(\x08\x1a/\n\rIpfsKeysEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x1a\xf3\x01\n\x05Usage\x12\x18\n\x04tier\x18\x01 \x01(\x0e\x32\n.auth.Tier\x12%\n\x04\x64\x61ta\x18\x02 \x01(\x0b\x32\x17.auth.User.Usage.Limits\x12-\n\x0cipns_records\x18\x03 \x01(\x0b\x32\x17.auth.User.Usage.Limits\x12,\n\x0bpubsub_sent\x18\x04 \x01(\x0b\x32\x17.auth.User.Usage.Limits\x12%\n\x04keys\x18\x05 \x01(\x0b\x32\x17.auth.User.Usage.Limits\x1a%\n\x06Limits\x12\r\n\x05limit\x18\x01 \x01(\x03\x12\x0c\n\x04used\x18\x02 \x01(\x03*.\n\x04Tier\x12\x08\n\x04\x46REE\x10\x00\x12\t\n\x05LIGHT\x10\x01\x12\x0b\n\x07PARTNER\x10\t\"\x04\x08\x02\x10\x08\x32\x95\x03\n\x0cTemporalAuth\x12\x44\n\x08Register\x12\x11.auth.RegisterReq\x1a\n.auth.User\"\x19\x82\xd3\xe4\x93\x02\x13\"\x11/v3/auth/register\x12\x41\n\x07Recover\x12\x10.auth.RecoverReq\x1a\n.auth.User\"\x18\x82\xd3\xe4\x93\x02\x12\"\x10/v3/auth/recover\x12?\n\x05Login\x12\x11.auth.Credentials\x1a\x0b.auth.Token\"\x16\x82\xd3\xe4\x93\x02\x10\"\x0e/v3/auth/login\x12<\n\x07\x41\x63\x63ount\x12\x0b.auth.Empty\x1a\n.auth.User\"\x18\x82\xd3\xe4\x93\x02\x12\x12\x10/v3/auth/account\x12>\n\x06Update\x12\x0f.auth.UpdateReq\x1a\n.auth.User\"\x17\x82\xd3\xe4\x93\x02\x11\"\x0f/v3/auth/update\x12=\n\x07Refresh\x12\x0b.auth.Empty\x1a\x0b.auth.Token\"\x18\x82\xd3\xe4\x93\x02\x12\"\x10/v3/auth/refreshB\x15\n\x13\x63loud.temporal.authb\x06proto3')
   ,
   dependencies=[google_dot_api_dot_annotations__pb2.DESCRIPTOR,])
 
@@ -46,8 +46,8 @@ _TIER = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=847,
-  serialized_end=893,
+  serialized_start=1100,
+  serialized_end=1146,
 )
 _sym_db.RegisterEnumDescriptor(_TIER)
 
@@ -398,8 +398,103 @@ _USER_IPFSKEYSENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=798,
-  serialized_end=845,
+  serialized_start=805,
+  serialized_end=852,
+)
+
+_USER_USAGE_LIMITS = _descriptor.Descriptor(
+  name='Limits',
+  full_name='auth.User.Usage.Limits',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='limit', full_name='auth.User.Usage.Limits.limit', index=0,
+      number=1, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='used', full_name='auth.User.Usage.Limits.used', index=1,
+      number=2, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1061,
+  serialized_end=1098,
+)
+
+_USER_USAGE = _descriptor.Descriptor(
+  name='Usage',
+  full_name='auth.User.Usage',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='tier', full_name='auth.User.Usage.tier', index=0,
+      number=1, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='data', full_name='auth.User.Usage.data', index=1,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='ipns_records', full_name='auth.User.Usage.ipns_records', index=2,
+      number=3, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='pubsub_sent', full_name='auth.User.Usage.pubsub_sent', index=3,
+      number=4, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='keys', full_name='auth.User.Usage.keys', index=4,
+      number=5, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[_USER_USAGE_LIMITS, ],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=855,
+  serialized_end=1098,
 )
 
 _USER = _descriptor.Descriptor(
@@ -459,9 +554,9 @@ _USER = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='tier', full_name='auth.User.tier', index=7,
-      number=8, type=14, cpp_type=8, label=1,
-      has_default_value=False, default_value=0,
+      name='usage', full_name='auth.User.usage', index=7,
+      number=8, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
@@ -482,7 +577,7 @@ _USER = _descriptor.Descriptor(
   ],
   extensions=[
   ],
-  nested_types=[_USER_IPFSKEYSENTRY, ],
+  nested_types=[_USER_IPFSKEYSENTRY, _USER_USAGE, ],
   enum_types=[
   ],
   serialized_options=None,
@@ -492,7 +587,7 @@ _USER = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=565,
-  serialized_end=845,
+  serialized_end=1098,
 )
 
 _REGISTERREQ.fields_by_name['credentials'].message_type = _CREDENTIALS
@@ -510,8 +605,15 @@ _UPDATEREQ.oneofs_by_name['update'].fields.append(
   _UPDATEREQ.fields_by_name['tier_change'])
 _UPDATEREQ.fields_by_name['tier_change'].containing_oneof = _UPDATEREQ.oneofs_by_name['update']
 _USER_IPFSKEYSENTRY.containing_type = _USER
+_USER_USAGE_LIMITS.containing_type = _USER_USAGE
+_USER_USAGE.fields_by_name['tier'].enum_type = _TIER
+_USER_USAGE.fields_by_name['data'].message_type = _USER_USAGE_LIMITS
+_USER_USAGE.fields_by_name['ipns_records'].message_type = _USER_USAGE_LIMITS
+_USER_USAGE.fields_by_name['pubsub_sent'].message_type = _USER_USAGE_LIMITS
+_USER_USAGE.fields_by_name['keys'].message_type = _USER_USAGE_LIMITS
+_USER_USAGE.containing_type = _USER
 _USER.fields_by_name['ipfs_keys'].message_type = _USER_IPFSKEYSENTRY
-_USER.fields_by_name['tier'].enum_type = _TIER
+_USER.fields_by_name['usage'].message_type = _USER_USAGE
 DESCRIPTOR.message_types_by_name['Empty'] = _EMPTY
 DESCRIPTOR.message_types_by_name['RegisterReq'] = _REGISTERREQ
 DESCRIPTOR.message_types_by_name['RecoverReq'] = _RECOVERREQ
@@ -588,12 +690,28 @@ User = _reflection.GeneratedProtocolMessageType('User', (_message.Message,), dic
     # @@protoc_insertion_point(class_scope:auth.User.IpfsKeysEntry)
     ))
   ,
+
+  Usage = _reflection.GeneratedProtocolMessageType('Usage', (_message.Message,), dict(
+
+    Limits = _reflection.GeneratedProtocolMessageType('Limits', (_message.Message,), dict(
+      DESCRIPTOR = _USER_USAGE_LIMITS,
+      __module__ = 'auth_pb2'
+      # @@protoc_insertion_point(class_scope:auth.User.Usage.Limits)
+      ))
+    ,
+    DESCRIPTOR = _USER_USAGE,
+    __module__ = 'auth_pb2'
+    # @@protoc_insertion_point(class_scope:auth.User.Usage)
+    ))
+  ,
   DESCRIPTOR = _USER,
   __module__ = 'auth_pb2'
   # @@protoc_insertion_point(class_scope:auth.User)
   ))
 _sym_db.RegisterMessage(User)
 _sym_db.RegisterMessage(User.IpfsKeysEntry)
+_sym_db.RegisterMessage(User.Usage)
+_sym_db.RegisterMessage(User.Usage.Limits)
 
 
 DESCRIPTOR._options = None
@@ -605,8 +723,8 @@ _TEMPORALAUTH = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
-  serialized_start=896,
-  serialized_end=1301,
+  serialized_start=1149,
+  serialized_end=1554,
   methods=[
   _descriptor.MethodDescriptor(
     name='Register',

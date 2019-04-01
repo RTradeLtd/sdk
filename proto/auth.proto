@@ -101,7 +101,19 @@ message User {
   double credits                = 5;
   map<string, string> ipfs_keys = 6;
   repeated string ipfs_networks = 7;
-  Tier tier                     = 8;
+  message Usage {
+    Tier tier = 1;
+
+    message Limits {
+      int64 limit = 1;
+      int64 used  = 2;
+    }
+    Limits data         = 2;
+    Limits ipns_records = 3;
+    Limits pubsub_sent  = 4;
+    Limits keys         = 5;
+  }
+  Usage usage = 8;
 
   // account access
   bool api_access   =  9;
