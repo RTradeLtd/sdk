@@ -61,13 +61,13 @@ message UpdateReq {
     string old_password = 1;
     string new_password = 2;
   }
-  message DataTierUpgrade {
-    // empty - can only upgrade
+  message DataTier {
+    // empty - can only upgrade for now
   }
 
   oneof update {
-    Password password_change          = 1;
-    DataTierUpgrade data_tier_upgrade = 2;
+    Password password_change   = 1;
+    DataTier data_tier_change = 2;
   }
 }
 
