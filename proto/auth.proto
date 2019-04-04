@@ -61,13 +61,13 @@ message UpdateReq {
     string old_password = 1;
     string new_password = 2;
   }
-  message DataTier {
-    Tier new_tier = 1;
+  message DataTierUpgrade {
+    // empty - can only upgrade
   }
 
   oneof update {
-    Password password_change  = 1;
-    DataTier data_tier_change = 2;
+    Password password_change          = 1;
+    DataTierUpgrade data_tier_upgrade = 2;
   }
 }
 
@@ -86,9 +86,10 @@ message Token {
 enum Tier {
   FREE    = 0;
   LIGHT   = 1;
+  PLUS    = 2;
   PARTNER = 9;
 
-  reserved 2 to 8;
+  reserved 3 to 8;
 }
 
 message User {
