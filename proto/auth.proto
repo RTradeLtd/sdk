@@ -61,13 +61,13 @@ message UpdateReq {
     string old_password = 1;
     string new_password = 2;
   }
-  message Tier {
+  message DataTier {
     Tier new_tier = 1;
   }
 
   oneof update {
-    Password password_change = 1;
-    Tier tier_change         = 2;
+    Password password_change  = 1;
+    DataTier data_tier_change = 2;
   }
 }
 
