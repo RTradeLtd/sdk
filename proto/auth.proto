@@ -14,7 +14,7 @@ service TemporalAuth {
   };
 
   // Recover facilitates account recovery.
-  rpc Recover(RecoverReq) returns (User) {
+  rpc Recover(RecoverReq) returns (Empty) {
     option (google.api.http) = { post: "/v3/auth/recover" };
   };
 

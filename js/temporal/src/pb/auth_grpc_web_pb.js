@@ -134,15 +134,15 @@ proto.auth.TemporalAuthPromiseClient.prototype.register =
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
  *   !proto.auth.RecoverReq,
- *   !proto.auth.User>}
+ *   !proto.auth.Empty>}
  */
 const methodInfo_TemporalAuth_Recover = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.auth.User,
+  proto.auth.Empty,
   /** @param {!proto.auth.RecoverReq} request */
   function(request) {
     return request.serializeBinary();
   },
-  proto.auth.User.deserializeBinary
+  proto.auth.Empty.deserializeBinary
 );
 
 
@@ -151,9 +151,9 @@ const methodInfo_TemporalAuth_Recover = new grpc.web.AbstractClientBase.MethodIn
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.auth.User)}
+ * @param {function(?grpc.web.Error, ?proto.auth.Empty)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.auth.User>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.auth.Empty>|undefined}
  *     The XHR Node Readable Stream
  */
 proto.auth.TemporalAuthClient.prototype.recover =
@@ -172,7 +172,7 @@ proto.auth.TemporalAuthClient.prototype.recover =
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.auth.User>}
+ * @return {!Promise<!proto.auth.Empty>}
  *     The XHR Node Readable Stream
  */
 proto.auth.TemporalAuthPromiseClient.prototype.recover =

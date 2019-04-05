@@ -22,7 +22,7 @@ class TemporalAuthStub(object):
     self.Recover = channel.unary_unary(
         '/auth.TemporalAuth/Recover',
         request_serializer=auth__pb2.RecoverReq.SerializeToString,
-        response_deserializer=auth__pb2.User.FromString,
+        response_deserializer=auth__pb2.Empty.FromString,
         )
     self.Login = channel.unary_unary(
         '/auth.TemporalAuth/Login',
@@ -104,7 +104,7 @@ def add_TemporalAuthServicer_to_server(servicer, server):
       'Recover': grpc.unary_unary_rpc_method_handler(
           servicer.Recover,
           request_deserializer=auth__pb2.RecoverReq.FromString,
-          response_serializer=auth__pb2.User.SerializeToString,
+          response_serializer=auth__pb2.Empty.SerializeToString,
       ),
       'Login': grpc.unary_unary_rpc_method_handler(
           servicer.Login,

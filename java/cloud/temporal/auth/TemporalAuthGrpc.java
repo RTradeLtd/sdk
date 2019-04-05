@@ -63,21 +63,21 @@ public final class TemporalAuthGrpc {
   }
 
   private static volatile io.grpc.MethodDescriptor<cloud.temporal.auth.Auth.RecoverReq,
-      cloud.temporal.auth.Auth.User> getRecoverMethod;
+      cloud.temporal.auth.Auth.Empty> getRecoverMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "Recover",
       requestType = cloud.temporal.auth.Auth.RecoverReq.class,
-      responseType = cloud.temporal.auth.Auth.User.class,
+      responseType = cloud.temporal.auth.Auth.Empty.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<cloud.temporal.auth.Auth.RecoverReq,
-      cloud.temporal.auth.Auth.User> getRecoverMethod() {
-    io.grpc.MethodDescriptor<cloud.temporal.auth.Auth.RecoverReq, cloud.temporal.auth.Auth.User> getRecoverMethod;
+      cloud.temporal.auth.Auth.Empty> getRecoverMethod() {
+    io.grpc.MethodDescriptor<cloud.temporal.auth.Auth.RecoverReq, cloud.temporal.auth.Auth.Empty> getRecoverMethod;
     if ((getRecoverMethod = TemporalAuthGrpc.getRecoverMethod) == null) {
       synchronized (TemporalAuthGrpc.class) {
         if ((getRecoverMethod = TemporalAuthGrpc.getRecoverMethod) == null) {
           TemporalAuthGrpc.getRecoverMethod = getRecoverMethod = 
-              io.grpc.MethodDescriptor.<cloud.temporal.auth.Auth.RecoverReq, cloud.temporal.auth.Auth.User>newBuilder()
+              io.grpc.MethodDescriptor.<cloud.temporal.auth.Auth.RecoverReq, cloud.temporal.auth.Auth.Empty>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
                   "auth.TemporalAuth", "Recover"))
@@ -85,7 +85,7 @@ public final class TemporalAuthGrpc {
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   cloud.temporal.auth.Auth.RecoverReq.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  cloud.temporal.auth.Auth.User.getDefaultInstance()))
+                  cloud.temporal.auth.Auth.Empty.getDefaultInstance()))
                   .setSchemaDescriptor(new TemporalAuthMethodDescriptorSupplier("Recover"))
                   .build();
           }
@@ -268,7 +268,7 @@ public final class TemporalAuthGrpc {
      * </pre>
      */
     public void recover(cloud.temporal.auth.Auth.RecoverReq request,
-        io.grpc.stub.StreamObserver<cloud.temporal.auth.Auth.User> responseObserver) {
+        io.grpc.stub.StreamObserver<cloud.temporal.auth.Auth.Empty> responseObserver) {
       asyncUnimplementedUnaryCall(getRecoverMethod(), responseObserver);
     }
 
@@ -327,7 +327,7 @@ public final class TemporalAuthGrpc {
             asyncUnaryCall(
               new MethodHandlers<
                 cloud.temporal.auth.Auth.RecoverReq,
-                cloud.temporal.auth.Auth.User>(
+                cloud.temporal.auth.Auth.Empty>(
                   this, METHODID_RECOVER)))
           .addMethod(
             getLoginMethod(),
@@ -399,7 +399,7 @@ public final class TemporalAuthGrpc {
      * </pre>
      */
     public void recover(cloud.temporal.auth.Auth.RecoverReq request,
-        io.grpc.stub.StreamObserver<cloud.temporal.auth.Auth.User> responseObserver) {
+        io.grpc.stub.StreamObserver<cloud.temporal.auth.Auth.Empty> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getRecoverMethod(), getCallOptions()), request, responseObserver);
     }
@@ -486,7 +486,7 @@ public final class TemporalAuthGrpc {
      * Recover facilitates account recovery.
      * </pre>
      */
-    public cloud.temporal.auth.Auth.User recover(cloud.temporal.auth.Auth.RecoverReq request) {
+    public cloud.temporal.auth.Auth.Empty recover(cloud.temporal.auth.Auth.RecoverReq request) {
       return blockingUnaryCall(
           getChannel(), getRecoverMethod(), getCallOptions(), request);
     }
@@ -570,7 +570,7 @@ public final class TemporalAuthGrpc {
      * Recover facilitates account recovery.
      * </pre>
      */
-    public com.google.common.util.concurrent.ListenableFuture<cloud.temporal.auth.Auth.User> recover(
+    public com.google.common.util.concurrent.ListenableFuture<cloud.temporal.auth.Auth.Empty> recover(
         cloud.temporal.auth.Auth.RecoverReq request) {
       return futureUnaryCall(
           getChannel().newCall(getRecoverMethod(), getCallOptions()), request);
@@ -652,7 +652,7 @@ public final class TemporalAuthGrpc {
           break;
         case METHODID_RECOVER:
           serviceImpl.recover((cloud.temporal.auth.Auth.RecoverReq) request,
-              (io.grpc.stub.StreamObserver<cloud.temporal.auth.Auth.User>) responseObserver);
+              (io.grpc.stub.StreamObserver<cloud.temporal.auth.Auth.Empty>) responseObserver);
           break;
         case METHODID_LOGIN:
           serviceImpl.login((cloud.temporal.auth.Auth.Credentials) request,
