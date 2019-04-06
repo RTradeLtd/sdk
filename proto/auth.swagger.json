@@ -57,7 +57,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/authUser"
+              "$ref": "#/definitions/authEmpty"
             }
           }
         },
@@ -119,6 +119,9 @@
     }
   },
   "definitions": {
+    "UpdateReqDataTier": {
+      "type": "object"
+    },
     "UpdateReqPassword": {
       "type": "object",
       "properties": {
@@ -127,6 +130,39 @@
         },
         "new_password": {
           "type": "string"
+        }
+      }
+    },
+    "UsageLimits": {
+      "type": "object",
+      "properties": {
+        "limit": {
+          "type": "string",
+          "format": "int64"
+        },
+        "used": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    },
+    "UserUsage": {
+      "type": "object",
+      "properties": {
+        "tier": {
+          "$ref": "#/definitions/authTier"
+        },
+        "data": {
+          "$ref": "#/definitions/UsageLimits"
+        },
+        "ipns_records": {
+          "$ref": "#/definitions/UsageLimits"
+        },
+        "pubsub_sent": {
+          "$ref": "#/definitions/UsageLimits"
+        },
+        "keys": {
+          "$ref": "#/definitions/UsageLimits"
         }
       }
     },
@@ -141,6 +177,9 @@
         }
       }
     },
+    "authEmpty": {
+      "type": "object"
+    },
     "authRecoverReqType": {
       "type": "string",
       "enum": [
@@ -154,6 +193,7 @@
       "enum": [
         "FREE",
         "LIGHT",
+        "PLUS",
         "PARTNER"
       ],
       "default": "FREE"
@@ -170,20 +210,12 @@
         }
       }
     },
-    "authUpdateReqTier": {
-      "type": "object",
-      "properties": {
-        "new_tier": {
-          "$ref": "#/definitions/authUpdateReqTier"
-        }
-      }
-    },
     "authUser": {
       "type": "object",
       "properties": {
         "id": {
-          "type": "integer",
-          "format": "int32"
+          "type": "string",
+          "format": "uint64"
         },
         "user_name": {
           "type": "string"
@@ -197,8 +229,8 @@
           "title": "account properties"
         },
         "credits": {
-          "type": "integer",
-          "format": "int32"
+          "type": "number",
+          "format": "double"
         },
         "ipfs_keys": {
           "type": "object",
@@ -212,8 +244,8 @@
             "type": "string"
           }
         },
-        "tier": {
-          "$ref": "#/definitions/authTier"
+        "usage": {
+          "$ref": "#/definitions/UserUsage"
         },
         "api_access": {
           "type": "boolean",

@@ -17,6 +17,7 @@
   "paths": {
     "/v3/ipfs/networks/create": {
       "post": {
+        "summary": "CreateNetwork creates a new hosted IPFS network",
         "operationId": "CreateNetwork",
         "responses": {
           "200": {
@@ -33,6 +34,7 @@
     },
     "/v3/ipfs/networks/list": {
       "post": {
+        "summary": "ListNetworks retrieves a list of the authenticated user's networks",
         "operationId": "ListNetworks",
         "responses": {
           "200": {
@@ -49,6 +51,7 @@
     },
     "/v3/ipfs/networks/start": {
       "post": {
+        "summary": "StartNetwork spins up a previously created IPFS network",
         "operationId": "StartNetwork",
         "responses": {
           "200": {
@@ -65,6 +68,7 @@
     },
     "/v3/ipfs/networks/stat": {
       "get": {
+        "summary": "NetworkInfo retrieves information about a network",
         "operationId": "NetworkInfo",
         "responses": {
           "200": {
@@ -89,23 +93,8 @@
     },
     "/v3/ipfs/networks/stop": {
       "post": {
+        "summary": "RemoveNetwork deletes an IPFS network",
         "operationId": "RemoveNetwork",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/ipfsEmpty"
-            }
-          }
-        },
-        "tags": [
-          "TemporalIPFS"
-        ]
-      }
-    },
-    "/v3/ipfs/status": {
-      "get": {
-        "operationId": "Status",
         "responses": {
           "200": {
             "description": "A successful response.",

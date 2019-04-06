@@ -17,7 +17,7 @@
   "paths": {
     "/v3/store/keys": {
       "get": {
-        "summary": "Keys returns the IPFS keys associated with an authenticated request.",
+        "summary": "Keys returns the IPFS keys associated with an authenticated request",
         "operationId": "Keys",
         "responses": {
           "200": {
@@ -51,6 +51,7 @@
     },
     "/v3/store/objects/download": {
       "post": {
+        "summary": "Download retrieves an object as a stream of blobs. Blobs larger than 5mb\nshould use this API",
         "operationId": "Download",
         "responses": {
           "200": {
@@ -65,8 +66,26 @@
         ]
       }
     },
+    "/v3/store/objects/download/blob": {
+      "post": {
+        "summary": "DownloadBlob allows the download of a single blob - if it is too large,\nan error will be returned",
+        "operationId": "DownloadBlob",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/storeBlob"
+            }
+          }
+        },
+        "tags": [
+          "TemporalStore"
+        ]
+      }
+    },
     "/v3/store/objects/list": {
       "post": {
+        "summary": "ListObjects retrieves a list of the authenticated user's objects",
         "operationId": "ListObjects",
         "responses": {
           "200": {
@@ -116,13 +135,6 @@
             "in": "query",
             "required": false,
             "type": "string"
-          },
-          {
-            "name": "hold_time",
-            "in": "query",
-            "required": false,
-            "type": "string",
-            "format": "int64"
           }
         ],
         "tags": [
@@ -132,8 +144,25 @@
     },
     "/v3/store/objects/upload": {
       "post": {
-        "summary": "Upload accepts files and directories",
+        "summary": "Upload uploads a stream of blobs - it accepts files and directories. Blobs\nlarger than 5mb should use this API",
         "operationId": "Upload",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/storeObject"
+            }
+          }
+        },
+        "tags": [
+          "TemporalStore"
+        ]
+      }
+    },
+    "/v3/store/objects/upload/blob": {
+      "post": {
+        "summary": "UploadBlob allows the upload of a single blob - if it is too large, an\nerror will be returned",
+        "operationId": "UploadBlob",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -149,6 +178,7 @@
     },
     "/v3/store/pubsub/publish": {
       "post": {
+        "summary": "Publish publishes a message to the requested topic",
         "operationId": "Publish",
         "responses": {
           "200": {
@@ -165,6 +195,7 @@
     },
     "/v3/store/pubsub/subscribe": {
       "get": {
+        "summary": "Subscribe subscribes to messages from the requested topic",
         "operationId": "Subscribe",
         "responses": {
           "200": {
@@ -188,22 +219,6 @@
             "type": "string"
           }
         ],
-        "tags": [
-          "TemporalStore"
-        ]
-      }
-    },
-    "/v3/store/status": {
-      "get": {
-        "operationId": "Status",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/storeEmpty"
-            }
-          }
-        },
         "tags": [
           "TemporalStore"
         ]
@@ -345,10 +360,6 @@
       "properties": {
         "hash": {
           "type": "string"
-        },
-        "hold_time": {
-          "type": "string",
-          "format": "int64"
         }
       }
     },
