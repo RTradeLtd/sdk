@@ -30,14 +30,23 @@ swagger-pkg:
 		--swagger_out=logtostderr=true:. \
 		proto/${PKG}.proto
 
-.PHONY: docs
+.PHONY: docs-gateway
 docs-gateway: swagger
 	$(foreach var,$(PKGS),$(MAKE) docs-gateway-pkg PKG=$(var);)
 
-.PHONY: docs-pkg
+.PHONY: docs-gateway-pkg
 docs-gateway-pkg:
 	redoc-cli bundle proto/${PKG}.swagger.json -o docs/gateway/${PKG}/index.html
 
+.PHONY: docs-proto
+docs-proto:
+	docker run --rm \
+		-v $(CURDIR)/docs/grpc:/out \
+		-v $(CURDIR)/proto:/protos \
+		-v $(GOPATH)/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis:/googleapis \
+		pseudomuto/protoc-gen-doc -Igoogleapis
+
+# used for generating the official Temporal API server
 OUT=server
 .PHONY: proto-go-server
 proto-go-server:

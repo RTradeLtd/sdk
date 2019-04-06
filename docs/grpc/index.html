@@ -1,0 +1,2118 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Protocol Documentation</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Ubuntu:400,700,400italic"/>
+    <style>
+      body {
+        width: 60em;
+        margin: 1em auto;
+        color: #222;
+        font-family: "Ubuntu", sans-serif;
+        padding-bottom: 4em;
+      }
+
+      h1 {
+        font-weight: normal;
+        border-bottom: 1px solid #aaa;
+        padding-bottom: 0.5ex;
+      }
+
+      h2 {
+        border-bottom: 1px solid #aaa;
+        padding-bottom: 0.5ex;
+        margin: 1.5em 0;
+      }
+
+      h3 {
+        font-weight: normal;
+        border-bottom: 1px solid #aaa;
+        padding-bottom: 0.5ex;
+      }
+
+      a {
+        text-decoration: none;
+        color: #567e25;
+      }
+
+      table {
+        width: 100%;
+        font-size: 80%;
+        border-collapse: collapse;
+      }
+
+      thead {
+        font-weight: 700;
+        background-color: #dcdcdc;
+      }
+
+      tbody tr:nth-child(even) {
+        background-color: #fbfbfb;
+      }
+
+      td {
+        border: 1px solid #ccc;
+        padding: 0.5ex 2ex;
+      }
+
+      td p {
+        text-indent: 1em;
+        margin: 0;
+      }
+
+      td p:nth-child(1) {
+        text-indent: 0;  
+      }
+
+       
+      .field-table td:nth-child(1) {  
+        width: 10em;
+      }
+      .field-table td:nth-child(2) {  
+        width: 10em;
+      }
+      .field-table td:nth-child(3) {  
+        width: 6em;
+      }
+      .field-table td:nth-child(4) {  
+        width: auto;
+      }
+
+       
+      .extension-table td:nth-child(1) {  
+        width: 10em;
+      }
+      .extension-table td:nth-child(2) {  
+        width: 10em;
+      }
+      .extension-table td:nth-child(3) {  
+        width: 10em;
+      }
+      .extension-table td:nth-child(4) {  
+        width: 5em;
+      }
+      .extension-table td:nth-child(5) {  
+        width: auto;
+      }
+
+       
+      .enum-table td:nth-child(1) {  
+        width: 10em;
+      }
+      .enum-table td:nth-child(2) {  
+        width: 10em;
+      }
+      .enum-table td:nth-child(3) {  
+        width: auto;
+      }
+
+       
+      .scalar-value-types-table tr {
+        height: 3em;
+      }
+
+       
+      #toc-container ul {
+        list-style-type: none;
+        padding-left: 1em;
+        line-height: 180%;
+        margin: 0;
+      }
+      #toc > li > a {
+        font-weight: bold;
+      }
+
+       
+      .file-heading {
+        width: 100%;
+        display: table;
+        border-bottom: 1px solid #aaa;
+        margin: 4em 0 1.5em 0;
+      }
+      .file-heading h2 {
+        border: none;
+        display: table-cell;
+      }
+      .file-heading a {
+        text-align: right;
+        display: table-cell;
+      }
+
+       
+      .badge {
+        width: 1.6em;
+        height: 1.6em;
+        display: inline-block;
+
+        line-height: 1.6em;
+        text-align: center;
+        font-weight: bold;
+        font-size: 60%;
+
+        color: #89ba48;
+        background-color: #dff0c8;
+
+        margin: 0.5ex 1em 0.5ex -1em;
+        border: 1px solid #fbfbfb;
+        border-radius: 1ex;
+      }
+    </style>
+
+    
+    <link rel="stylesheet" type="text/css" href="stylesheet.css"/>
+  </head>
+
+  <body>
+
+    <h1 id="title">Protocol Documentation</h1>
+
+    <h2>Table of Contents</h2>
+
+    <div id="toc-container">
+      <ul id="toc">
+        
+          
+          <li>
+            <a href="#auth.proto">auth.proto</a>
+            <ul>
+              
+                <li>
+                  <a href="#auth.Credentials"><span class="badge">M</span>Credentials</a>
+                </li>
+              
+                <li>
+                  <a href="#auth.Empty"><span class="badge">M</span>Empty</a>
+                </li>
+              
+                <li>
+                  <a href="#auth.RecoverReq"><span class="badge">M</span>RecoverReq</a>
+                </li>
+              
+                <li>
+                  <a href="#auth.RegisterReq"><span class="badge">M</span>RegisterReq</a>
+                </li>
+              
+                <li>
+                  <a href="#auth.Token"><span class="badge">M</span>Token</a>
+                </li>
+              
+                <li>
+                  <a href="#auth.UpdateReq"><span class="badge">M</span>UpdateReq</a>
+                </li>
+              
+                <li>
+                  <a href="#auth.UpdateReq.DataTier"><span class="badge">M</span>UpdateReq.DataTier</a>
+                </li>
+              
+                <li>
+                  <a href="#auth.UpdateReq.Password"><span class="badge">M</span>UpdateReq.Password</a>
+                </li>
+              
+                <li>
+                  <a href="#auth.User"><span class="badge">M</span>User</a>
+                </li>
+              
+                <li>
+                  <a href="#auth.User.IpfsKeysEntry"><span class="badge">M</span>User.IpfsKeysEntry</a>
+                </li>
+              
+                <li>
+                  <a href="#auth.User.Usage"><span class="badge">M</span>User.Usage</a>
+                </li>
+              
+                <li>
+                  <a href="#auth.User.Usage.Limits"><span class="badge">M</span>User.Usage.Limits</a>
+                </li>
+              
+              
+                <li>
+                  <a href="#auth.RecoverReq.Type"><span class="badge">E</span>RecoverReq.Type</a>
+                </li>
+              
+                <li>
+                  <a href="#auth.Tier"><span class="badge">E</span>Tier</a>
+                </li>
+              
+              
+              
+                <li>
+                  <a href="#auth.TemporalAuth"><span class="badge">S</span>TemporalAuth</a>
+                </li>
+              
+            </ul>
+          </li>
+        
+          
+          <li>
+            <a href="#core.proto">core.proto</a>
+            <ul>
+              
+                <li>
+                  <a href="#core.Empty"><span class="badge">M</span>Empty</a>
+                </li>
+              
+                <li>
+                  <a href="#core.ServiceStatistics"><span class="badge">M</span>ServiceStatistics</a>
+                </li>
+              
+                <li>
+                  <a href="#core.ServiceStatus"><span class="badge">M</span>ServiceStatus</a>
+                </li>
+              
+              
+              
+              
+                <li>
+                  <a href="#core.TemporalCore"><span class="badge">S</span>TemporalCore</a>
+                </li>
+              
+            </ul>
+          </li>
+        
+          
+          <li>
+            <a href="#ipfs.proto">ipfs.proto</a>
+            <ul>
+              
+                <li>
+                  <a href="#ipfs.CreateNetworkReq"><span class="badge">M</span>CreateNetworkReq</a>
+                </li>
+              
+                <li>
+                  <a href="#ipfs.Empty"><span class="badge">M</span>Empty</a>
+                </li>
+              
+                <li>
+                  <a href="#ipfs.Network"><span class="badge">M</span>Network</a>
+                </li>
+              
+                <li>
+                  <a href="#ipfs.NetworkDetails"><span class="badge">M</span>NetworkDetails</a>
+                </li>
+              
+                <li>
+                  <a href="#ipfs.NetworkList"><span class="badge">M</span>NetworkList</a>
+                </li>
+              
+              
+              
+              
+                <li>
+                  <a href="#ipfs.TemporalIPFS"><span class="badge">S</span>TemporalIPFS</a>
+                </li>
+              
+            </ul>
+          </li>
+        
+          
+          <li>
+            <a href="#store.proto">store.proto</a>
+            <ul>
+              
+                <li>
+                  <a href="#store.Blob"><span class="badge">M</span>Blob</a>
+                </li>
+              
+                <li>
+                  <a href="#store.DownloadReq"><span class="badge">M</span>DownloadReq</a>
+                </li>
+              
+                <li>
+                  <a href="#store.Empty"><span class="badge">M</span>Empty</a>
+                </li>
+              
+                <li>
+                  <a href="#store.Event"><span class="badge">M</span>Event</a>
+                </li>
+              
+                <li>
+                  <a href="#store.Key"><span class="badge">M</span>Key</a>
+                </li>
+              
+                <li>
+                  <a href="#store.Key.ED25519"><span class="badge">M</span>Key.ED25519</a>
+                </li>
+              
+                <li>
+                  <a href="#store.Key.RSA"><span class="badge">M</span>Key.RSA</a>
+                </li>
+              
+                <li>
+                  <a href="#store.KeyList"><span class="badge">M</span>KeyList</a>
+                </li>
+              
+                <li>
+                  <a href="#store.ListObjectsReq"><span class="badge">M</span>ListObjectsReq</a>
+                </li>
+              
+                <li>
+                  <a href="#store.Object"><span class="badge">M</span>Object</a>
+                </li>
+              
+                <li>
+                  <a href="#store.ObjectInfo"><span class="badge">M</span>ObjectInfo</a>
+                </li>
+              
+                <li>
+                  <a href="#store.ObjectInfo.Details"><span class="badge">M</span>ObjectInfo.Details</a>
+                </li>
+              
+                <li>
+                  <a href="#store.ObjectInfo.Permissions"><span class="badge">M</span>ObjectInfo.Permissions</a>
+                </li>
+              
+                <li>
+                  <a href="#store.ObjectList"><span class="badge">M</span>ObjectList</a>
+                </li>
+              
+                <li>
+                  <a href="#store.ObjectOptions"><span class="badge">M</span>ObjectOptions</a>
+                </li>
+              
+                <li>
+                  <a href="#store.ObjectStats"><span class="badge">M</span>ObjectStats</a>
+                </li>
+              
+                <li>
+                  <a href="#store.Topic"><span class="badge">M</span>Topic</a>
+                </li>
+              
+                <li>
+                  <a href="#store.UploadReq"><span class="badge">M</span>UploadReq</a>
+                </li>
+              
+              
+                <li>
+                  <a href="#store.Key.ED25519.Size"><span class="badge">E</span>Key.ED25519.Size</a>
+                </li>
+              
+                <li>
+                  <a href="#store.Key.RSA.Size"><span class="badge">E</span>Key.RSA.Size</a>
+                </li>
+              
+              
+              
+                <li>
+                  <a href="#store.TemporalStore"><span class="badge">S</span>TemporalStore</a>
+                </li>
+              
+            </ul>
+          </li>
+        
+        <li><a href="#scalar-value-types">Scalar Value Types</a></li>
+      </ul>
+    </div>
+
+    
+      
+      <div class="file-heading">
+        <h2 id="auth.proto">auth.proto</h2><a href="#title">Top</a>
+      </div>
+      <p></p>
+
+      
+        <h3 id="auth.Credentials">Credentials</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>username</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>password</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        
+
+        
+      
+        <h3 id="auth.Empty">Empty</h3>
+        <p></p>
+
+        
+
+        
+      
+        <h3 id="auth.RecoverReq">RecoverReq</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>type</td>
+                  <td><a href="#auth.RecoverReq.Type">RecoverReq.Type</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>email_address</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        
+
+        
+      
+        <h3 id="auth.RegisterReq">RegisterReq</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>credentials</td>
+                  <td><a href="#auth.Credentials">Credentials</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>email_address</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        
+
+        
+      
+        <h3 id="auth.Token">Token</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>expire</td>
+                  <td><a href="#int64">int64</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>token</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        
+
+        
+      
+        <h3 id="auth.UpdateReq">UpdateReq</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>password_change</td>
+                  <td><a href="#auth.UpdateReq.Password">UpdateReq.Password</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>data_tier_change</td>
+                  <td><a href="#auth.UpdateReq.DataTier">UpdateReq.DataTier</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        
+
+        
+      
+        <h3 id="auth.UpdateReq.DataTier">UpdateReq.DataTier</h3>
+        <p>empty - can only upgrade for now</p>
+
+        
+
+        
+      
+        <h3 id="auth.UpdateReq.Password">UpdateReq.Password</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>old_password</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>new_password</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        
+
+        
+      
+        <h3 id="auth.User">User</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>id</td>
+                  <td><a href="#uint64">uint64</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>user_name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>email_address</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>verified</td>
+                  <td><a href="#bool">bool</a></td>
+                  <td></td>
+                  <td><p>account properties </p></td>
+                </tr>
+              
+                <tr>
+                  <td>credits</td>
+                  <td><a href="#double">double</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>ipfs_keys</td>
+                  <td><a href="#auth.User.IpfsKeysEntry">User.IpfsKeysEntry</a></td>
+                  <td>repeated</td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>ipfs_networks</td>
+                  <td><a href="#string">string</a></td>
+                  <td>repeated</td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>usage</td>
+                  <td><a href="#auth.User.Usage">User.Usage</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>api_access</td>
+                  <td><a href="#bool">bool</a></td>
+                  <td></td>
+                  <td><p>account access </p></td>
+                </tr>
+              
+                <tr>
+                  <td>admin_access</td>
+                  <td><a href="#bool">bool</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        
+
+        
+      
+        <h3 id="auth.User.IpfsKeysEntry">User.IpfsKeysEntry</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>key</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>value</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        
+
+        
+      
+        <h3 id="auth.User.Usage">User.Usage</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>tier</td>
+                  <td><a href="#auth.Tier">Tier</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>data</td>
+                  <td><a href="#auth.User.Usage.Limits">User.Usage.Limits</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>ipns_records</td>
+                  <td><a href="#auth.User.Usage.Limits">User.Usage.Limits</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>pubsub_sent</td>
+                  <td><a href="#auth.User.Usage.Limits">User.Usage.Limits</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>keys</td>
+                  <td><a href="#auth.User.Usage.Limits">User.Usage.Limits</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        
+
+        
+      
+        <h3 id="auth.User.Usage.Limits">User.Usage.Limits</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>limit</td>
+                  <td><a href="#int64">int64</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>used</td>
+                  <td><a href="#int64">int64</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        
+
+        
+      
+
+      
+        <h3 id="auth.RecoverReq.Type">RecoverReq.Type</h3>
+        <p></p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Name</td><td>Number</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>USERNAME</td>
+                <td>0</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>PASSWORD</td>
+                <td>1</td>
+                <td><p></p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+      
+        <h3 id="auth.Tier">Tier</h3>
+        <p></p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Name</td><td>Number</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>FREE</td>
+                <td>0</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>LIGHT</td>
+                <td>1</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>PLUS</td>
+                <td>2</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>PARTNER</td>
+                <td>9</td>
+                <td><p></p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+      
+
+      
+
+      
+        <h3 id="auth.TemporalAuth">TemporalAuth</h3>
+        <p>TemporalAuth implements Temporal's authentication and account management APIs</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Method Name</td><td>Request Type</td><td>Response Type</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>Register</td>
+                <td><a href="#auth.RegisterReq">RegisterReq</a></td>
+                <td><a href="#auth.User">User</a></td>
+                <td><p>Register facilitates user creation.</p></td>
+              </tr>
+            
+              <tr>
+                <td>Recover</td>
+                <td><a href="#auth.RecoverReq">RecoverReq</a></td>
+                <td><a href="#auth.Empty">Empty</a></td>
+                <td><p>Recover facilitates account recovery.</p></td>
+              </tr>
+            
+              <tr>
+                <td>Login</td>
+                <td><a href="#auth.Credentials">Credentials</a></td>
+                <td><a href="#auth.Token">Token</a></td>
+                <td><p>Login accepts credentials and returns a token for use with further requests.</p></td>
+              </tr>
+            
+              <tr>
+                <td>Account</td>
+                <td><a href="#auth.Empty">Empty</a></td>
+                <td><a href="#auth.User">User</a></td>
+                <td><p>Account returns the account associated with an authenticated request.</p></td>
+              </tr>
+            
+              <tr>
+                <td>Update</td>
+                <td><a href="#auth.UpdateReq">UpdateReq</a></td>
+                <td><a href="#auth.User">User</a></td>
+                <td><p>Update facilitates modification of the account associated with an
+authenticated request.</p></td>
+              </tr>
+            
+              <tr>
+                <td>Refresh</td>
+                <td><a href="#auth.Empty">Empty</a></td>
+                <td><a href="#auth.Token">Token</a></td>
+                <td><p>Refresh provides a refreshed token associated with an authenticated request.</p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+      
+    
+      
+      <div class="file-heading">
+        <h2 id="core.proto">core.proto</h2><a href="#title">Top</a>
+      </div>
+      <p></p>
+
+      
+        <h3 id="core.Empty">Empty</h3>
+        <p></p>
+
+        
+
+        
+      
+        <h3 id="core.ServiceStatistics">ServiceStatistics</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>metrics</td>
+                  <td><a href="#bytes">bytes</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        
+
+        
+      
+        <h3 id="core.ServiceStatus">ServiceStatus</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>version</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>message</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        
+
+        
+      
+
+      
+
+      
+
+      
+        <h3 id="core.TemporalCore">TemporalCore</h3>
+        <p>TemporalCore implements non-specific Temporal APIs such systems checks,</p><p>statistics, etc.</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Method Name</td><td>Request Type</td><td>Response Type</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>Status</td>
+                <td><a href="#core.Empty">Empty</a></td>
+                <td><a href="#core.ServiceStatus">ServiceStatus</a></td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>Statistics</td>
+                <td><a href="#core.Empty">Empty</a></td>
+                <td><a href="#core.ServiceStatistics">ServiceStatistics</a></td>
+                <td><p></p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+      
+    
+      
+      <div class="file-heading">
+        <h2 id="ipfs.proto">ipfs.proto</h2><a href="#title">Top</a>
+      </div>
+      <p></p>
+
+      
+        <h3 id="ipfs.CreateNetworkReq">CreateNetworkReq</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>network</td>
+                  <td><a href="#ipfs.Network">Network</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>swarm_key</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>bootstrap_peers</td>
+                  <td><a href="#string">string</a></td>
+                  <td>repeated</td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>users</td>
+                  <td><a href="#string">string</a></td>
+                  <td>repeated</td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        
+
+        
+      
+        <h3 id="ipfs.Empty">Empty</h3>
+        <p></p>
+
+        
+
+        
+      
+        <h3 id="ipfs.Network">Network</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        
+
+        
+      
+        <h3 id="ipfs.NetworkDetails">NetworkDetails</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>id</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>created_at</td>
+                  <td><a href="#int64">int64</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>deleted_at</td>
+                  <td><a href="#int64">int64</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>activated</td>
+                  <td><a href="#int64">int64</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>swarm_key</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>users</td>
+                  <td><a href="#string">string</a></td>
+                  <td>repeated</td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>peers</td>
+                  <td><a href="#string">string</a></td>
+                  <td>repeated</td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        
+
+        
+      
+        <h3 id="ipfs.NetworkList">NetworkList</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>networks</td>
+                  <td><a href="#ipfs.Network">Network</a></td>
+                  <td>repeated</td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        
+
+        
+      
+
+      
+
+      
+
+      
+        <h3 id="ipfs.TemporalIPFS">TemporalIPFS</h3>
+        <p>TemporalIPFS implements Temporal's IPFS management APIs, most notably private</p><p>networks.</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Method Name</td><td>Request Type</td><td>Response Type</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>CreateNetwork</td>
+                <td><a href="#ipfs.CreateNetworkReq">CreateNetworkReq</a></td>
+                <td><a href="#ipfs.NetworkDetails">NetworkDetails</a></td>
+                <td><p>CreateNetwork creates a new hosted IPFS network</p></td>
+              </tr>
+            
+              <tr>
+                <td>StartNetwork</td>
+                <td><a href="#ipfs.Network">Network</a></td>
+                <td><a href="#ipfs.Empty">Empty</a></td>
+                <td><p>StartNetwork spins up a previously created IPFS network</p></td>
+              </tr>
+            
+              <tr>
+                <td>StopNetwork</td>
+                <td><a href="#ipfs.Network">Network</a></td>
+                <td><a href="#ipfs.Empty">Empty</a></td>
+                <td><p>StopNetwork shuts down an IPFS network</p></td>
+              </tr>
+            
+              <tr>
+                <td>RemoveNetwork</td>
+                <td><a href="#ipfs.Network">Network</a></td>
+                <td><a href="#ipfs.Empty">Empty</a></td>
+                <td><p>RemoveNetwork deletes an IPFS network</p></td>
+              </tr>
+            
+              <tr>
+                <td>NetworkInfo</td>
+                <td><a href="#ipfs.Network">Network</a></td>
+                <td><a href="#ipfs.NetworkDetails">NetworkDetails</a></td>
+                <td><p>NetworkInfo retrieves information about a network</p></td>
+              </tr>
+            
+              <tr>
+                <td>ListNetworks</td>
+                <td><a href="#ipfs.Empty">Empty</a></td>
+                <td><a href="#ipfs.NetworkList">NetworkList</a></td>
+                <td><p>ListNetworks retrieves a list of the authenticated user&#39;s networks</p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+      
+    
+      
+      <div class="file-heading">
+        <h2 id="store.proto">store.proto</h2><a href="#title">Top</a>
+      </div>
+      <p></p>
+
+      
+        <h3 id="store.Blob">Blob</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>content</td>
+                  <td><a href="#bytes">bytes</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>hold_time</td>
+                  <td><a href="#int64">int64</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        
+
+        
+      
+        <h3 id="store.DownloadReq">DownloadReq</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>object</td>
+                  <td><a href="#store.Object">Object</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>options</td>
+                  <td><a href="#store.ObjectOptions">ObjectOptions</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        
+
+        
+      
+        <h3 id="store.Empty">Empty</h3>
+        <p></p>
+
+        
+
+        
+      
+        <h3 id="store.Event">Event</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>topic</td>
+                  <td><a href="#store.Topic">Topic</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>message</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        
+
+        
+      
+        <h3 id="store.Key">Key</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>rsa</td>
+                  <td><a href="#store.Key.RSA">Key.RSA</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>ed25519</td>
+                  <td><a href="#store.Key.ED25519">Key.ED25519</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        
+
+        
+      
+        <h3 id="store.Key.ED25519">Key.ED25519</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>size</td>
+                  <td><a href="#store.Key.ED25519.Size">Key.ED25519.Size</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        
+
+        
+      
+        <h3 id="store.Key.RSA">Key.RSA</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>size</td>
+                  <td><a href="#store.Key.RSA.Size">Key.RSA.Size</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        
+
+        
+      
+        <h3 id="store.KeyList">KeyList</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>keys</td>
+                  <td><a href="#store.Key">Key</a></td>
+                  <td>repeated</td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        
+
+        
+      
+        <h3 id="store.ListObjectsReq">ListObjectsReq</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>networks</td>
+                  <td><a href="#string">string</a></td>
+                  <td>repeated</td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>hashes</td>
+                  <td><a href="#string">string</a></td>
+                  <td>repeated</td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>encrypted_only</td>
+                  <td><a href="#bool">bool</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        
+
+        
+      
+        <h3 id="store.Object">Object</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>hash</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        
+
+        
+      
+        <h3 id="store.ObjectInfo">ObjectInfo</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>object</td>
+                  <td><a href="#store.Object">Object</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>stats</td>
+                  <td><a href="#store.ObjectStats">ObjectStats</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>details</td>
+                  <td><a href="#store.ObjectInfo.Details">ObjectInfo.Details</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>perms</td>
+                  <td><a href="#store.ObjectInfo.Permissions">ObjectInfo.Permissions</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        
+
+        
+      
+        <h3 id="store.ObjectInfo.Details">ObjectInfo.Details</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>created_at</td>
+                  <td><a href="#int64">int64</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>deleted_at</td>
+                  <td><a href="#int64">int64</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>updated_at</td>
+                  <td><a href="#int64">int64</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>encrypted</td>
+                  <td><a href="#bool">bool</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>hold_time</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>type</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        
+
+        
+      
+        <h3 id="store.ObjectInfo.Permissions">ObjectInfo.Permissions</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>uploader</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>users</td>
+                  <td><a href="#string">string</a></td>
+                  <td>repeated</td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        
+
+        
+      
+        <h3 id="store.ObjectList">ObjectList</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>objects</td>
+                  <td><a href="#store.ObjectInfo">ObjectInfo</a></td>
+                  <td>repeated</td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        
+
+        
+      
+        <h3 id="store.ObjectOptions">ObjectOptions</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>passphrase</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>network</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        
+
+        
+      
+        <h3 id="store.ObjectStats">ObjectStats</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>block_size</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>cumulative_size</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>data_size</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>links_size</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>link_count</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        
+
+        
+      
+        <h3 id="store.Topic">Topic</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>topic</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>network</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        
+
+        
+      
+        <h3 id="store.UploadReq">UploadReq</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>blob</td>
+                  <td><a href="#store.Blob">Blob</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>hold_time</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>options</td>
+                  <td><a href="#store.ObjectOptions">ObjectOptions</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        
+
+        
+      
+
+      
+        <h3 id="store.Key.ED25519.Size">Key.ED25519.Size</h3>
+        <p></p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Name</td><td>Number</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>S_256</td>
+                <td>0</td>
+                <td><p></p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+      
+        <h3 id="store.Key.RSA.Size">Key.RSA.Size</h3>
+        <p></p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Name</td><td>Number</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>S_2048</td>
+                <td>0</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>S_3072</td>
+                <td>1</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>S_4096</td>
+                <td>2</td>
+                <td><p></p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+      
+
+      
+
+      
+        <h3 id="store.TemporalStore">TemporalStore</h3>
+        <p>TemporalStore implements Temporal's storage APIs</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Method Name</td><td>Request Type</td><td>Response Type</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>Upload</td>
+                <td><a href="#store.UploadReq">UploadReq</a> stream</td>
+                <td><a href="#store.Object">Object</a></td>
+                <td><p>Upload uploads a stream of blobs - it accepts files and directories. Blobs
+larger than 5mb should use this API</p></td>
+              </tr>
+            
+              <tr>
+                <td>UploadBlob</td>
+                <td><a href="#store.UploadReq">UploadReq</a></td>
+                <td><a href="#store.Object">Object</a></td>
+                <td><p>UploadBlob allows the upload of a single blob - if it is too large, an
+error will be returned</p></td>
+              </tr>
+            
+              <tr>
+                <td>Download</td>
+                <td><a href="#store.DownloadReq">DownloadReq</a></td>
+                <td><a href="#store.Blob">Blob</a> stream</td>
+                <td><p>Download retrieves an object as a stream of blobs. Blobs larger than 5mb
+should use this API</p></td>
+              </tr>
+            
+              <tr>
+                <td>DownloadBlob</td>
+                <td><a href="#store.DownloadReq">DownloadReq</a></td>
+                <td><a href="#store.Blob">Blob</a></td>
+                <td><p>DownloadBlob allows the download of a single blob - if it is too large,
+an error will be returned</p></td>
+              </tr>
+            
+              <tr>
+                <td>Pin</td>
+                <td><a href="#store.Object">Object</a></td>
+                <td><a href="#store.Empty">Empty</a></td>
+                <td><p>Pin handles new pins and pin extensions</p></td>
+              </tr>
+            
+              <tr>
+                <td>Stat</td>
+                <td><a href="#store.Object">Object</a></td>
+                <td><a href="#store.ObjectStats">ObjectStats</a></td>
+                <td><p>Stat retrieves details about an object</p></td>
+              </tr>
+            
+              <tr>
+                <td>ListObjects</td>
+                <td><a href="#store.ListObjectsReq">ListObjectsReq</a></td>
+                <td><a href="#store.ObjectList">ObjectList</a></td>
+                <td><p>ListObjects retrieves a list of the authenticated user&#39;s objects</p></td>
+              </tr>
+            
+              <tr>
+                <td>Publish</td>
+                <td><a href="#store.Event">Event</a></td>
+                <td><a href="#store.Empty">Empty</a></td>
+                <td><p>Publish publishes a message to the requested topic</p></td>
+              </tr>
+            
+              <tr>
+                <td>Subscribe</td>
+                <td><a href="#store.Topic">Topic</a></td>
+                <td><a href="#store.Event">Event</a> stream</td>
+                <td><p>Subscribe subscribes to messages from the requested topic</p></td>
+              </tr>
+            
+              <tr>
+                <td>Keys</td>
+                <td><a href="#store.Empty">Empty</a></td>
+                <td><a href="#store.KeyList">KeyList</a></td>
+                <td><p>Keys returns the IPFS keys associated with an authenticated request</p></td>
+              </tr>
+            
+              <tr>
+                <td>NewKey</td>
+                <td><a href="#store.Key">Key</a></td>
+                <td><a href="#store.Empty">Empty</a></td>
+                <td><p>NewKey generates a new IPFS key associated with an authenticated request.</p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+      
+    
+
+    <h2 id="scalar-value-types">Scalar Value Types</h2>
+    <table class="scalar-value-types-table">
+      <thead>
+        <tr><td>.proto Type</td><td>Notes</td><td>C++ Type</td><td>Java Type</td><td>Python Type</td></tr>
+      </thead>
+      <tbody>
+        
+          <tr id="double">
+            <td>double</td>
+            <td></td>
+            <td>double</td>
+            <td>double</td>
+            <td>float</td>
+          </tr>
+        
+          <tr id="float">
+            <td>float</td>
+            <td></td>
+            <td>float</td>
+            <td>float</td>
+            <td>float</td>
+          </tr>
+        
+          <tr id="int32">
+            <td>int32</td>
+            <td>Uses variable-length encoding. Inefficient for encoding negative numbers – if your field is likely to have negative values, use sint32 instead.</td>
+            <td>int32</td>
+            <td>int</td>
+            <td>int</td>
+          </tr>
+        
+          <tr id="int64">
+            <td>int64</td>
+            <td>Uses variable-length encoding. Inefficient for encoding negative numbers – if your field is likely to have negative values, use sint64 instead.</td>
+            <td>int64</td>
+            <td>long</td>
+            <td>int/long</td>
+          </tr>
+        
+          <tr id="uint32">
+            <td>uint32</td>
+            <td>Uses variable-length encoding.</td>
+            <td>uint32</td>
+            <td>int</td>
+            <td>int/long</td>
+          </tr>
+        
+          <tr id="uint64">
+            <td>uint64</td>
+            <td>Uses variable-length encoding.</td>
+            <td>uint64</td>
+            <td>long</td>
+            <td>int/long</td>
+          </tr>
+        
+          <tr id="sint32">
+            <td>sint32</td>
+            <td>Uses variable-length encoding. Signed int value. These more efficiently encode negative numbers than regular int32s.</td>
+            <td>int32</td>
+            <td>int</td>
+            <td>int</td>
+          </tr>
+        
+          <tr id="sint64">
+            <td>sint64</td>
+            <td>Uses variable-length encoding. Signed int value. These more efficiently encode negative numbers than regular int64s.</td>
+            <td>int64</td>
+            <td>long</td>
+            <td>int/long</td>
+          </tr>
+        
+          <tr id="fixed32">
+            <td>fixed32</td>
+            <td>Always four bytes. More efficient than uint32 if values are often greater than 2^28.</td>
+            <td>uint32</td>
+            <td>int</td>
+            <td>int</td>
+          </tr>
+        
+          <tr id="fixed64">
+            <td>fixed64</td>
+            <td>Always eight bytes. More efficient than uint64 if values are often greater than 2^56.</td>
+            <td>uint64</td>
+            <td>long</td>
+            <td>int/long</td>
+          </tr>
+        
+          <tr id="sfixed32">
+            <td>sfixed32</td>
+            <td>Always four bytes.</td>
+            <td>int32</td>
+            <td>int</td>
+            <td>int</td>
+          </tr>
+        
+          <tr id="sfixed64">
+            <td>sfixed64</td>
+            <td>Always eight bytes.</td>
+            <td>int64</td>
+            <td>long</td>
+            <td>int/long</td>
+          </tr>
+        
+          <tr id="bool">
+            <td>bool</td>
+            <td></td>
+            <td>bool</td>
+            <td>boolean</td>
+            <td>boolean</td>
+          </tr>
+        
+          <tr id="string">
+            <td>string</td>
+            <td>A string must always contain UTF-8 encoded or 7-bit ASCII text.</td>
+            <td>string</td>
+            <td>String</td>
+            <td>str/unicode</td>
+          </tr>
+        
+          <tr id="bytes">
+            <td>bytes</td>
+            <td>May contain any arbitrary sequence of bytes.</td>
+            <td>string</td>
+            <td>ByteString</td>
+            <td>str</td>
+          </tr>
+        
+      </tbody>
+    </table>
+  </body>
+</html>
+
