@@ -46,6 +46,9 @@ docs-proto:
 		-v $(GOPATH)/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis:/googleapis \
 		pseudomuto/protoc-gen-doc -Igoogleapis
 
+.PHONY: docs
+docs: docs-gateway docs-proto
+
 # used for generating the official Temporal API server
 OUT=server
 .PHONY: proto-go-server
