@@ -26,17 +26,6 @@ func NewCredentials(
 // GetRequestMetadata retrieves relevant metadata. It also refreshes the token
 // when appropriate.
 func (c *Credentials) GetRequestMetadata(ctx context.Context, uri ...string) (map[string]string, error) {
-	if c.token.GetExpire() > (time.Now().Unix() - int64(5*time.Minute)) {
-		var err error
-		conn, err := Connect(ctx, c.token, c.connOpts)
-		if err != nil {
-			return nil, err
-		}
-		c.token, err = NewAuthClient(conn).Refresh(ctx, &auth.Empty{})
-		if err != nil {
-			return nil, err
-		}
-	}
 	return map[string]string{
 		string(MetaKeyAuthorization): "Bearer " + c.token.GetToken(),
 	}, nil
