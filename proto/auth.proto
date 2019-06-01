@@ -10,7 +10,10 @@ service TemporalAuth {
 
   // Register facilitates user creation.
   rpc Register(RegisterReq) returns (User) {
-    option (google.api.http) = { post: "/v3/auth/register" };
+    option (google.api.http) = { 
+      post: "/v3/auth/register"
+      body: "*"
+     };
   };
 
   // Recover facilitates account recovery.
